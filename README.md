@@ -1,28 +1,47 @@
-# Example D3.js + React integration
+react-hot-boilerplate
+=====================
 
-A small example exploring how to integrate [D3.js](http://d3js.org/) data visualization components into a [React](http://facebook.github.io/react/) app.
+The minimal dev environment to enable live-editing React components.
 
-Demo: http://nicolashery.github.io/example-d3-react
+### Usage
 
-## Explanation
-
-**Context**: React allows you to manipulate SVG, so you could probably re-write this repo in "pure React". Here, I assume that you might already have some D3 components you want to re-use, and/or you would rather write the data visualization parts of your app in D3.
-
-I find that making D3 components play nice inside a React app becomes easier when you follow these simple rules:
-
-**(1) "One Source Of Truth"**: The D3 visualization should get all of the data it needs to render passed down to it. In this example, the single source of truth is in the main `<App>` React component's `state`, and is used by the D3 component (`d3Chart`) and React components (for example `<Stats>`).
-
-**(2) "Stateless All The Things"**: Related to (1), D3 and React components alike should be as stateless as possible, i.e. they shouldn't hide/encapsulate something that makes them render differently given the same "input". In this example, if you call `d3Chart.update()` at anytime with the same arguments, you always get the same result on screen.
-
-**(3) "Don't Make Too Many Assumptions"**: Related to (1) and (2), components shouldn't make too many assumptions about how they will be used. In this example, `d3Chart` doesn't prescribe when tooltips should show, it only shows whatever it receives in the `tooltips` array. This allows us to show tooltips on hover, but also to easily create a "show/hide all tooltips" toggle.
-
-## Quick start
-
-Clone this repo, then:
-
-```bash
-$ npm install
-$ npm start
+```
+npm install
+npm start
+open http://localhost:3000
 ```
 
-Open `http://localhost:8080` in your browser.
+Now edit `src/App.js`.  
+Your changes will appear without reloading the browser like in [this video](http://vimeo.com/100010922).
+
+### Linting
+
+This boilerplate project includes React-friendly ESLint configuration.
+
+```
+npm run lint
+```
+
+### Using `0.0.0.0` as Host
+
+You may want to change the host in `server.js` and `webpack.config.js` from `localhost` to `0.0.0.0` to allow access from same WiFi network. This is not enabled by default because it is reported to cause problems on Windows. This may also be useful if you're using a VM.
+
+### Missing Features
+
+This boilerplate is purposefully simple to show the minimal configuration for React Hot Loader. For a real project, you'll want to add a separate config for production with hot reloading disabled and minification enabled. You'll also want to add a router, styles and maybe combine dev server with an existing server. This is out of scope of this boilerplate, but you may want to look into [other starter kits](https://github.com/gaearon/react-hot-loader/blob/master/docs/README.md#starter-kits).
+
+### Dependencies
+
+* React
+* Webpack
+* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+* [babel-loader](https://github.com/babel/babel-loader)
+* [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+
+### Resources
+
+* [Demo video](http://vimeo.com/100010922)
+* [react-hot-loader on Github](https://github.com/gaearon/react-hot-loader)
+* [Integrating JSX live reload into your workflow](http://gaearon.github.io/react-hot-loader/getstarted/)
+* [Troubleshooting guide](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md)
+* Ping dan_abramov on Twitter or #reactjs IRC
