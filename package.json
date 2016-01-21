@@ -30,7 +30,7 @@
   "scripts": {
     "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --devtool source-map --cache --colors --progress",
+    "start": "node server.js",
     "build": "node build",
     "server": "http-server ./dist",
     "jshint": "gulp jshint",
