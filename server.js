@@ -1,15 +1,28 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+"use strict";
+const
+  webpack = require('webpack'),
+  WebpackDevServer = require('webpack-dev-server'),
+  config = require('./webpack.config'),
 
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true
-}).listen(3000, 'localhost', function (err, result) {
-  if (err) {
-    console.log(err);
-  }
+  express = require('express'),
+  proxy = require('proxy-middleware'),
+  url = require('url');
 
-  console.log('Listening at localhost:3000');
+const app = express();
+app.use(config.output.publicPath, proxy(url.parse('http://localhost:8081/')));
+
+app.get('/*', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
+
+const server = new WebpackDevServer(webpack(config), {
+  contentBase: __dirname,
+  publicPath: config.output.publicPath,
+  quiet: false,
+  hot: true,
+  historyApiFallback: true,
+  stats: { colors: true }
+});
+
+server.listen(8081, "localhost", function(){});
+app.listen(8080);
