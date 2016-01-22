@@ -1,14 +1,19 @@
+// Modifying Bootstrap
 body {
   min-height: 2000px;
   padding-top: 70px; // because we have the fixed top
-}
-
-.element {
-	height:1000px;
 }
 
 .navbar {
 	border-radius: 0px;
 	background-color: #4A4A4A;
 	background-image: none; // get rid of the gradient
+}
+
+// Our Sass
+.family {
+	border: 1px solid #979797;
+	text-align: center;
+	background-color: #D8D8D8;
+	padding: 20px 10px;
 }

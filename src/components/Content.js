@@ -7,6 +7,9 @@ let Link = Scroll.Link;
 let Element = Scroll.Element;
 var Events = Scroll.Events;
 
+// Our components
+import Families from './Family.js';
+
 // Config the marks on the slider
 const marks = {
   4: '$4',
@@ -47,6 +50,7 @@ let Scrolling = React.createClass({
       <Element name="hi" className="element">
         This is a test of fancy smooth scrolling.
         <div style={{ width: '250px', height: '250px'}}><Rcslider min={4} max={25} marks={marks} /></div>
+        <Families />
       </Element>
       <Element name="test" className="element">
         This is a test of another fancy smooth scrolling. Cool things would go here.
