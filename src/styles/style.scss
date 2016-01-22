@@ -1,8 +1,14 @@
+body {
+  min-height: 2000px;
+  padding-top: 70px; // because we have the fixed top
+}
+
 .element {
 	height:1000px;
-	background-color: #ededed;
-	font-size: 45px;
-	border-top:1px solid #000;
-	padding-top:55px;
-	padding-left:10px;
+}
+
+.navbar {
+	border-radius: 0px;
+	background-color: #4A4A4A;
+	background-image: none; // get rid of the gradient
 }

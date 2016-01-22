@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import Rcslider from 'rc-slider';
+// Bootstrap
+import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
+
 
 // Setting some components from react-scroll
 let Link = Scroll.Link;
@@ -21,6 +24,26 @@ const marks = {
   25: '$25'
 };
 
+let Header = React.createClass({
+  render() {
+    return(
+    <Navbar inverse fixedTop>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <img src='/assets/img/nyc-logo.png' />
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem eventKey={1} href="#">Back To Top</NavItem>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    );
+  }
+});
+
 let Scrolling = React.createClass({
   mixins: [Events],
   componentDidMount() {
@@ -40,8 +63,8 @@ let Scrolling = React.createClass({
     return(
     <div>
       <ul>
-        <li><Link to="hi" spy={true} smooth={true} duration={500}>Test 1</Link></li>
-        <li><Link to="test" spy={true} smooth={true} duration={500}>Test 2</Link></li>
+        <li><Link to="hi" spy={true} smooth={true} duration={500}>Scroll to block 1</Link></li>
+        <li><Link to="test" spy={true} smooth={true} duration={500}>Scroll to block 2</Link></li>
       </ul>
 
       <Element name="hi" className="element">
@@ -60,7 +83,12 @@ let Scrolling = React.createClass({
 export default class App extends Component {
   render() {
     return (
-      <Scrolling />
+      <div>
+        <Header />
+        <div className='container'>
+          <Scrolling />
+        </div>
+      </div>
     );
   }
 }
