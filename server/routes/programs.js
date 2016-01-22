@@ -4,7 +4,6 @@ var pg = require('pg');
 
 module.exports = function(app, dbConnectionString){
     app.post('/api/v1/programs', function(req, res){
-      console.log(req);
       let results = [];
       let data = {program_name: req.body.program_name, income: req.body.income};
 
@@ -28,7 +27,30 @@ module.exports = function(app, dbConnectionString){
           done();
           return res.json(results);
         });
+      });
+    });
 
+    app.get('/api/v1/programs', function(req, res){
+      let results = [];
+
+      pg.connect(dbConnectionString, function(err, client, done){
+        //Handle connection errors
+        if(err){
+          done();
+          console.log(err);
+          return res.status(500).json({ success: false, data: err});
+        }
+
+        let query = client.query("SELECT * FROM programs ORDER BY id ASC");
+
+        query.on('row', function(row){
+          results.push(row);
+        });
+
+        query.on('end', function(){
+          done();
+          return res.json(results);
+        });
       });
     });
 };

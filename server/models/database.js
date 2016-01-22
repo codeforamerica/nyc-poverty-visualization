@@ -10,7 +10,7 @@ client.connect();
 
 const query = client.query(
   `CREATE TABLE households(
-      household_id          VARCHAR(80) PRIMARY KEY,
+      household_id          SERIAL PRIMARY KEY,
       in_nyc                BOOLEAN NOT NULL,
       residence_type        VARCHAR(40),
       total_hh_income       INTEGER,
@@ -19,7 +19,7 @@ const query = client.query(
 
   CREATE TABLE people(
       person_id             SERIAL PRIMARY KEY,
-      household             VARCHAR(80) references households(household_id),
+      household             SERIAL references households(household_id),
       age                   INTEGER,
       blind                 BOOLEAN,
       disabled              BOOLEAN

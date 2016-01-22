@@ -17,12 +17,15 @@ app.use(config.output.publicPath, proxy(url.parse('http://localhost:8081/')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/*', function(req, res){
+app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 /*API Routes*/
+require('./server/routes/households.js')(app, dbConnectionString);
+require('./server/routes/people.js')(app, dbConnectionString);
 require('./server/routes/programs.js')(app, dbConnectionString);
+
 
 const server = new WebpackDevServer(webpack(config), {
   contentBase: __dirname,
