@@ -12,43 +12,13 @@ let familyData = [
       { name: 'Kid 1', type: 'child' },
       { name: 'Kid 2', type: 'child' }
     ],
-  },
-  {
-    name: 'Smith',
-    hourly: 9,
-    members: [
-      { name: 'Adult 1', type: 'adult' },
-      { name: 'Adult 2', type: 'adult' },
-      { name: 'Kid 1', type: 'child' },
-      { name: 'Kid 2', type: 'child' }
-    ]
-  },
-  {
-    name: 'Brown',
-    hourly: 12,
-    members: [
-      { name: 'Adult 1', type: 'adult' },
-      { name: 'Adult 2', type: 'adult' },
-      { name: 'Kid 1', type: 'child' },
-      { name: 'Kid 2', type: 'child' }
-    ],
-  },
-  {
-    name: 'Jones',
-    hourly: 15,
-    members: [
-      { name: 'Adult 1', type: 'adult' },
-      { name: 'Adult 2', type: 'adult' },
-      { name: 'Kid 1', type: 'child' },
-      { name: 'Kid 2', type: 'child' }
-    ],
   }
 ]
 
 class Family extends Component {
   constructor(props) {
     super(props);
-    var family = familyData[props.id];
+    var family = familyData[0]; // Leftover from when there were multiple families
     this.state = {
       family: family, // I imagine I'm going to do an API call here to get the information about the families from @charlie's code
     }
@@ -59,16 +29,14 @@ class Family extends Component {
     });
 
     return(
-      <Col md={3} sm={3}>
-        <div className='family'>
-          <img src='/assets/img/nyc-family.png' /><br />
+      <div className='family'>
+        <img src='/assets/img/nyc-family.png' /><br />
 
-          <p>Name: {this.state.family.name}<br />Hourly: {this.state.family.hourly}</p>
-          <p>
-            {members}
-          </p>
-        </div>
-      </Col>
+        <p>Name: {this.state.family.name}<br />Hourly: {this.state.family.hourly}</p>
+        <p>
+          {members}
+        </p>
+      </div>
     );
   }
 }
@@ -78,10 +46,12 @@ export default class Families extends Component {
     return(
       <Grid>
         <Row>
-          <Family id={0} />
-          <Family id={1} />
-          <Family id={2} />
-          <Family id={3} />
+          <Col xs={6} md={6} sm={6}>
+            Sliders here!
+          </Col>
+          <Col xs={6} md={6} sm={6}>
+            <Family />
+          </Col>
         </Row>
       </Grid>
     );

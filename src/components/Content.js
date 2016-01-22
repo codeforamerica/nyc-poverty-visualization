@@ -24,6 +24,12 @@ const marks = {
 // This weirdly had to be copied from their repo, because the less didn't wanna happen.
 require('../styles/slider.css');
 
+// we don't need this right now
+let scrollLinks = <ul>
+  <li><Link to="hi" spy={true} smooth={true} duration={500}>Scroll to block 1</Link></li>
+  <li><Link to="test" spy={true} smooth={true} duration={500}>Scroll to block 2</Link></li>
+</ul>
+
 let Scrolling = React.createClass({
   mixins: [Events],
   componentDidMount() {
@@ -42,18 +48,9 @@ let Scrolling = React.createClass({
   render() {
     return(
     <div>
-      <ul>
-        <li><Link to="hi" spy={true} smooth={true} duration={500}>Scroll to block 1</Link></li>
-        <li><Link to="test" spy={true} smooth={true} duration={500}>Scroll to block 2</Link></li>
-      </ul>
-
       <Element name="hi" className="element">
-        This is a test of fancy smooth scrolling.
         <div style={{ width: '250px', height: '250px'}}><Rcslider min={4} max={25} marks={marks} /></div>
         <Families />
-      </Element>
-      <Element name="test" className="element">
-        This is a test of another fancy smooth scrolling. Cool things would go here.
       </Element>
     </div>
     );
