@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import Rcslider from 'rc-slider';
 
-import Header from './Header.js';
+import Header from './components/Header.js';
 
 // Setting some components from react-scroll
 let Link = Scroll.Link;
