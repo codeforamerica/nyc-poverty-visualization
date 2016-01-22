@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import Rcslider from 'rc-slider';
-// Bootstrap
-import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
 
+import Header from './Header.js';
 
 // Setting some components from react-scroll
 let Link = Scroll.Link;
@@ -24,25 +23,6 @@ const marks = {
   25: '$25'
 };
 
-let Header = React.createClass({
-  render() {
-    return(
-    <Navbar inverse fixedTop>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <img src='/assets/img/nyc-logo.png' />
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <Nav>
-          <NavItem eventKey={1} href="#">Back To Top</NavItem>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-    );
-  }
-});
 
 let Scrolling = React.createClass({
   mixins: [Events],
