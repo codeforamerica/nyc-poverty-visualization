@@ -9,8 +9,27 @@ const client = new pg.Client(connectionString);
 client.connect();
 
 const query = client.query(
-  'CREATE TABLE families(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, num_kids INTEGER);' +
-  'CREATE TABLE programs(id SERIAL PRIMARY KEY, program_name VARCHAR(40) not null, income INTEGER);'
+  `CREATE TABLE households(
+      household_id          VARCHAR(80) PRIMARY KEY,
+      in_nyc                BOOLEAN NOT NULL,
+      residence_type        VARCHAR(40),
+      total_hh_income       INTEGER,
+      num_kids              INTEGER
+  );
+
+  CREATE TABLE people(
+      person_id             SERIAL PRIMARY KEY,
+      household             VARCHAR(80) references households(household_id),
+      age                   INTEGER,
+      blind                 BOOLEAN,
+      disabled              BOOLEAN
+  );
+
+  CREATE TABLE programs(
+      id                    SERIAL PRIMARY KEY,
+      program_name          VARCHAR(40) NOT NULL,
+      income                INTEGER
+  );`
 );
 
 query.on('end', function() { client.end(); });
