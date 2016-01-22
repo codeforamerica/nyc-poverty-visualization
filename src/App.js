@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import Rcslider from 'rc-slider';
 
+import Header from './Header.js';
+
 // Setting some components from react-scroll
 let Link = Scroll.Link;
 let Element = Scroll.Element;
@@ -20,6 +22,7 @@ const marks = {
   20: '$18',
   25: '$25'
 };
+
 
 let Scrolling = React.createClass({
   mixins: [Events],
@@ -40,8 +43,8 @@ let Scrolling = React.createClass({
     return(
     <div>
       <ul>
-        <li><Link to="hi" spy={true} smooth={true} duration={500}>Test 1</Link></li>
-        <li><Link to="test" spy={true} smooth={true} duration={500}>Test 2</Link></li>
+        <li><Link to="hi" spy={true} smooth={true} duration={500}>Scroll to block 1</Link></li>
+        <li><Link to="test" spy={true} smooth={true} duration={500}>Scroll to block 2</Link></li>
       </ul>
 
       <Element name="hi" className="element">
@@ -60,7 +63,12 @@ let Scrolling = React.createClass({
 export default class App extends Component {
   render() {
     return (
-      <Scrolling />
+      <div>
+        <Header />
+        <div className='container'>
+          <Scrolling />
+        </div>
+      </div>
     );
   }
 }
