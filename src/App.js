@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import Scroll from 'react-scroll';
+import Rcslider from 'rc-slider';
 
+// Setting some components from react-scroll
 let Link = Scroll.Link;
 let Element = Scroll.Element;
 var Events = Scroll.Events;
+
+// We're going to include the rc-slider css.
+// This weirdly had to be copied from their repo, because the less didn't wanna happen.
+require('./styles/slider.css');
+
+// Config the marks on the slider
+const marks = {
+  4: '$4',
+  8: '$8',
+  12: '$12',
+  16: '$15',
+  20: '$18',
+  25: '$25'
+};
 
 let Scrolling = React.createClass({
   mixins: [Events],
@@ -30,6 +46,7 @@ let Scrolling = React.createClass({
 
       <Element name="hi" className="element">
         This is a test of fancy smooth scrolling.
+        <div style={{ width: '250px', height: '250px'}}><Rcslider min={4} max={25} marks={marks} /></div>
       </Element>
       <Element name="test" className="element">
         This is a test of another fancy smooth scrolling. Cool things would go here.
@@ -43,7 +60,7 @@ let Scrolling = React.createClass({
 export default class App extends Component {
   render() {
     return (
-      <div>Hello World!</div>
+      <Scrolling />
     );
   }
 }
