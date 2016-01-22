@@ -95,7 +95,33 @@ module.exports = function(app, dbConnectionString){
           done();
           return res.json(results);
         });
-
       });
+    });
+
+    app.delete('/api/v1/people/:person_id', function(req, res){
+      let
+        results = [],
+        person_id = req.params.person_id;
+
+        pg.connect(dbConnectionString, function(err, client, done){
+          if(err) {
+            done();
+            console.log(err);
+            return res.status(500).json({ success: false, data: err});
+          }
+
+          client.query(`DELETE FROM people WHERE person_id=($1)`, [person_id]);
+
+          let query = client.query(`SELECT * FROM people ORDER BY person_id ASC`);
+
+          query.on('row', function(row){
+            results.push(row);
+          });
+
+          query.on('end', function(){
+            done();
+            return res.json(results);
+          });
+        });
     });
 };

@@ -14,7 +14,7 @@ module.exports = function(app, dbConnectionString){
           return res.status(500).json({ success: false, data: err});
         }
 
-        let query = client.query("SELECT * FROM programs ORDER BY id ASC");
+        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC");
 
         query.on('row', function(row){
           results.push(row);
@@ -44,7 +44,7 @@ module.exports = function(app, dbConnectionString){
 
         client.query("INSERT INTO programs(program_name, income) values($1, $2)", [data.program_name, data.income]);
 
-        let query = client.query("SELECT * FROM programs ORDER BY id ASC");
+        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC");
 
         query.on('row', function(row){
           results.push(row);
@@ -76,11 +76,11 @@ module.exports = function(app, dbConnectionString){
         for (var key in data){
           //Exclude the prototype properties in data & make sure the request didn't leave something blank
           if (data.hasOwnProperty(key) && data[key] !== undefined){
-            client.query(`UPDATE programs SET ${key}=($1) WHERE id=($2)`, [data[key], program_id]);
+            client.query(`UPDATE programs SET ${key}=($1) WHERE program_id=($2)`, [data[key], program_id]);
           }
         }
 
-        let query = client.query("SELECT * FROM programs ORDER BY id ASC");
+        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC");
 
         query.on('row', function(row){
           results.push(row);
@@ -92,5 +92,32 @@ module.exports = function(app, dbConnectionString){
         });
 
       });
+    });
+
+    app.delete('/api/v1/programs/:program_id', function(req, res){
+      let
+        results = [],
+        program_id = req.params.program_id;
+
+        pg.connect(dbConnectionString, function(err, client, done){
+          if(err) {
+            done();
+            console.log(err);
+            return res.status(500).json({ success: false, data: err});
+          }
+
+          client.query(`DELETE FROM programs WHERE program_id=($1)`, [program_id]);
+
+          let query = client.query(`SELECT * FROM programs ORDER BY program_id ASC`);
+
+          query.on('row', function(row){
+            results.push(row);
+          });
+
+          query.on('end', function(){
+            done();
+            return res.json(results);
+          });
+        });
     });
 };

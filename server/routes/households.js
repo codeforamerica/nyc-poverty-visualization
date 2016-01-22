@@ -102,4 +102,31 @@ module.exports = function(app, dbConnectionString){
 
       });
     });
+
+    app.delete('/api/v1/household/:household_id', function(req, res){
+      let
+        results = [],
+        household_id = req.params.household_id;
+
+        pg.connect(dbConnectionString, function(err, client, done){
+          if(err) {
+            done();
+            console.log(err);
+            return res.status(500).json({ success: false, data: err});
+          }
+
+          client.query(`DELETE FROM households WHERE household_id=($1)`, [household_id]);
+
+          let query = client.query(`SELECT * FROM households ORDER BY household_id ASC`);
+
+          query.on('row', function(row){
+            results.push(row);
+          });
+
+          query.on('end', function(){
+            done();
+            return res.json(results);
+          });
+        });
+    });
 };

@@ -19,14 +19,14 @@ const query = client.query(
 
   CREATE TABLE people(
       person_id             SERIAL PRIMARY KEY,
-      household             SERIAL references households(household_id),
+      household             SERIAL references households(household_id) ON DELETE CASCADE,
       age                   INTEGER,
       blind                 BOOLEAN,
       disabled              BOOLEAN
   );
 
   CREATE TABLE programs(
-      id                    SERIAL PRIMARY KEY,
+      program_id            SERIAL PRIMARY KEY,
       program_name          VARCHAR(40) NOT NULL,
       income                INTEGER
   );`
