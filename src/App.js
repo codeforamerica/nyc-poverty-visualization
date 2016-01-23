@@ -8,6 +8,9 @@ export default class App extends Component {
       <div>
         <Header />
         <div className='container'>
+          <div className='header-title'>
+            NYC Poverty And Benefits Calculator
+          </div>
           <Content />
         </div>
       </div>
