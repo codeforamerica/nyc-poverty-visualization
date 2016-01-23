@@ -4,6 +4,7 @@
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "scripts": {
     "start": "node server.js",
+    "dbinit": "node server/models/database.js",
     "lint": "eslint src"
   },
   "repository": {
@@ -45,11 +46,19 @@
   },
   "dependencies": {
     "babel-preset-react": "^6.3.13",
+    "body-parser": "^1.14.2",
+    "connect": "^3.4.0",
+    "express": "^4.13.3",
     "lodash": "^4.0.0",
     "node-sass": "^3.4.2",
+    "pg": "^4.4.3",
+    "proxy-middleware": "^0.15.0",
+    "rc-slider": "^3.3.1",
     "react": "^0.14.0",
+    "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.0",
     "react-scroll": "^0.35.0",
-    "sass-loader": "^3.1.2"
+    "sass-loader": "^3.1.2",
+    "url": "^0.11.0"
   }
 }
