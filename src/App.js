@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from 'react';
 import Header from './components/Header.js';
 import Content from './components/Content.js'; // This will do more of the mangement

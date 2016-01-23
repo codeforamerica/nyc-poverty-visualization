@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from 'react';
 
 // Bootstrap
@@ -9,7 +11,7 @@ export default class Header extends Component {
     <Navbar inverse fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
-          <img src='/assets/img/nyc-logo.png' />
+          <img src='http://localhost:8081/assets/img/nyc-logo.png' />
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

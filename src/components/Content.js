@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from 'react';
 import Rcslider from 'rc-slider';
 // Bootstrap
@@ -26,7 +28,7 @@ export default class Content extends Component {
     this.state = {
       family: { adults: 2, children: 2, hourly: 9 },
       testing: false
-    }
+    };
   }
   render() {
     return(
