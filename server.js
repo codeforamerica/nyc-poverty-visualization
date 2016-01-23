@@ -22,8 +22,13 @@ app.get('/', function(req, res){
 });
 
 /*API Routes*/
+/*households*/
 require('./server/routes/households.js')(app, dbConnectionString);
+
+/*people model*/
 require('./server/routes/people.js')(app, dbConnectionString);
+
+/*programs*/
 require('./server/routes/programs.js')(app, dbConnectionString);
 
 

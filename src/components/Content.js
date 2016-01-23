@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import Rcslider from 'rc-slider';
@@ -60,6 +62,6 @@ export default class Content extends Component {
   render() {
     return(
       <Scrolling />
-    )
+    );
   }
 }

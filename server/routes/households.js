@@ -1,6 +1,8 @@
 "use strict";
 
-var pg = require('pg');
+const
+  pg = require('pg'),
+  errorHandler = require('../models/dberrorhandler');
 
 module.exports = function(app, dbConnectionString){
     app.get('/api/v1/household', function(req, res){
@@ -8,13 +10,11 @@ module.exports = function(app, dbConnectionString){
 
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
-        if(err){
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
-        let query = client.query("SELECT * FROM households ORDER BY household_id ASC");
+        let query = client.query("SELECT * FROM households ORDER BY household_id ASC", function(err){
+          if(errorHandler(err, client, req, res, done)) { return; }
+        });
 
         query.on('row', function(row){
           results.push(row);
@@ -39,19 +39,19 @@ module.exports = function(app, dbConnectionString){
 
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
-        if(err){
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
         client.query(
           `INSERT INTO households(
             in_nyc, residence_type, total_hh_income, num_kids) values($1, $2, $3, $4)`,
-            [data.in_nyc, data.residence_type, data.total_hh_income, data.num_kids]
+            [data.in_nyc, data.residence_type, data.total_hh_income, data.num_kids], function(err){
+              if(errorHandler(err, client, req, res, done)) { return; }
+            }
         );
 
-        let query = client.query("SELECT * FROM households ORDER BY household_id ASC");
+        let query = client.query("SELECT * FROM households ORDER BY household_id ASC", function(err){
+          if(errorHandler(err, client, req, res, done)) { return; }
+        });
 
         query.on('row', function(row){
           results.push(row);
@@ -76,20 +76,20 @@ module.exports = function(app, dbConnectionString){
         };
 
       pg.connect(dbConnectionString, function(err, client, done){
-        if(err) {
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
         for (var key in data){
           //Exclude the prototype properties in data & make sure the request didn't leave something blank
           if (data.hasOwnProperty(key) && data[key] !== undefined){
-            client.query(`UPDATE households SET ${key}=($1) WHERE household_id=($2)`, [data[key], household_id]);
+            client.query(`UPDATE households SET ${key}=($1) WHERE household_id=($2)`, [data[key], household_id], function(err){
+              if(errorHandler(err, client, req, res, done)) { return; }
+            });
           }
         }
 
-        let query = client.query("SELECT * FROM households ORDER BY household_id ASC");
+        let query = client.query("SELECT * FROM households ORDER BY household_id ASC", function(err){
+          if(errorHandler(err, client, req, res, done)) { return; }
+        });
 
         query.on('row', function(row){
           results.push(row);
@@ -109,15 +109,16 @@ module.exports = function(app, dbConnectionString){
         household_id = req.params.household_id;
 
         pg.connect(dbConnectionString, function(err, client, done){
-          if(err) {
-            done();
-            console.log(err);
-            return res.status(500).json({ success: false, data: err});
-          }
+          //Handle connection error
+          if(errorHandler(err, client, req, res, done)) { return; }
 
-          client.query(`DELETE FROM households WHERE household_id=($1)`, [household_id]);
+          client.query(`DELETE FROM households WHERE household_id=($1)`, [household_id], function(err){
+            if(errorHandler(err, client, req, res, done)) { return; }
+          });
 
-          let query = client.query(`SELECT * FROM households ORDER BY household_id ASC`);
+          let query = client.query(`SELECT * FROM households ORDER BY household_id ASC`, function(err){
+            if(errorHandler(err, client, req, res, done)) { return; }
+          });
 
           query.on('row', function(row){
             results.push(row);

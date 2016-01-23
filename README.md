@@ -1,7 +1,7 @@
-react-hot-boilerplate
+Code for America NYC 2016 January Project
 =====================
 
-The minimal dev environment to enable live-editing React components.
+An interactive visualization of which NYC families can access which different services depending upon their income level and number of household members.
 
 ### Usage
 
@@ -9,6 +9,14 @@ The minimal dev environment to enable live-editing React components.
 npm install
 npm start
 open http://localhost:3000
+```
+
+Setup a postgres database names januaryproject:
+```
+$psql (start psql)
+createdb januaryproject
+\q (quit psql)
+npm initdb (custom npm script)
 ```
 
 Now edit `src/App.js`.  

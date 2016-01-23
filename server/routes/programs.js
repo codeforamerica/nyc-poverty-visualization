@@ -1,6 +1,8 @@
 "use strict";
 
-var pg = require('pg');
+const
+  pg = require('pg'),
+  errorHandler = require('../models/dberrorhandler');
 
 module.exports = function(app, dbConnectionString){
     app.get('/api/v1/programs', function(req, res){
@@ -8,22 +10,23 @@ module.exports = function(app, dbConnectionString){
 
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
-        if(err){
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
-        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC");
+        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC", function(err){
 
-        query.on('row', function(row){
-          results.push(row);
+          if(errorHandler(err, client, req, res, done)) { return; }
+
+          query.on('row', function(row){
+            results.push(row);
+          });
+
+          query.on('end', function(){
+            done();
+            return res.json(results);
+          });
+
         });
 
-        query.on('end', function(){
-          done();
-          return res.json(results);
-        });
       });
     });
 
@@ -36,23 +39,25 @@ module.exports = function(app, dbConnectionString){
 
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
-        if(err){
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
-        client.query("INSERT INTO programs(program_name, income) values($1, $2)", [data.program_name, data.income]);
+        client.query("INSERT INTO programs(program_name, income) values($1, $2)", [data.program_name, data.income], function(err){
+          //Handle query errors
+          if(errorHandler(err, client, req, res, done)) { return; }
 
-        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC");
+          let query = client.query("SELECT * FROM programs ORDER BY program_id ASC", function(err){
+            //Handle query errors
+            if(errorHandler(err, client, req, res, done)) { return; }
 
-        query.on('row', function(row){
-          results.push(row);
-        });
+            query.on('row', function(row){
+              results.push(row);
+            });
 
-        query.on('end', function(){
-          done();
-          return res.json(results);
+            query.on('end', function(){
+              done();
+              return res.json(results);
+            });
+          });
         });
       });
     });
@@ -67,29 +72,32 @@ module.exports = function(app, dbConnectionString){
         };
 
       pg.connect(dbConnectionString, function(err, client, done){
-        if(err) {
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        //Handle connection errors
+        if(errorHandler(err, client, req, res, done)) { return; }
 
         for (var key in data){
           //Exclude the prototype properties in data & make sure the request didn't leave something blank
           if (data.hasOwnProperty(key) && data[key] !== undefined){
-            client.query(`UPDATE programs SET ${key}=($1) WHERE program_id=($2)`, [data[key], program_id]);
+            client.query(`UPDATE programs SET ${key}=($1) WHERE program_id=($2)`, [data[key], program_id], function(err){
+              if(errorHandler(err, client, req, res, done)) { return; }
+            });
           }
         }
 
-        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC");
+        let query = client.query("SELECT * FROM programs ORDER BY program_id ASC", function(err){
 
-        query.on('row', function(row){
-          results.push(row);
+          if(errorHandler(err, client, req, res, done)) { return; }
+
+          query.on('row', function(row){
+            results.push(row);
+          });
+
+          query.on('end', function(){
+            done();
+            return res.json(results);
+          });
         });
 
-        query.on('end', function(){
-          done();
-          return res.json(results);
-        });
 
       });
     });
@@ -100,23 +108,24 @@ module.exports = function(app, dbConnectionString){
         program_id = req.params.program_id;
 
         pg.connect(dbConnectionString, function(err, client, done){
-          if(err) {
-            done();
-            console.log(err);
-            return res.status(500).json({ success: false, data: err});
-          }
+          //Handle database connection errors
+          if(errorHandler(err, client, req, res, done)) { return; }
 
-          client.query(`DELETE FROM programs WHERE program_id=($1)`, [program_id]);
+          client.query(`DELETE FROM programs WHERE program_id=($1)`, [program_id], function(err){
 
-          let query = client.query(`SELECT * FROM programs ORDER BY program_id ASC`);
+            if(errorHandler(err, client, req, res, done)) { return; }
 
-          query.on('row', function(row){
-            results.push(row);
-          });
+            let query = client.query(`SELECT * FROM programs ORDER BY program_id ASC`, function(err){
+              if(errorHandler(err, client, req, res, done)) { return; }
+              query.on('row', function(row){
+                results.push(row);
+              });
 
-          query.on('end', function(){
-            done();
-            return res.json(results);
+              query.on('end', function(){
+                done();
+                return res.json(results);
+              });
+            });
           });
         });
     });

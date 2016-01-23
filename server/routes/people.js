@@ -1,6 +1,9 @@
 "use strict";
 
-var pg = require('pg');
+const
+  pg = require('pg'),
+  errorHandler = require('../models/dberrorhandler');
+
 
 module.exports = function(app, dbConnectionString){
     app.get('/api/v1/people', function(req, res){
@@ -8,13 +11,11 @@ module.exports = function(app, dbConnectionString){
 
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
-        if(err){
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
-        let query = client.query("SELECT * FROM people ORDER BY person_id ASC");
+        let query = client.query("SELECT * FROM people ORDER BY person_id ASC", function(err){
+          if(errorHandler(err, client, req, res, done)) { return; }
+        });
 
         query.on('row', function(row){
           results.push(row);
@@ -39,23 +40,22 @@ module.exports = function(app, dbConnectionString){
 
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
-        if(err){
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
-        client.query("INSERT INTO people(household, age, blind, disabled) values($1, $2, $3, $4)", [data.household, data.age, data.blind, data.disabled]);
+        client.query("INSERT INTO people(household, age, blind, disabled) values($1, $2, $3, $4)", [data.household, data.age, data.blind, data.disabled], function(err){
+          if(errorHandler(err, client, req, res, done)) { return; }
+          let query = client.query("SELECT * FROM people ORDER BY person_id ASC", function(err){
+            if(errorHandler(err, client, req, res, done)) { return; }
 
-        let query = client.query("SELECT * FROM people ORDER BY person_id ASC");
+            query.on('row', function(row){
+              results.push(row);
+            });
 
-        query.on('row', function(row){
-          results.push(row);
-        });
-
-        query.on('end', function(){
-          done();
-          return res.json(results);
+            query.on('end', function(){
+              done();
+              return res.json(results);
+            });
+          });
         });
       });
     });
@@ -72,20 +72,20 @@ module.exports = function(app, dbConnectionString){
         };
 
       pg.connect(dbConnectionString, function(err, client, done){
-        if(err) {
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
-        }
+        if(errorHandler(err, client, req, res, done)) { return; }
 
         for (var key in data){
           //Exclude the prototype properties in data & make sure the request didn't leave something blank
           if (data.hasOwnProperty(key) && data[key] !== undefined){
-            client.query(`UPDATE people SET ${key}=($1) WHERE person_id=($2)`, [data[key], person_id]);
+            client.query(`UPDATE people SET ${key}=($1) WHERE person_id=($2)`, [data[key], person_id], function(err){
+              if(errorHandler(err, client, req, res, done)) { return; }
+            });
           }
         }
 
-        let query = client.query("SELECT * FROM people ORDER BY person_id ASC");
+        let query = client.query("SELECT * FROM people ORDER BY person_id ASC", function(err){
+          if(errorHandler(err, client, req, res, done)) { return; }
+        });
 
         query.on('row', function(row){
           results.push(row);
@@ -104,23 +104,24 @@ module.exports = function(app, dbConnectionString){
         person_id = req.params.person_id;
 
         pg.connect(dbConnectionString, function(err, client, done){
-          if(err) {
-            done();
-            console.log(err);
-            return res.status(500).json({ success: false, data: err});
-          }
+          //Handle connection error
+          if(errorHandler(err, client, req, res, done)) { return; }
 
-          client.query(`DELETE FROM people WHERE person_id=($1)`, [person_id]);
+          client.query(`DELETE FROM people WHERE person_id=($1)`, [person_id], function(err){
+            if(errorHandler(err, client, req, res, done)) { return; }
 
-          let query = client.query(`SELECT * FROM people ORDER BY person_id ASC`);
+            let query = client.query(`SELECT * FROM people ORDER BY person_id ASC`, function(){
+              if(errorHandler(err, client, req, res, done)) { return; }
 
-          query.on('row', function(row){
-            results.push(row);
-          });
+              query.on('row', function(row){
+                results.push(row);
+              });
 
-          query.on('end', function(){
-            done();
-            return res.json(results);
+              query.on('end', function(){
+                done();
+                return res.json(results);
+              });
+            });
           });
         });
     });
