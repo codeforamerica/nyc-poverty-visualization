@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import Scroll from 'react-scroll';
 import Rcslider from 'rc-slider';
-
-// Setting some components from react-scroll
-let Link = Scroll.Link;
-let Element = Scroll.Element;
-var Events = Scroll.Events;
-
+// Bootstrap
+import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
 // Our components
-import Families from './Family.js';
+import Family from './Family.js';
 
 // Config the marks on the slider
 const marks = {
@@ -24,43 +19,45 @@ const marks = {
 // This weirdly had to be copied from their repo, because the less didn't wanna happen.
 require('../styles/slider.css');
 
-// we don't need this right now
-let scrollLinks = <ul>
-  <li><Link to="hi" spy={true} smooth={true} duration={500}>Scroll to block 1</Link></li>
-  <li><Link to="test" spy={true} smooth={true} duration={500}>Scroll to block 2</Link></li>
-</ul>
-
-let Scrolling = React.createClass({
-  mixins: [Events],
-  componentDidMount() {
-    this.scrollEvent.register('begin', function() {
-      console.log("begin", arguments);
-    });
-
-    this.scrollEvent.register('end', function() {
-      console.log("end", arguments);
-    });
-  },
-  componentWillUnmount() {
-    this.scrollEvent.remove('begin');
-    this.scrollEvent.remove('end');
-  },
+export default class Content extends Component {
+  constructor() {
+    super();
+    this._updateFamily = this._updateFamily.bind(this);
+    this.state = {
+      family: { adults: 2, children: 2, hourly: 9 },
+      testing: false
+    }
+  }
   render() {
     return(
-    <div>
-      <Element name="hi" className="element">
-        <div style={{ width: '250px', height: '250px'}}><Rcslider min={4} max={25} marks={marks} /></div>
-        <Families />
-      </Element>
-    </div>
+    <Grid>
+      <Row>
+        <Col xs={12} sm={6} md={6}>
+          <div>
+            <p>Choose the number of adults in the household</p>
+            <div className='familyChoice'><Rcslider min={1} max={4} defaultValue={2} marks={{1: 1, 2: 2, 3: 3, 4: 4}} ref='adults' onChange={() => this._updateFamily('adults')}/></div>
+          </div>
+          <div>
+            <p>Choose the number of children in the household</p>
+            <div className='familyChoice'><Rcslider min={1} max={6} defaultValue={2} marks={{1: 1, 2: 2, 3: 3, 4: 4, 5:5, 6:6}} ref='children' onChange={() => this._updateFamily('children')}/></div>
+          </div>
+          <div>
+            <p>Adjust the main earners hourly wages to see how their benefits are affected</p>
+            <div className='familyChoice'><Rcslider min={4} max={25} defaultValue={9} marks={marks} ref='hourly' onChange={() => this._updateFamily('hourly')} /></div>
+          </div>
+        </Col>
+        <Col xs={12} sm={6} md={6}>
+          <Family family={this.state.family} />
+        </Col>
+      </Row>
+    </Grid>
     );
   }
-});
-
-export default class Content extends Component {
-  render() {
-    return(
-      <Scrolling />
-    )
+  _updateFamily(setting, value) {
+    var value = this.refs[setting].startValue;
+    console.log(setting, value);
+    var family = this.state.family;
+    family[setting] = value;
+    this.setState({family: family });
   }
 }
