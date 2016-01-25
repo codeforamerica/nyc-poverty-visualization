@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Header from './components/Header.react.js';
-import Content from './components/Content.react.js'; // This will do more of the mangement
+import Sliders from './components/Sliders.react.js'; // This will do more of the mangement
 
 export default class App extends Component {
   render() {
@@ -13,7 +13,7 @@ export default class App extends Component {
           <div className='header-title'>
             NYC Poverty And Benefits Calculator
           </div>
-          <Content />
+          <Sliders />
         </div>
       </div>
     );
