@@ -1,11 +1,10 @@
-"use strict";
-
 import React, { Component } from 'react';
 import Rcslider from 'rc-slider';
 // Bootstrap
 import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
-// Our components
-import Family from './Family.js';
+
+import Family from './Family.react.js';
+import BenefitsList from './BenefitsProgramsList.react.js';
 
 // Config the marks on the slider
 const marks = {
@@ -17,8 +16,6 @@ const marks = {
   25: '$25'
 };
 
-// We're going to include the rc-slider css.
-// This weirdly had to be copied from their repo, because the less didn't wanna happen.
 require('../styles/slider.css');
 
 export default class Content extends Component {
@@ -50,6 +47,9 @@ export default class Content extends Component {
         </Col>
         <Col xs={12} sm={6} md={6}>
           <Family family={this.state.family} />
+        </Col>
+        <Col xs={12} sm={6} md={6}>
+          <BenefitsList />
         </Col>
       </Row>
     </Grid>
