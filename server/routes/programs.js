@@ -7,6 +7,8 @@ const
 module.exports = function(app, dbConnectionString){
     app.get('/api/v1/programs', function(req, res){
 
+      let results = [];
+
       pg.connect(dbConnectionString, function(err, client, done){
         //Handle connection errors
         if(errorHandler(err, client, req, res, done)) { return; }
@@ -14,17 +16,16 @@ module.exports = function(app, dbConnectionString){
         let query = client.query("SELECT * FROM programs ORDER BY program_id ASC", function(err){
 
           if(errorHandler(err, client, req, res, done)) { return; }
-          let results = [];
 
-          query.on('row', function(row){
-            results.push(row);
-          });
+        });
 
-          query.on('end', function(){
-            done();
-            return res.json(results);
-          });
+        query.on('row', function(row){
+          results.push(row);
+        });
 
+        query.on('end', function(){
+          done();
+          return res.json(results);
         });
 
       });
@@ -49,14 +50,15 @@ module.exports = function(app, dbConnectionString){
             //Handle query errors
             if(errorHandler(err, client, req, res, done)) { return; }
 
-            query.on('row', function(row){
-              results.push(row);
-            });
+          });
+          query.on('row', function(row){
+            console.log(row);
+            results.push(row);
+          });
 
-            query.on('end', function(){
-              done();
-              return res.json(results);
-            });
+          query.on('end', function(){
+            done();
+            return res.json(results);
           });
         });
       });
@@ -88,16 +90,16 @@ module.exports = function(app, dbConnectionString){
 
           if(errorHandler(err, client, req, res, done)) { return; }
 
-          query.on('row', function(row){
-            results.push(row);
-          });
-
-          query.on('end', function(){
-            done();
-            return res.json(results);
-          });
         });
 
+        query.on('row', function(row){
+          results.push(row);
+        });
+
+        query.on('end', function(){
+          done();
+          return res.json(results);
+        });
 
       });
     });
@@ -117,14 +119,14 @@ module.exports = function(app, dbConnectionString){
 
             let query = client.query(`SELECT * FROM programs ORDER BY program_id ASC`, function(err){
               if(errorHandler(err, client, req, res, done)) { return; }
-              query.on('row', function(row){
-                results.push(row);
-              });
+            });
+            query.on('row', function(row){
+              results.push(row);
+            });
 
-              query.on('end', function(){
-                done();
-                return res.json(results);
-              });
+            query.on('end', function(){
+              done();
+              return res.json(results);
             });
           });
         });
