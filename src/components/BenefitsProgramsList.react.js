@@ -6,10 +6,10 @@ import React, { Component } from 'react';
 export default class BenefitsList extends Component {
   componentDidMount(){
     $.get('/api/v1/programs', function(result){
-      console.log(result);
       this.setState({
         programs: result
       });
+      console.log(result);
     }.bind(this));
   }
 
@@ -17,26 +17,15 @@ export default class BenefitsList extends Component {
     super(props);
   }
 
-  renderPrograms(){
-    return this.state.programs.map(program => this.renderProgram(program));
-  }
-
-  renderProgram(program){
-    return(
-      <article>
-        <h1>{program.program_name}</h1>
-        <h2>{program.income}</h2>
-      </article>
-    );
-  }
-
-  render() {
-    const programs = renderPrograms();
-
+  render(){
     return(
       <div className='BenefitsList'>
         <ul>
-          <li>{programs}</li>
+          {this.state.programs.map(function(program){
+            return(
+              <div>{program.program_name}</div>
+            );
+          }, this)}
         </ul>
       </div>
     );
