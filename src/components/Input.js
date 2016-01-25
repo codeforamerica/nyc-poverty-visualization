@@ -18,7 +18,7 @@ const marks = {
 
 require('../styles/slider.css');
 
-export default class Sliders extends Component {
+export default class Input extends Component {
   constructor() {
     super();
     this._updateFamily = this._updateFamily.bind(this);
