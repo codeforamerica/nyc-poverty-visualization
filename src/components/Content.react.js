@@ -24,13 +24,7 @@ export default class Content extends Component {
   }
   render() {
     return(
-    <Grid>
-      <Row>
-        <Col xs={12} sm={6} md={6}>
-          <Sliders />
-        </Col>
-      </Row>
-    </Grid>
+      <Sliders />
     );
   }
   _updateFamily(setting, value) {

@@ -1,7 +1,8 @@
 "use strict";
 
 import React, { Component } from 'react';
-// Bootstrap
+import { Panel } from 'react-bootstrap';
+import BenefitsProgram from './BenefitsProgram.react.js';
 
 export default class BenefitsList extends Component {
   constructor(props) {
@@ -18,17 +19,14 @@ export default class BenefitsList extends Component {
     }.bind(this));
   }
 
-
   render(){
     return(
       <div className='BenefitsList'>
-        <ul>
-          {this.state.programs.map(function(program, i){
-            return(
-              <div key={i}>{program.program_name}</div>
-            );
-          }, this)}
-        </ul>
+        {this.state.programs.map(function(program, i){
+          return(
+            <BenefitsProgram programName={program.program_name} />
+          );
+        }, this)}
       </div>
     );
   }
