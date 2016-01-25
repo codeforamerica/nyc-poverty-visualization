@@ -29,9 +29,6 @@ export default class Content extends Component {
         <Col xs={12} sm={6} md={6}>
           <Sliders />
         </Col>
-        <Col xs={12} sm={6} md={6}>
-          <Family family={this.state.family} />
-        </Col>
       </Row>
     </Grid>
     );

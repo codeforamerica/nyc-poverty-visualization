@@ -3,6 +3,9 @@ import Rcslider from 'rc-slider';
 // Bootstrap
 import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
 
+import Family from './Family.react.js';
+import BenefitsList from './BenefitsProgramsList.react.js';
+
 // Config the marks on the slider
 const marks = {
   4: '$4',
@@ -41,6 +44,12 @@ export default class Content extends Component {
             <p>Adjust the main earners hourly wages to see how their benefits are affected</p>
             <div className='familyChoice'><Rcslider min={4} max={25} defaultValue={9} marks={marks} ref='hourly' onChange={() => this._updateFamily('hourly')} /></div>
           </div>
+        </Col>
+        <Col xs={12} sm={6} md={6}>
+          <Family family={this.state.family} />
+        </Col>
+        <Col xs={12} sm={6} md={6}>
+          <BenefitsList />
         </Col>
       </Row>
     </Grid>
