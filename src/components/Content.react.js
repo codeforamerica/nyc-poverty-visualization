@@ -7,7 +7,7 @@ import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
 // Our components
 import Sliders from './sliders.react.js';
 import Family from './Family.react.js';
-import BenefitsList from './benefitsProgramsList.react.js';
+import BenefitsList from './BenefitsProgramsList.react.js';
 
 // We're going to include the rc-slider css.
 // This weirdly had to be copied from their repo, because the less didn't wanna happen.
