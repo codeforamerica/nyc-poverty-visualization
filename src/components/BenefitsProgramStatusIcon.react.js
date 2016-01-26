@@ -7,7 +7,6 @@ export default class BenefitsProgramStatusIcon extends Component {
     super(props);
   }
   render(){
-    console.log(this.props.eligible);
     if(this.props.eligible){
       return(
         <h1>Eligible</h1>
@@ -15,7 +14,7 @@ export default class BenefitsProgramStatusIcon extends Component {
     } else {
       return (
         <h1>Not Eligible</h1>
-      )
+      );
     }
   }
 }
