@@ -17,7 +17,6 @@
       [14, 12085],
       [15, 12846]
     ];
-    console.log("HH Members:" + numberHouseholdMembers + "Comparison: " + screeningTable[numberHouseholdMembers-1] + "Income: " + income);
     let allowedIncome = screeningTable[numberHouseholdMembers-1];
 
     if (allowedIncome[1] >= income) {

@@ -10,7 +10,6 @@ export default class BenefitsProgram extends Component {
     super(props);
   }
   render(){
-    console.log(this.props.eligible);
     return(
       <Panel>
         <Col xs={4} sm={4} md={4}>
