@@ -10,7 +10,11 @@ export default class BenefitsList extends Component {
     this.state = {
       programs: []
     };
-    console.log(ChildCareScreening(5000, 3));
+  }
+  eligibilityLogic(){
+    let monthlyIncome = this.props.family.hourly * 37.5 *4;
+    let householdMemberCount = this.props.family.adults + this.props.family.children;
+    return ChildCareScreening(monthlyIncome, householdMemberCount);
   }
   componentDidMount(){
     $.get('/api/v1/programs', function(result){
@@ -25,7 +29,7 @@ export default class BenefitsList extends Component {
       <div className='BenefitsList'>
         {this.state.programs.map(function(program, i){
           return(
-            <BenefitsProgram key={i} programName={program.program_name} />
+            <BenefitsProgram key={i} programName={program.program_name} eligible={this.eligibilityLogic()} />
           );
         }, this)}
       </div>

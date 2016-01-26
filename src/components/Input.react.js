@@ -54,7 +54,7 @@ export default class Input extends Component {
           <TotalIncome income={this.state.family.hourly} />
         </Col>
         <Col xs={12} sm={12} md={12}>
-          <BenefitsList />
+          <BenefitsList family={this.state.family} />
         </Col>
       </Row>
     </Grid>
