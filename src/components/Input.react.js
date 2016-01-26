@@ -5,6 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 import Family from './Family.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
+import TotalIncome from './TotalIncome.react.js';
 
 // Config the marks on the slider
 const marks = {
@@ -42,13 +43,17 @@ export default class Input extends Component {
           </div>
           <div>
             <p>Adjust the main earners hourly wages to see how their benefits are affected</p>
-            <div className='familyChoice'><Rcslider min={4} max={25} defaultValue={9} marks={marks} ref='hourly' onChange={(value) => this._updateFamily(value, 'income')} /></div>
+            <div className='familyChoice'><Rcslider min={4} max={25} defaultValue={9} marks={marks} ref='hourly' onChange={(value) => this._updateFamily(value, 'hourly')} /></div>
           </div>
         </Col>
+
         <Col xs={12} sm={6} md={6}>
           <Family family={this.state.family} />
         </Col>
-        <Col xs={12} sm={6} md={6}>
+        <Col xs={12} sm={12} md={12}>
+          <TotalIncome income={this.state.family.hourly} />
+        </Col>
+        <Col xs={12} sm={12} md={12}>
           <BenefitsList />
         </Col>
       </Row>
@@ -56,7 +61,6 @@ export default class Input extends Component {
     );
   }
   _updateFamily(value, setting) {
-    console.log(setting, value);
     var family = this.state.family;
     family[setting] = value;
     this.setState({family: family });

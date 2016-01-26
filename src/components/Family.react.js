@@ -13,7 +13,7 @@ export default class Family extends Component {
     return(
       <Panel className='family'>
         <img src='http://localhost:8081/assets/img/nyc-family.png' /><br />
-          <p> Hourly: {family.income} </p>
+          <p> Hourly: {family.hourly} </p>
           <p> Adults: {family.adults} </p>
           <p> Children: {family.children} </p>
       </Panel>
