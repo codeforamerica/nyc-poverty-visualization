@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Rcslider from 'rc-slider';
 // Bootstrap
-import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import Family from './Family.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
@@ -34,15 +34,15 @@ export default class Input extends Component {
         <Col xs={12} sm={6} md={6}>
           <div>
             <p>Choose the number of adults in the household</p>
-            <div className='familyChoice'><Rcslider min={1} max={4} defaultValue={2} marks={{1: 1, 2: 2, 3: 3, 4: 4}} ref='adults' onChange={() => this._updateFamily('adults')}/></div>
+            <div className='familyChoice'><Rcslider min={1} max={4} defaultValue={2} marks={{1: 1, 2: 2, 3: 3, 4: 4}} ref='adults' onChange={(value) => this._updateFamily(value, 'adults')}/></div>
           </div>
           <div>
             <p>Choose the number of children in the household</p>
-            <div className='familyChoice'><Rcslider min={1} max={6} defaultValue={2} marks={{1: 1, 2: 2, 3: 3, 4: 4, 5:5, 6:6}} ref='children' onChange={() => this._updateFamily('children')}/></div>
+            <div className='familyChoice'><Rcslider min={0} max={6} defaultValue={2} marks={{0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5:5, 6:6}} ref='children' onChange={(value) => this._updateFamily(value, 'children')}/></div>
           </div>
           <div>
             <p>Adjust the main earners hourly wages to see how their benefits are affected</p>
-            <div className='familyChoice'><Rcslider min={4} max={25} defaultValue={9} marks={marks} ref='hourly' onChange={() => this._updateFamily('hourly')} /></div>
+            <div className='familyChoice'><Rcslider min={4} max={25} defaultValue={9} marks={marks} ref='hourly' onChange={(value) => this._updateFamily(value, 'income')} /></div>
           </div>
         </Col>
         <Col xs={12} sm={6} md={6}>
@@ -55,8 +55,7 @@ export default class Input extends Component {
     </Grid>
     );
   }
-  _updateFamily(setting, value) {
-    var value = this.refs[setting].startValue;
+  _updateFamily(value, setting) {
     console.log(setting, value);
     var family = this.state.family;
     family[setting] = value;

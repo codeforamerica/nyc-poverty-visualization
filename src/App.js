@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Header from './components/Header.react.js';
-import Input from './components/Sliders.react.js'; // This will do more of the mangement
+import Input from './components/Input.react.js'; // This will do more of the mangement
 
 export default class App extends Component {
   render() {
