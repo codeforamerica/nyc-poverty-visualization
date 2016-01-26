@@ -1,8 +1,8 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
 import BenefitsProgram from './BenefitsProgram.react.js';
+import ChildCareScreening from '../controllers/ACSChildCare.js';
 
 export default class BenefitsList extends Component {
   constructor(props) {
@@ -10,6 +10,11 @@ export default class BenefitsList extends Component {
     this.state = {
       programs: []
     };
+  }
+  eligibilityLogic(){
+    let monthlyIncome = this.props.family.hourly * 37.5 *4;
+    let householdMemberCount = this.props.family.adults + this.props.family.children;
+    return ChildCareScreening(monthlyIncome, householdMemberCount);
   }
   componentDidMount(){
     $.get('/api/v1/programs', function(result){
@@ -24,7 +29,7 @@ export default class BenefitsList extends Component {
       <div className='BenefitsList'>
         {this.state.programs.map(function(program, i){
           return(
-            <BenefitsProgram programName={program.program_name} />
+            <BenefitsProgram key={i} programName={program.program_name} eligible={this.eligibilityLogic()} />
           );
         }, this)}
       </div>
