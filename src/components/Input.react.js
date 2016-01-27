@@ -24,7 +24,7 @@ export default class Input extends Component {
     super();
     this._updateFamily = this._updateFamily.bind(this);
     this.state = {
-      family: { adults: 2, children: 2, hourly: 9 },
+      family: { adults: 2, children: 2, income: 17500 },
       testing: false
     };
   }
@@ -54,6 +54,7 @@ export default class Input extends Component {
   }
   // Render it all
   render() {
+    var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
     <Grid>
       <Row>
@@ -66,11 +67,11 @@ export default class Input extends Component {
           </Grid>
           <div>
             <p>Adjust the house hold yearly income</p>
-            <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateFamily(value, 'hourly')} /></div>
+            <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateFamily(value, 'income')} /></div>
           </div>
         </Col>
         <Col xs={12} sm={12} md={12}>
-          <TotalIncome income={this.state.family.hourly} />
+          <TotalIncome income={this.state.family.income} benefits={benefits} />
         </Col>
         <Col xs={12} sm={12} md={12}>
           <BenefitsList family={this.state.family} />
