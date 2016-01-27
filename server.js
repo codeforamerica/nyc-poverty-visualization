@@ -1,47 +1,30 @@
-"use strict";
-const
-  webpack = require('webpack'),
-  WebpackDevServer = require('webpack-dev-server'),
-  config = require('./webpack.config'),
+var express = require('express');
+var path = require('path');
+var webpack = require('webpack');
+var app = express();
 
-  express = require('express'),
-  bodyParser = require('body-parser'),
-  proxy = require('proxy-middleware'),
-  url = require('url'),
-  dbConnectionString = require('./database.config.js'),
-  app = express();
+var isDevelopment = (process.env.NODE_ENV !== 'production');
+var static_path = path.join(__dirname, 'public');
 
+app.use(express.static(static_path))
+  .get('/', function (req, res) {
+    res.sendFile('index.html', {
+      root: static_path
+    });
+  }).listen(process.env.PORT || 8080, function (err) {
+    if (err) { console.log(err) };
+    console.log('Listening at localhost:8080');
+  });
 
+if (isDevelopment) {
+  var config = require('./webpack.config');
+  var WebpackDevServer = require('webpack-dev-server');
 
-app.use(config.output.publicPath, proxy(url.parse('http://localhost:8081/')));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
-
-/*API Routes*/
-/*households*/
-require('./server/routes/households.js')(app, dbConnectionString);
-
-/*people model*/
-require('./server/routes/people.js')(app, dbConnectionString);
-
-/*programs*/
-require('./server/routes/programs.js')(app, dbConnectionString);
-
-
-const server = new WebpackDevServer(webpack(config), {
-  contentBase: __dirname,
-  publicPath: config.output.publicPath,
-  quiet: false,
-  hot: true,
-  historyApiFallback: true,
-  stats: { colors: true }
-});
-
-server.listen(8081, "localhost", function(){});
-app.listen(8080, "localhost", function(){
-  console.log("Server listening on port 8080");
-});
+  new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot: true
+  }).listen(3000, 'localhost', function (err, result) {
+    if (err) { console.log(err) }
+    console.log('Listening at localhost:3000');
+  });
+}
