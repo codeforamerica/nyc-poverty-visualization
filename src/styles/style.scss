@@ -1,6 +1,5 @@
 // Modifying Bootstrap
 body {
-  min-height: 2000px;
   padding-top: 50px; // because we have the fixed top
 }
 
@@ -36,4 +35,11 @@ body {
 	.value, .choice {
 		text-align: center;
 	}
+}
+
+.eligible {
+  color: green;
+}
+.not-eligible {
+  color: red;
 }

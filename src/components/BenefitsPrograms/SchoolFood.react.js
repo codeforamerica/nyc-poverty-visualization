@@ -15,8 +15,8 @@ export default class SchoolFood extends Component {
           <StatusIcon eligible={this.props.eligibility.eligible} />
         </Col>
         <Col xs={10} sm={10} md={10}>
-          <h1>School Food</h1>
-          <p>Program description goes here...</p>
+          <h1>School Food ({this.props.eligibility.lunchRate})</h1>
+          <p>Project Description Here</p>
         </Col>
       </Panel>
     );
