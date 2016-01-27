@@ -26,6 +26,14 @@ module.exports = {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
     },
-    { test: /\.css$/, loader: "style-loader!css-loader" }]
+    {
+      test: /\.css$/, 
+      loader: "style-loader!css-loader"
+    },
+    {
+        test: /\.(otf|eot|svg|ttf|woff|woff2)(\?.+)$/,
+        loader: 'url-loader?limit=8192'
+    }
+  ]
   }
 };
