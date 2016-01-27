@@ -3,9 +3,15 @@ import Rcslider from 'rc-slider';
 // Bootstrap
 import { Grid, Row, Col } from 'react-bootstrap';
 
+//Components
+
 import Family from './Family.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
 import TotalIncome from './TotalIncome.react.js';
+
+//Benefits Logic Helpers
+import ACSChildCare from '../controllers/ACSChildCare.js';
+import SchoolFood from '../controllers/SchoolFood.js';
 
 // Config the marks on the slider
 const marks = {
