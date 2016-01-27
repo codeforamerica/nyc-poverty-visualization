@@ -18,17 +18,17 @@ const screeningTable = [
   [15, 12846]
 ];
 
-const checkIncome = function(income, numberAdults, numberChildren){
+const checkIncome = function(yearlyIncome, numberAdults, numberChildren){
+  //Check if family is in the income range for their household size
+  let monthlyIncome = yearlyIncome/12,
+    allowedIncome = screeningTable[numberAdults + numberChildren -1];
 
   //Check if children are present in the household
   if(numberChildren < 1){
     return false;
   }
 
-  //Check if family is in the income range for their household size
-  let allowedIncome = screeningTable[numberAdults + numberChildren -1];
-
-  if (allowedIncome[1] >= income) {
+  if (allowedIncome[1] >= monthlyIncome) {
     return true;
   } else {
     return false;

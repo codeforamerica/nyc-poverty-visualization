@@ -9,11 +9,11 @@ export default class BenefitsProgramStatusIcon extends Component {
   render(){
     if(this.props.eligible){
       return(
-        <h1>Eligible</h1>
+        <i className='fa fa-check-circle fa-4x'></i>
       );
     } else {
       return (
-        <h1>Not Eligible</h1>
+        <i className='fa fa-minus-circle fa-4x'></i>
       );
     }
   }

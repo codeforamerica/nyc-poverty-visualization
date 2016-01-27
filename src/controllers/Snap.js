@@ -43,12 +43,13 @@ const calcSnapAllotment = function(totalFamily){
   return snapAmount;
 };
 
-const snapEligibility = function(yearlyIncome, numberChildren, numberAdults){
+const snapEligibility = function(yearlyIncome, numberAdults, numberChildren){
   let
     totalFamily = numberChildren + numberAdults,
+    monthlyIncome = yearlyIncome/12,
     allowedIncome = calcAllowedIncome(totalFamily);
 
-  if (yearlyIncome <= allowedIncome){
+  if (monthlyIncome <= allowedIncome){
     let snapAmount = calcSnapAllotment(totalFamily);
     return {eligible: true, snapAmount: snapAmount};
   } else {

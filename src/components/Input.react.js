@@ -12,16 +12,7 @@ import TotalIncome from './TotalIncome.react.js';
 //Benefits Logic Helpers
 import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
-
-// Config the marks on the slider
-const marks = {
-  4: '$4',
-  8: '$8',
-  12: '$12',
-  16: '$15',
-  20: '$18',
-  25: '$25'
-};
+import SNAP from '../controllers/Snap.js'
 
 require('../styles/slider.css');
 
@@ -31,8 +22,14 @@ export default class Input extends Component {
     this._updateFamily = this._updateFamily.bind(this);
     this.state = {
       family: { adults: 2, children: 2, income: 17500 },
+      eligibility: {},
       testing: false
     };
+    this.state.eligibility.ACSChildCare = ACSChildCare(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.eligibility.SchoolFood = SchoolFood(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.eligibility.SNAP = SNAP(this.state.family.income, this.state.family.adults, this.state.family.children);
+
+
   }
   /*
     This goes here instead of in a separate component because we need to
@@ -45,7 +42,7 @@ export default class Input extends Component {
       <Grid fluid>
         <Row className='toggle'>
           <Col xs={12} sm={12} md={12}>
-            <p>Choose the number of {type} in the household</p>
+            <p className='text-center'>Choose the number of {type} in the household:</p>
           </Col>
         <Col xs={5} sm={4} md={4} className='choice'>
           <i className='fa fa-minus fa-4x' onClick={() => this._updateFamily(current - 1, type)}></i>
@@ -72,7 +69,7 @@ export default class Input extends Component {
             </Row>
           </Grid>
           <div>
-            <p>Adjust the house hold yearly income</p>
+            <p className='text-center'>Adjust the house hold yearly income:</p>
             <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateFamily(value, 'income')} /></div>
           </div>
         </Col>
@@ -80,21 +77,26 @@ export default class Input extends Component {
           <TotalIncome income={this.state.family.income} benefits={benefits} />
         </Col>
         <Col xs={12} sm={12} md={12}>
-          <BenefitsList family={this.state.family} />
+          <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
       </Row>
     </Grid>
     );
   }
   _updateFamily(value, setting) {
-    // Super hacky right now
-    if (setting == 'adults' && (value < 0 || value > 5))
+    if (setting === 'adults' && (value < 0 || value > 5)){
       return;
-    if (setting == 'children' && (value < 0 || value > 6))
+    }
+    if (setting === 'children' && (value < 0 || value > 6)){
       return;
+    }
 
     var family = this.state.family;
     family[setting] = value;
     this.setState({family: family });
+
+    this.state.eligibility.ACSChildCare = ACSChildCare(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.eligibility.SchoolFood = SchoolFood(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.eligibility.SNAP = SNAP(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 }

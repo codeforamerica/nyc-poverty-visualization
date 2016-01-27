@@ -23,7 +23,7 @@ const
     [8, 46280]
   ];
 
-const checkFreeLunchEligibility = function(yearlyIncome, numberChildren, numberAdults) {
+const checkFreeLunchEligibility = function(yearlyIncome, numberAdults, numberChildren) {
   let
     freeLunchallowedIncome = freeLunchTable[numberAdults + numberChildren -1],
     reducedLunchallowedIncome = reducedLunchTable[numberAdults + numberChildren -1];
