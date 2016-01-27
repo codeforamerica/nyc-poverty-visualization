@@ -25,5 +25,15 @@ body {
 }
 
 .familyChoice {
-		height: 50px;
+		min-height: 50px;
+}
+
+// Toggle Choices
+.toggle {
+	.value {
+		font-size: 25pt;
+	}
+	.value, .choice {
+		text-align: center;
+	}
 }
