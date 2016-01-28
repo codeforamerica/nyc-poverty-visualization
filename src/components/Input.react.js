@@ -39,20 +39,25 @@ export default class Input extends Component {
 
     return stateEligibility;
   }
-  _updateInput(value, setting) {
-    if (setting === 'adults' && (value < 0 || value > 5)){
-      return;
+  disableCounterButton(setting, value){
+    if ((setting === 'adults' && (value < 1 || value > 5)) || (setting === 'children' && (value < 1 || value > 6))){
+      if(value < 1) {
+        return {plus: false, minus: true};
+      }
+      if(value > 5) {
+        return {plus: true, minus: false};
+      }
     }
-    if (setting === 'children' && (value < 0 || value > 6)){
-      return;
+    else {
+      return {plus: false, minus: false};
     }
 
+  }
+  _updateInput(value, setting) {
     var family = this.state.family;
     family[setting] = value;
     this.setState({family: family });
-
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
-
   }
   /*
     This goes here instead of in a separate component because we need to
@@ -60,6 +65,7 @@ export default class Input extends Component {
   */
   displayToggle(type) {
     var current = this.state.family[type];
+    var disabled = this.disableCounterButton(type, current);
     return(
     <Col cs={12} sm={6} md={6}>
       <Grid fluid>
@@ -69,14 +75,14 @@ export default class Input extends Component {
               <p className='text-center'>Choose the number of {type} in the household:</p>
             </Col>
             <Col xs={5} sm={4} md={4} className='choice'>
-              <Button>
-                <i className='fa fa-minus fa-4x' onClick={() => this._updateInput(current - 1, type)}></i>
+              <Button disabled={disabled.minus} onClick={() => this._updateInput(current - 1, type)}>
+                <i className='fa fa-minus fa-4x'></i>
               </Button>
             </Col>
             <Col xs={2} sm={4} md={4} className='value'>{current}</Col>
             <Col xs={5} sm={4} md={4} className='choice'>
-              <Button>
-                <i className='fa fa-plus fa-4x' onClick={() => this._updateInput(current + 1, type)}></i>
+              <Button disabled={disabled.plus} onClick={() => this._updateInput(current + 1, type)}>
+                <i className='fa fa-plus fa-4x'></i>
               </Button>
             </Col>
           </Panel>
@@ -91,16 +97,16 @@ export default class Input extends Component {
     <Grid>
       <Row>
         <Col xs={12} sm={12} md={12}>
-          <Grid>
-            <Row className='toggle'>
-                {this.displayToggle('adults')}
-                {this.displayToggle('children')}
-            </Row>
-          </Grid>
-          <div>
-            <p className='text-center'>Adjust the house hold yearly income:</p>
-            <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateInput(value, 'income')} /></div>
-          </div>
+          <Row className='toggle'>
+              {this.displayToggle('adults')}
+              {this.displayToggle('children')}
+          </Row>
+          <Row>
+            <Col xs={12} sm={12} md={12}>
+              <p className='text-center'>Adjust the house hold yearly income:</p>
+              <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateInput(value, 'income')} /></div>
+            </Col>
+          </Row>
         </Col>
         <Col xs={12} sm={12} md={12}>
           <TotalIncome income={this.state.family.income} benefits={benefits} />
