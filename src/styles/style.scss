@@ -1,3 +1,29 @@
+// Sexy mixins
+$breakpoints: (
+  'small'  : 767px,
+  'medium' : 992px,
+  'large'  : 1200px
+);
+
+@mixin respond-to($breakpoint) {
+  // Retrieves the value from the key
+  $value: map-get($breakpoints, $breakpoint);
+
+  // If the key exists in the map
+  @if $value != null {
+    // Prints a media query based on the value
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
 // Modifying Bootstrap
 body {
   padding-top: 50px; // because we have the fixed top
@@ -25,6 +51,21 @@ body {
 
 .familyChoice {
 		min-height: 50px;
+}
+
+// For scroll purposes
+.pane {
+  @include respond-to(small) {
+    min-height: 300px;
+  }
+
+  @include respond-to(medium) {
+    min-height: 450px;
+  }
+
+  @include respond-to(large) {
+    min-height: 550px;
+  }
 }
 
 // Toggle Choices
