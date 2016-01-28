@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Rcslider from 'rc-slider';
 // Bootstrap
 import { Grid, Row, Col, Button, Panel } from 'react-bootstrap';
-
 //Components
-
 import BenefitsList from './BenefitsProgramsList.react.js';
 import TotalIncome from './TotalIncome.react.js';
 
@@ -12,6 +10,9 @@ import TotalIncome from './TotalIncome.react.js';
 import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
 import SNAP from '../controllers/Snap.js';
+
+// Waypoints
+import Waypoint from 'react-waypoint';
 
 
 require('../styles/slider.css');
@@ -54,6 +55,9 @@ export default class Input extends Component {
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
 
   }
+  _moveToHeader() {
+    console.log("Move that info to the header!");
+  }
   /*
     This goes here instead of in a separate component because we need to
     be able to pass the data down in a waterfall. Not best practice.
@@ -61,7 +65,7 @@ export default class Input extends Component {
   displayToggle(type) {
     var current = this.state.family[type];
     return(
-    <Col cs={12} sm={6} md={6}>
+    <Col cs={12} sm={6} md={6} className='familyChoice'>
       <Grid fluid>
         <Row className='toggle'>
           <Panel>
@@ -88,10 +92,10 @@ export default class Input extends Component {
   render() {
     var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
-    <Grid>
-      <Row>
-        <Col xs={12} sm={12} md={12}>
-          <Grid>
+    <Grid fluid>
+      <Row className='pane'>
+        <Col xs={12} sm={12} md={8}>
+          <Grid fluid>
             <Row className='toggle'>
                 {this.displayToggle('adults')}
                 {this.displayToggle('children')}
@@ -102,12 +106,15 @@ export default class Input extends Component {
             <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateInput(value, 'income')} /></div>
           </div>
         </Col>
-        <Col xs={12} sm={12} md={12}>
+        <Col xs={12} sm={12} md={4}>
           <TotalIncome income={this.state.family.income} benefits={benefits} />
         </Col>
-        <Col xs={12} sm={12} md={12}>
+      </Row>
+      <Row className='pane'>
+        <Col xs={12} sm={12} md={12} className='pane'>
           <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
+        <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
     </Grid>
     );
