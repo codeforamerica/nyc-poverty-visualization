@@ -41,7 +41,6 @@ export default class Input extends Component {
   }
   disableCounterButton(setting, value){
     if ((setting === 'adults' && (value < 1 || value > 5)) || (setting === 'children' && (value < 1 || value > 6))){
-      console.log('got here');
       if(value < 1) {
         return {plus: false, minus: true};
       }
