@@ -54,6 +54,13 @@ export default class Input extends Component {
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
 
   }
+  disableButton(setting) {
+    if(this.state.family[setting] <= 0){
+      return true;
+    } else {
+      false;
+    }
+  }
   /*
     This goes here instead of in a separate component because we need to
     be able to pass the data down in a waterfall. Not best practice.
@@ -69,14 +76,14 @@ export default class Input extends Component {
               <p className='text-center'>Choose the number of {type} in the household:</p>
             </Col>
             <Col xs={5} sm={4} md={4} className='choice'>
-              <Button>
-                <i className='fa fa-minus fa-4x' onClick={() => this._updateInput(current - 1, type)}></i>
+              <Button onClick={() => this._updateInput(current - 1, type)} disabled={this.disableButton()}>
+                <i className='fa fa-minus fa-4x'></i>
               </Button>
             </Col>
             <Col xs={2} sm={4} md={4} className='value'>{current}</Col>
             <Col xs={5} sm={4} md={4} className='choice'>
-              <Button>
-                <i className='fa fa-plus fa-4x' onClick={() => this._updateInput(current + 1, type)}></i>
+              <Button onClick={() => this._updateInput(current + 1, type)}>
+                <i className='fa fa-plus fa-4x'></i>
               </Button>
             </Col>
           </Panel>
@@ -91,16 +98,16 @@ export default class Input extends Component {
     <Grid>
       <Row>
         <Col xs={12} sm={12} md={12}>
-          <Grid>
-            <Row className='toggle'>
-                {this.displayToggle('adults')}
-                {this.displayToggle('children')}
-            </Row>
-          </Grid>
-          <div>
-            <p className='text-center'>Adjust the house hold yearly income:</p>
-            <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateInput(value, 'income')} /></div>
-          </div>
+          <Row className='toggle'>
+              {this.displayToggle('adults')}
+              {this.displayToggle('children')}
+          </Row>
+          <Row>
+            <Col xs={12} sm={12} md={12}>
+              <p className='text-center'>Adjust the house hold yearly income:</p>
+              <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateInput(value, 'income')} /></div>
+            </Col>
+          </Row>
         </Col>
         <Col xs={12} sm={12} md={12}>
           <TotalIncome income={this.state.family.income} benefits={benefits} />
