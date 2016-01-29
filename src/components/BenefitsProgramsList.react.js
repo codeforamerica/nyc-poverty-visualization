@@ -10,6 +10,7 @@ import _ from 'lodash';
 import Snap from './BenefitsPrograms/SNAP.react.js';
 import SchoolFood from './BenefitsPrograms/SchoolFood.react.js';
 import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
+import WIC from './BenefitsPrograms/WIC.react.js';
 
 
 
@@ -47,7 +48,7 @@ export default class BenefitsList extends Component {
     const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
     return(
-      <div><BarChart 
+      <div><BarChart
                   width={this.state.width}
                   height={500}
                   margin={margin}

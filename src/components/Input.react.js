@@ -13,6 +13,7 @@ import TotalIncome from './TotalIncome.react.js';
 import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
 import SNAP from '../controllers/Snap.js';
+import WIC from '../controllers/WIC.js';
 
 // Waypoints
 import Waypoint from 'react-waypoint';
@@ -46,6 +47,7 @@ export default class Input extends Component {
     stateEligibility.ACSChildCare = ACSChildCare(income, adults, children);
     stateEligibility.SchoolFood = SchoolFood(income, adults, children);
     stateEligibility.SNAP = SNAP(income, adults, children);
+    stateEligibility.WIC = WIC(income, adults, children);
 
     return stateEligibility;
   }
@@ -65,8 +67,13 @@ export default class Input extends Component {
   render() {
     var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
+<<<<<<< 2269c8541ee999bf700917e2d5eeecdfd5cd5f03
     <Grid>
       <Row className='pane' id='pane2' ref='pane2'>
+=======
+    <div>
+      <Row className='pane'>
+>>>>>>> Add WIC, also remove container within container
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
@@ -86,7 +93,7 @@ export default class Input extends Component {
         <TotalIncome family={this.state.family} />
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
-    </Grid>
+    </div>
     );
   }
 }

@@ -24,7 +24,7 @@ export default class TotalIncome extends Component {
     if (family.income) {
       var income = (
         <p>Income: {this.calculateAnnualIncome()}</p>
-      )
+      );
     }
     return(
       <div>{income}</div>
