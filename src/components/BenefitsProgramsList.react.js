@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Snap from './BenefitsPrograms/SNAP.react.js';
 import SchoolFood from './BenefitsPrograms/SchoolFood.react.js';
 import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
+import WIC from './BenefitsPrograms/WIC.react.js';
 
 
 
@@ -20,6 +21,7 @@ export default class BenefitsList extends Component {
         <Snap eligibility={this.props.eligibility.SNAP} />
         <SchoolFood eligibility={this.props.eligibility.SchoolFood} />
         <ACSChildCare eligibility={this.props.eligibility.ACSChildCare} />
+        <WIC eligibility={this.props.eligibility.WIC} />
       </div>
     );
   }
