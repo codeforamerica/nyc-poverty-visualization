@@ -36,11 +36,9 @@ const checkFreeLunchEligibility = function(yearlyIncome, numberAdults, numberChi
   }
 
   if(yearlyIncome <= freeLunchallowedIncome) {
-    console.log('Free lunch: '+ yearlyIncome, freeLunchallowedIncome);
     return {eligible: true, lunchRate: 'free'};
   }
   if (yearlyIncome <= reducedLunchallowedIncome) {
-    console.log('Reduced Lunch: ' + yearlyIncome, reducedLunchallowedIncome);
     return {eligible: true, lunchRate: 'reduced'};
   } else {
     return {eligible: true, lunchRate: 'full-price'};
