@@ -66,7 +66,7 @@ export default class Input extends Component {
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
           <IncomeSlider onChange={this._updateInput} />
         </Col>
-        <Col xs={12} sm={12} md={4}>
+        <Col xs={12} sm={12} md={12}>
           <TotalIncome income={this.state.family.income} benefits={benefits} />
         </Col>
       </Row>
