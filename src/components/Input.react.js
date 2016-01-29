@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 // Bootstrap
-import { Grid, Row, Col, Button, Panel } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 //Components
 import ToggleButtons from './ToggleButtons.react.js';
 import IncomeSlider from './IncomeSlider.react.js';
@@ -54,38 +54,6 @@ export default class Input extends Component {
   _moveToHeader() {
     console.log("Move that info to the header!");
   }
-  /*
-    This goes here instead of in a separate component because we need to
-    be able to pass the data down in a waterfall. Not best practice.
-  */
-  displayToggle(type) {
-    var current = this.state.family[type];
-    var disabled = this.disableCounterButton(type, current);
-    return(
-    <Col cs={12} sm={6} md={6} className='familyChoice'>
-      <Grid fluid>
-        <Row className='toggle'>
-          <Panel>
-            <Col xs={12} sm={12} md={12}>
-              <p className='text-center'>Choose the number of {type} in the household:</p>
-            </Col>
-            <Col xs={5} sm={4} md={4} className='choice'>
-              <Button disabled={disabled.minus} onClick={() => this._updateInput(current - 1, type)}>
-                <i className='fa fa-minus fa-4x'></i>
-              </Button>
-            </Col>
-            <Col xs={2} sm={4} md={4} className='value'>{current}</Col>
-            <Col xs={5} sm={4} md={4} className='choice'>
-              <Button disabled={disabled.plus} onClick={() => this._updateInput(current + 1, type)}>
-                <i className='fa fa-plus fa-4x'></i>
-              </Button>
-            </Col>
-          </Panel>
-        </Row>
-      </Grid>
-    </Col>);
-  }
-
 
   // Render it all
   render() {
