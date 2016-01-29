@@ -1,8 +1,11 @@
+"use strict";
+
 import React, { Component } from 'react';
-import Rcslider from 'rc-slider';
 // Bootstrap
 import { Grid, Row, Col, Button, Panel } from 'react-bootstrap';
 //Components
+import ToggleButtons from './ToggleButtons.react.js';
+import IncomeSlider from './IncomeSlider.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
 import TotalIncome from './TotalIncome.react.js';
 
@@ -40,26 +43,14 @@ export default class Input extends Component {
 
     return stateEligibility;
   }
-  disableCounterButton(setting, value){
-    if ((setting === 'adults' && (value < 1 || value > 5)) || (setting === 'children' && (value < 1 || value > 6))){
-      if(value < 1) {
-        return {plus: false, minus: true};
-      }
-      if(value > 5) {
-        return {plus: true, minus: false};
-      }
-    }
-    else {
-      return {plus: false, minus: false};
-    }
 
-  }
   _updateInput(value, setting) {
     var family = this.state.family;
     family[setting] = value;
     this.setState({family: family });
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
   }
+
   _moveToHeader() {
     console.log("Move that info to the header!");
   }
@@ -94,23 +85,18 @@ export default class Input extends Component {
       </Grid>
     </Col>);
   }
+
+
   // Render it all
   render() {
     var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
     <Grid>
       <Row className='pane'>
-        <Col xs={12} sm={12} md={8}>
-          <Row className='toggle'>
-              {this.displayToggle('adults')}
-              {this.displayToggle('children')}
-          </Row>
-          <Row>
-            <Col xs={12} sm={12} md={12}>
-              <p className='text-center'>Adjust the house hold yearly income:</p>
-              <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this._updateInput(value, 'income')} /></div>
-            </Col>
-          </Row>
+        <Col xs={12} sm={12} md={12}>
+          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
+          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
+          <IncomeSlider onChange={this._updateInput} />
         </Col>
         <Col xs={12} sm={12} md={4}>
           <TotalIncome income={this.state.family.income} benefits={benefits} />
