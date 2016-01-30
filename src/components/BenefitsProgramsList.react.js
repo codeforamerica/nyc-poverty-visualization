@@ -11,6 +11,7 @@ import Snap from './BenefitsPrograms/SNAP.react.js';
 import SchoolFood from './BenefitsPrograms/SchoolFood.react.js';
 import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
 import WIC from './BenefitsPrograms/WIC.react.js';
+import HEAP from './BenefitsPrograms/HEAP.react.js';
 
 
 
