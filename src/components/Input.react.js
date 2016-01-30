@@ -14,6 +14,7 @@ import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
 import SNAP from '../controllers/Snap.js';
 import WIC from '../controllers/WIC.js';
+import HEAP from '../controllers/HEAP.js';
 
 // Waypoints
 import Waypoint from 'react-waypoint';
@@ -42,6 +43,7 @@ export default class Input extends Component {
     stateEligibility.SchoolFood = SchoolFood(income, adults, children);
     stateEligibility.SNAP = SNAP(income, adults, children);
     stateEligibility.WIC = WIC(income, adults, children);
+    stateEligibility.HEAP = HEAP(income, adults, children);
 
     return stateEligibility;
   }
