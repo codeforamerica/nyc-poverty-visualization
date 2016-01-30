@@ -3,6 +3,9 @@
 import React, { Component } from 'react';
 import Header from './components/Header.react.js';
 import Input from './components/Input.react.js'; // This will do more of the mangement
+import Story from './components/Story.react.js';
+
+require('./styles/style.scss');
 
 export default class App extends Component {
   render() {
@@ -10,9 +13,7 @@ export default class App extends Component {
       <div>
         <Header />
         <div className='container'>
-          <div className='header-title'>
-            NYC Poverty And Benefits Calculator
-          </div>
+          <Story />
           <Input />
         </div>
       </div>

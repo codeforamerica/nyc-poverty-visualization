@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var bourbon = require('bourbon').includePaths;
 
 module.exports = {
   devtool: 'source-map',
@@ -30,10 +31,7 @@ module.exports = {
         loader: 'babel?presets[]=es2015&presets[]=react',
         include: path.join(__dirname, 'src')
       },
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
-      },
+      { test: /\.scss$/, loader: "style!css!sass?includePaths[]=" + bourbon},
       {
         test: /\.css$/,
         loader: "style-loader!css-loader"

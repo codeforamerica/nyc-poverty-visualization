@@ -13,13 +13,10 @@ export default class Header extends Component {
         <Navbar.Brand>
           <img src='/public/assets/img/nyc-logo.png' />
         </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} href="#">Back To Top</NavItem>
+          <NavItem eventKey={1} href="#">Family Info</NavItem>
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Header>
     </Navbar>
     );
   }
