@@ -1,5 +1,7 @@
 // Sexy mixins
+@import "bourbon";
 $breakpoints: (
+  'mobile':  400px,
   'small'  : 767px,
   'medium' : 992px,
   'large'  : 1200px
@@ -35,6 +37,10 @@ body {
 	background-image: none; // get rid of the gradient
 }
 
+.noBorder {
+  border: 0px !important; // Override bootstrap borders for .panel
+}
+
 // Our Sass
 .header-title {
 	padding: 20px 0px;
@@ -53,19 +59,17 @@ body {
 		min-height: 50px;
 }
 
+.storyBoard {
+  margin-top: 10px;
+  @include background-image(url("/public/assets/img/kitten.jpg"));
+  background-size: cover;
+}
+
 // For scroll purposes
 .pane {
-  @include respond-to(small) {
-    min-height: 300px;
-  }
-
-  @include respond-to(medium) {
-    min-height: 450px;
-  }
-
-  @include respond-to(large) {
-    min-height: 550px;
-  }
+  height:100vh;
+  border: 1px solid black;
+  margin: 25px 0px 0px 0px;
 }
 
 // Toggle Choices
