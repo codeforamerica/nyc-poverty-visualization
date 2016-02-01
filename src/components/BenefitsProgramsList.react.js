@@ -38,7 +38,7 @@ export default class BenefitsList extends Component {
     }];
 
     return(
-      <div><Bar data={data} width="600" height="250" />
+      <div><Bar data={data} options={{ responsive: true }} height="200" />
       <p><a onClick={this.generateNewNumbers}>Generate new fake data</a></p></div>
     );
   }
