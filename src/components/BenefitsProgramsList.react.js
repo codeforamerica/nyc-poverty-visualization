@@ -14,11 +14,18 @@ import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
 export default class BenefitsList extends Component {
   constructor(props) {
     super(props);
+    var defaultData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
+    this.state = { dataSet: defaultData };
+    this.generateNewNumbers = this.generateNewNumbers.bind(this);
   }
-
+  generateNewNumbers() {
+    var newData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
+    this.setState({ dataSet: newData });
+  }
   render(){
     var data = [];
     console.log(this.props.elegibility);
+    var dataSet = this.state.dataSet;
 
     data.labels = ["Housing Adjustment", "Social Security", "Other Cash Transfers", "Income Taxes", "Food Stamps", "School Meals", "WIC", "HEAP"];
     data.datasets = [{
@@ -27,11 +34,12 @@ export default class BenefitsList extends Component {
       strokeColor: "rgba(150, 194, 112, 1)",
       highlightFill: "rgba(150, 194, 112, 1)",
       highlightStroke: "rgba(150, 194, 112, 1)",
-      data: [6.5, 5.3, 3.7, 3.6, 3.6, 0.6, 0.1]
+      data: dataSet
     }];
 
     return(
-      <Bar data={data} width="600" height="250" />
+      <div><Bar data={data} width="600" height="250" />
+      <p><a onClick={this.generateNewNumbers}>Generate new fake data</a></p></div>
     );
   }
 }
