@@ -64,22 +64,20 @@ export default class Input extends Component {
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
+          <TotalIncome family={this.state.family} />
         </Col>
       </Row>
       <Row className='pane'>
         <Col xs={12} sm={12} md={12}>
           <IncomeSlider onChange={this._updateInput} />
-        </Col>
-      </Row>
-      <Row className='pane'>
-        <Col xs={12} sm={12} md={12}>
-          <TotalIncome income={this.state.family.income} benefits={benefits} />
+          <TotalIncome family={this.state.family} />
         </Col>
       </Row>
       <Row className='pane'>
         <Col xs={12} sm={12} md={12}>
           <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
+        <TotalIncome family={this.state.family} />
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
     </Grid>
