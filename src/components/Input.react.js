@@ -63,7 +63,6 @@ export default class Input extends Component {
 
   // Render it all
   render() {
-    var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
     <Grid>
       <Row className='pane' id='pane2' ref='pane2'>

@@ -10,6 +10,9 @@ import _ from 'lodash';
 import Snap from './BenefitsPrograms/SNAP.react.js';
 import SchoolFood from './BenefitsPrograms/SchoolFood.react.js';
 import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
+import WIC from './BenefitsPrograms/WIC.react.js';
+import HEAP from './BenefitsPrograms/HEAP.react.js';
+import EIC from './BenefitsPrograms/TaxRefund.react.js';
 
 
 
@@ -40,7 +43,7 @@ export default class BenefitsList extends Component {
   }
   generateNewNumbers() {
     var data = this.state.dataSet;
-    
+
     //this.setState({ dataSet: data });
   }
   render(){
@@ -48,13 +51,24 @@ export default class BenefitsList extends Component {
     const margin = {top: 20, right: 20, bottom: 80, left: 40};
 
     return(
-      <div><BarChart
+      <div>
+        <div><BarChart
                   width={this.state.width}
                   height={500}
                   margin={margin}
                   data={data}
                   onBarClick={this.handleBarClick }/>
-      <p><a onClick={this.generateNewNumbers}>Generate new fake data</a></p></div>
+        <p><a onClick={this.generateNewNumbers}>Generate new fake data</a></p></div>
+
+        <div className='BenefitsList'>
+          <Snap eligibility={this.props.eligibility.SNAP} />
+          <SchoolFood eligibility={this.props.eligibility.SchoolFood} />
+          <ACSChildCare eligibility={this.props.eligibility.ACSChildCare} />
+          <WIC eligibility={this.props.eligibility.WIC} />
+          <HEAP eligibility={this.props.eligibility.HEAP} />
+          <EIC eligibility={this.props.eligibility.EIC} taxRefund={this.props.eligibility.EIC.refundAmount}/>
+        </div>
+      </div>
     );
   }
 }
