@@ -12,7 +12,7 @@ export default class TotalIncome extends Component {
 
   render() {
     return(
-      <h1 className="text-center">This family would make {this.calculateAnnualIncome()} a year and {this.props.benefits.taxes} in tax credits.</h1>
+      <h1 className="text-center">This family would make ${this.calculateAnnualIncome()} a year and ${this.props.taxRefund} in tax credits.</h1>
     );
   }
 }
