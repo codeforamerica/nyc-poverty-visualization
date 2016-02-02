@@ -8,6 +8,7 @@ import SchoolFood from './BenefitsPrograms/SchoolFood.react.js';
 import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
 import WIC from './BenefitsPrograms/WIC.react.js';
 import HEAP from './BenefitsPrograms/HEAP.react.js';
+import EIC from './BenefitsPrograms/TaxRefund.react.js';
 
 
 
@@ -24,6 +25,7 @@ export default class BenefitsList extends Component {
         <ACSChildCare eligibility={this.props.eligibility.ACSChildCare} />
         <WIC eligibility={this.props.eligibility.WIC} />
         <HEAP eligibility={this.props.eligibility.HEAP} />
+        <EIC eligibility={this.props.eligibility.EIC} />
       </div>
     );
   }
