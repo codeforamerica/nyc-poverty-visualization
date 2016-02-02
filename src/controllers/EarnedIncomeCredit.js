@@ -6,6 +6,9 @@ const eicCalculator = function(income, numberParents, numberChildren){
   //Initially determine the eligibility based on marital status, number of children, and income.
   //This saves us from iterating through the IRS tax table for non-eligible candidates.
   let eligibility = function(income, numberParents, numberChildren){
+    if(income < 1){
+      return false;
+    }
     if(numberParents === 1 && numberChildren === 0){
       if(income < 14820){
         return true;
@@ -115,10 +118,10 @@ const eicCalculator = function(income, numberParents, numberChildren){
       taxColumn += 3;
     }
 
-    return {eligibility: true, refundAmount: taxRow[taxColumn]};
+    return {eligible: true, refundAmount: taxRow[taxColumn]};
 
   } else {
-    return {eligibility: false, refundAmount: 0};
+    return {eligible: false, refundAmount: 0};
   }
 
 };
