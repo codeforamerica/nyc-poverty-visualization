@@ -1,7 +1,9 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { Bar } from 'react-chartjs';
+import ReactDOM from 'react-dom';
+// import Chart, { Bar } from 'react-chartjs';
+import BarChart from 'react-bar-chart';
 import _ from 'lodash';
 
 //Benefits Programs Components
@@ -14,31 +16,43 @@ import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
 export default class BenefitsList extends Component {
   constructor(props) {
     super(props);
-    var defaultData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
-    this.state = { dataSet: defaultData };
+    var defaultData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
+    this.state = { dataSet: defaultData, width: 500 };
     this.generateNewNumbers = this.generateNewNumbers.bind(this);
   }
+  componentDidMount()  {
+    var domNode = ReactDOM.findDOMNode(this);
+    console.log(domNode);
+
+    window.onresize = () => {
+     this.setState({width: domNode.offsetWidth});
+    };
+  }
+  handleBarClick(element, id){
+    console.log(`The bin ${element.text} with id ${id} was clicked`);
+  }
   generateNewNumbers() {
-    var newData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
+    var newData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
     this.setState({ dataSet: newData });
   }
   render(){
-    var data = [];
-    console.log(this.props.elegibility);
-    var dataSet = this.state.dataSet;
-
-    data.labels = ["Housing Adjustment", "Social Security", "Other Cash Transfers", "Income Taxes", "Food Stamps", "School Meals", "WIC", "HEAP"];
-    data.datasets = [{
-      label: "Effects of programs on poverty",
-      fillColor: "rgba(150, 194, 112, .5)",
-      strokeColor: "rgba(150, 194, 112, 1)",
-      highlightFill: "rgba(150, 194, 112, 1)",
-      highlightStroke: "rgba(150, 194, 112, 1)",
-      data: dataSet
-    }];
+    const data = [
+      {text: 'HEAP', value: 500, fill: 'purple' },
+      {text: 'SNAP', value: 300, fill: 'green'},
+      {text: 'Tax Refunds', value: 300, fill: 'green'},
+      {text: 'WIC', value: 300, fill: 'green'},
+      {text: 'Childcare', value: 300, fill: 'green'},
+      {text: 'School Food', value: 300, fill: 'green'},
+    ];
+    const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
     return(
-      <div><Bar data={data} options={{ responsive: true }} height="200" />
+      <div><BarChart 
+                  width={this.state.width}
+                  height={500}
+                  margin={margin}
+                  data={data}
+                  onBarClick={this.handleBarClick }/>
       <p><a onClick={this.generateNewNumbers}>Generate new fake data</a></p></div>
     );
   }

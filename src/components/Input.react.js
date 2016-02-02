@@ -17,6 +17,12 @@ import SNAP from '../controllers/Snap.js';
 // Waypoints
 import Waypoint from 'react-waypoint';
 
+// Scrolling
+import Scroll from 'react-scroll';
+var Link = Scroll.Link;
+var Element = Scroll.Element;
+var Events = Scroll.Events;
+
 
 require('../styles/slider.css');
 
@@ -60,20 +66,20 @@ export default class Input extends Component {
     var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
     <Grid>
-      <Row className='pane'>
+      <Row className='pane' id='pane2' ref='pane2'>
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
           <TotalIncome family={this.state.family} />
         </Col>
       </Row>
-      <Row className='pane'>
+      <Row className='pane' id='pane3' ref='pane3'>
         <Col xs={12} sm={12} md={12}>
           <IncomeSlider onChange={this._updateInput} />
           <TotalIncome family={this.state.family} />
         </Col>
       </Row>
-      <Row className='pane'>
+      <Row className='pane' id='pane4' ref='pane4'>
         <Col xs={12} sm={12} md={12}>
           <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
