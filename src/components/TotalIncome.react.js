@@ -28,6 +28,7 @@ export default class TotalIncome extends Component {
     }
     return(
       <div>{income}</div>
+      <h1 className="text-center">This family would make ${this.calculateAnnualIncome()} a year and ${this.props.taxRefund} in tax credits.</h1>
     );
   }
 }

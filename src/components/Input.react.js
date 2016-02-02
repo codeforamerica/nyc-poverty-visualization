@@ -68,7 +68,6 @@ export default class Input extends Component {
 
   // Render it all
   render() {
-    var benefits = {taxes: 1000}; // This is a placeholder for the benefits that we'll know they get
     return(
 <<<<<<< 2269c8541ee999bf700917e2d5eeecdfd5cd5f03
     <Grid>
@@ -85,8 +84,12 @@ export default class Input extends Component {
       </Row>
       <Row className='pane' id='pane3' ref='pane3'>
         <Col xs={12} sm={12} md={12}>
+<<<<<<< e5dfd7beee02bba8679f66a3b22785edb25f7459
           <IncomeSlider onChange={this._updateInput} />
           <TotalIncome family={this.state.family} />
+=======
+          <TotalIncome income={this.state.family.income} taxRefund={this.state.eligibility.EIC.refundAmount} />
+>>>>>>> Working Income Tax Credit
         </Col>
       </Row>
       <Row className='pane' id='pane4' ref='pane4'>
