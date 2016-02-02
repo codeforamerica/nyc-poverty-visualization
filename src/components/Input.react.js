@@ -13,9 +13,6 @@ import TotalIncome from './TotalIncome.react.js';
 import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
 import SNAP from '../controllers/Snap.js';
-import WIC from '../controllers/WIC.js';
-import HEAP from '../controllers/HEAP.js';
-import EIC from '../controllers/EarnedIncomeCredit.js';
 
 // Waypoints
 import Waypoint from 'react-waypoint';
@@ -49,9 +46,7 @@ export default class Input extends Component {
     stateEligibility.ACSChildCare = ACSChildCare(income, adults, children);
     stateEligibility.SchoolFood = SchoolFood(income, adults, children);
     stateEligibility.SNAP = SNAP(income, adults, children);
-    stateEligibility.WIC = WIC(income, adults, children);
-    stateEligibility.HEAP = HEAP(income, adults, children);
-    stateEligibility.EIC = EIC(income, adults, children);
+
     return stateEligibility;
   }
 
@@ -69,13 +64,8 @@ export default class Input extends Component {
   // Render it all
   render() {
     return(
-<<<<<<< 2269c8541ee999bf700917e2d5eeecdfd5cd5f03
     <Grid>
       <Row className='pane' id='pane2' ref='pane2'>
-=======
-    <div>
-      <Row className='pane'>
->>>>>>> Add WIC, also remove container within container
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
@@ -84,12 +74,8 @@ export default class Input extends Component {
       </Row>
       <Row className='pane' id='pane3' ref='pane3'>
         <Col xs={12} sm={12} md={12}>
-<<<<<<< e5dfd7beee02bba8679f66a3b22785edb25f7459
           <IncomeSlider onChange={this._updateInput} />
           <TotalIncome family={this.state.family} />
-=======
-          <TotalIncome income={this.state.family.income} taxRefund={this.state.eligibility.EIC.refundAmount} />
->>>>>>> Working Income Tax Credit
         </Col>
       </Row>
       <Row className='pane' id='pane4' ref='pane4'>
@@ -99,7 +85,7 @@ export default class Input extends Component {
         <TotalIncome family={this.state.family} />
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
-    </div>
+    </Grid>
     );
   }
 }
