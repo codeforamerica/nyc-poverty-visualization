@@ -68,6 +68,15 @@ export default class Input extends Component {
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
+          <Col xs={6} sm={5} md={3} lg={4} xsOffset={4} smOffset={4} mdOffset={4} lgOffset={5} className='text-center'>
+            {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
+              return(<img src='public/assets/img/adult.png' className='familyMember' />)
+            })}
+            {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
+              return(<img src='public/assets/img/child.png' className='familyMember' />)
+            })}
+
+          </Col>
         </Col>
       </Row>
       <Row className='pane incomeSliderPane' id='pane3' ref='pane3'>
@@ -76,7 +85,7 @@ export default class Input extends Component {
           <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
         </Col>
       </Row>
-      <Row className='pane' id='pane4' ref='pane4'>
+      <Row className='pane elgibilityPane' id='pane4' ref='pane4'>
         <Col xs={12} sm={12} md={12}>
           <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
