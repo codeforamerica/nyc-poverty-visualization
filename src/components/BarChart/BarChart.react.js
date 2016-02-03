@@ -72,6 +72,7 @@ export default class BarChart extends Component {
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
+            .on('click',  this._handleBarClick)
             .attr("transform", "rotate(-65)" );
 
     svg.append('g')
