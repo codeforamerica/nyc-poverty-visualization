@@ -8,6 +8,7 @@ import ToggleButtons from './ToggleButtons.react.js';
 import IncomeSlider from './IncomeSlider.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
 import TotalIncome from './TotalIncome.react.js';
+import ProgramChart from './ProgramChart.react.js';
 
 //Benefits Logic Helpers
 import ACSChildCare from '../controllers/ACSChildCare.js';
@@ -79,6 +80,7 @@ export default class Input extends Component {
       <Row className='pane' id='pane4' ref='pane4'>
         <Col xs={12} sm={12} md={12}>
           <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
+          <ProgramChart family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
