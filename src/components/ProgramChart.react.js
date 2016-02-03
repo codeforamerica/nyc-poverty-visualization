@@ -12,17 +12,16 @@ export default class ProgramChart extends Component {
   constructor(props) {
     super(props);
     var defaultData = [
-      {text: 'HEAP', value: _.random(0.2, 2), class: ProgramColors('HEAP') },
-      {text: 'SNAP', value: _.random(0.2, 2), class: ProgramColors('SNAP') },
-      {text: 'Tax Refunds', value: _.random(0.2, 2), class: ProgramColors('TaxRefund')},
-      {text: 'WIC', value: _.random(0.2, 2), class: ProgramColors('WIC')},
-      {text: 'Childcare', value: _.random(0.2, 2), class: ProgramColors('ACSChildCare')},
-      {text: 'School Food', value: _.random(0.2, 2), class: ProgramColors('SchoolFood') },
+      {text: 'HEAP', value: _.random(0.2, 2), programName:'HEAP' },
+      {text: 'SNAP', value: _.random(0.2, 2), programName:'SNAP' },
+      {text: 'Tax Refunds', value: _.random(0.2, 2), programName: 'TaxRefund'},
+      {text: 'WIC', value: _.random(0.2, 2), programName: 'WIC'},
+      {text: 'ASC Childcare', value: _.random(0.2, 2), programName: 'ACSChildCare'},
+      {text: 'School Food', value: _.random(0.2, 2), programName: 'SchoolFood'},
     ];
     this.state = { dataSet: defaultData, programCurrent: {}, width: 500 };
     this.handleBarClick = this.handleBarClick.bind(this);
     this.programInfo = this.programInfo.bind(this);
-    this.generateNewNumbers = this.generateNewNumbers.bind(this);
   }
   componentDidMount()  {
     var domNode = ReactDOM.findDOMNode(this);
@@ -35,11 +34,6 @@ export default class ProgramChart extends Component {
     var program = this.state.programCurrent;
     program.name = element.text;
     this.setState({ programCurrent: program });
-  }
-  generateNewNumbers() {
-    var data = this.state.dataSet;
-
-    //this.setState({ dataSet: data });
   }
   programInfo() {
     var programCurrent = this.state.programCurrent;
@@ -61,14 +55,15 @@ export default class ProgramChart extends Component {
   render(){
     var data = this.state.dataSet;
     var programCurrent = this.state.programCurrent;
+
     const margin = {top: 20, right: 20, bottom: 80, left: 40};
-    if (programCurrent.name) {
-      var newData = [];
-      _.each(data, function(d) {
-        if (d.text != programCurrent.name)
-          d.class = d.class + '-light';
-      });
-    }
+
+    _.each(data, function(d) {
+      d.class = ProgramColors(d.programName);
+      if (programCurrent.name && programCurrent.name != d.text) {
+        d.class = ProgramColors(d.programName) + '-light';
+      }
+    });
 
     return(
         <div>

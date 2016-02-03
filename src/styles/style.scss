@@ -34,12 +34,12 @@ $light-green: rgba(157, 210, 121, 1);
 $green: rgba(53, 147, 124, 1);
 $orange: rgba(252, 145, 87, 1);
 
-$light-blue-light: lighten($light-blue, 10%);
-$blue-light: lighten($blue, 10%);
-$red-light: lighten($red, 10%);
-$light-green-light: lighten($light-green, 10%);
-$green-light: lighten($green, 10%);
-$orange-light: lighten($orange, 10%);
+$light-blue-light: lighten($light-blue, 20%);
+$blue-light: lighten($blue, 20%);
+$red-light: lighten($red, 20%);
+$light-green-light: lighten($light-green, 20%);
+$green-light: lighten($green, 20%);
+$orange-light: lighten($orange, 20%);
 
 // Modifying base styles
 h1 {
@@ -235,22 +235,22 @@ body {
 
 .bar {
   &.light-blue {
-    fill:  $light-blue;
+    fill:  darken($light-blue, 15%);
   }
   &.blue {
-    fill:  $blue;
+    fill:  darken($blue, 15%);
   }
   &.green {
-    fill:  $green;
+    fill:  darken($green, 15%);
   }
   &.light-green {
-    fill:  $light-green;
+    fill:  darken($light-green, 15%);
   }
   &.red {
-    fill:  $red;
+    fill:  darken($red, 15%);
   }
   &.orange {
-    fill:  $orange;
+    fill:  darken($orange, 15%);
   }
 
   &.light-blue-light {

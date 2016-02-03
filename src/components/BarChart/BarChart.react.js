@@ -88,7 +88,7 @@ export default class BarChart extends Component {
       .data(props.data)
       .enter().append('rect')
       .on('click',  this._handleBarClick)
-      .attr('class', d => d.class)
+      .attr('class', function(d) { d.class = d.light ? d.class+'-light' : d.class; return d.class })
       .classed('bar', true)
       .attr('x', d => this.x(d.text))
       .attr('width', this.x.rangeBand())
