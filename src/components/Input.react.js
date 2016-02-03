@@ -63,8 +63,8 @@ export default class Input extends Component {
   // Render it all
   render() {
     return(
-    <Grid>
-      <Row className='pane' id='pane2' ref='pane2'>
+    <section>
+      <Row className='familyPane pane' id='pane2' ref='pane2'>
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
@@ -82,7 +82,7 @@ export default class Input extends Component {
         </Col>
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
-    </Grid>
+    </section>
     );
   }
 }
