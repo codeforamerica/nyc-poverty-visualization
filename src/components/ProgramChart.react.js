@@ -62,6 +62,13 @@ export default class ProgramChart extends Component {
     var data = this.state.dataSet;
     var programCurrent = this.state.programCurrent;
     const margin = {top: 20, right: 20, bottom: 80, left: 40};
+    if (programCurrent.name) {
+      var newData = [];
+      _.each(data, function(d) {
+        if (d.text != programCurrent.name)
+          d.class = d.class + '-light';
+      });
+    }
 
     return(
         <div>

@@ -34,6 +34,13 @@ $light-green: rgba(157, 210, 121, 1);
 $green: rgba(53, 147, 124, 1);
 $orange: rgba(252, 145, 87, 1);
 
+$light-blue-light: lighten($light-blue, 10%);
+$blue-light: lighten($blue, 10%);
+$red-light: lighten($red, 10%);
+$light-green-light: lighten($light-green, 10%);
+$green-light: lighten($green, 10%);
+$orange-light: lighten($orange, 10%);
+
 // Modifying base styles
 h1 {
   /* Housing Adjustment: */
@@ -244,6 +251,25 @@ body {
   }
   &.orange {
     fill:  $orange;
+  }
+
+  &.light-blue-light {
+    fill:  $light-blue-light;
+  }
+  &.blue-light {
+    fill:  $blue-light;
+  }
+  &.green-light {
+    fill:  $green-light;
+  }
+  &.light-green-light {
+    fill:  $light-green-light;
+  }
+  &.red-light {
+    fill:  $red-light;
+  }
+  &.orange-light {
+    fill:  $orange-light;
   }
 }
 
