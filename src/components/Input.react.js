@@ -9,8 +9,10 @@ import IncomeSlider from './IncomeSlider.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
 import TotalIncome from './TotalIncome.react.js';
 import ProgramChart from './ProgramChart.react.js';
+import PovertyThreshold from './PovertyThreshold.react.js';
 
 //Benefits Logic Helpers
+import CEOPovertyThreshold from '../controllers/CEOPovertyThreshold.js';
 import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
 import SNAP from '../controllers/Snap.js';
@@ -32,6 +34,8 @@ export default class Input extends Component {
       eligibility: {},
       testing: false
     };
+    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    console.log(this.state.CEOPovertyThreshold);
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
   }
   determineEligibility(stateEligibility) {
@@ -55,6 +59,7 @@ export default class Input extends Component {
     family[setting] = value;
     this.setState({family: family });
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
+    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   _moveToHeader() {
@@ -76,8 +81,10 @@ export default class Input extends Component {
             {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
               return(<img src='public/assets/img/child.png' className='familyMember' key={i} />);
             })}
-
           </Col>
+        </Col>
+        <Col className="text-center" xs={12} sm={12} md={12}>
+          <PovertyThreshold povertyThreshold={this.state.CEOPovertyThreshold} family={this.state.family} />
         </Col>
       </Row>
       <Row className='pane incomeSliderPane' id='pane3' ref='pane3'>
