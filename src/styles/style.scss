@@ -34,6 +34,15 @@ $light-green: rgba(157, 210, 121, 1);
 $green: rgba(53, 147, 124, 1);
 $orange: rgba(252, 145, 87, 1);
 
+// Modifying base styles
+h1 {
+  /* Housing Adjustment: */
+  font-weight: bold;
+  font-size: 39px;
+  color: #333333;
+  line-height: 47px;
+}
+
 
 // Modifying Bootstrap
 body {
@@ -114,6 +123,15 @@ body {
   font-size: 16px;
   color: #FFFFFF;
   line-height: 27px;
+}
+
+.footerPane {
+  background-color: rgba(1, 45, 64, 1);
+  /* The UK will contribu: */
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 27px;
+  min-height: 160px;
 }
 
 // Building Family
