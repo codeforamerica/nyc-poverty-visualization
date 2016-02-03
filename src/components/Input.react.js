@@ -35,7 +35,6 @@ export default class Input extends Component {
       testing: false
     };
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
-    console.log(this.state.CEOPovertyThreshold);
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
   }
   determineEligibility(stateEligibility) {

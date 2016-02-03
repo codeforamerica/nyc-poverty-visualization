@@ -34,16 +34,21 @@ export default class BenefitsList extends Component {
       return output;
   }
   render(){
+    console.log(this.eligiblePrograms(this.props.eligibility).length);
     return(
         <div className='BenefitsList'>
-          <h2>Here are the services they would likely qualify for:</h2>
-          <div className='eligible'>
-            {this.eligiblePrograms(this.props.eligibility)}
+          <div>
+            <h2>Here are the services they would likely qualify for:</h2>
+            <div className='eligible'>
+              {this.eligiblePrograms(this.props.eligibility)}
+            </div>
           </div>
-          <hr/>
-          <p>We cannot determine eligibility for these services:</p>
-          <div className='ineligible'>
-            {this.ineligiblePrograms(this.props.eligibility)}
+          <div>
+            <hr/>
+            <p>We cannot determine eligibility for these services:</p>
+            <div className='ineligible'>
+              {this.ineligiblePrograms(this.props.eligibility)}
+            </div>
           </div>
         </div>
     );
