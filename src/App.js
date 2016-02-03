@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <div className='container'>
+        <div className='container-fluid'>
           <Story id='pane1' shiftPane={this._shiftPane.bind(this)} ref="pane1" />
           <Input shiftPane={this._shiftPane.bind(this)} />
         </div>
