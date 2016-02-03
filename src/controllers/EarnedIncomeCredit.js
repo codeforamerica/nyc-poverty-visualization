@@ -6,7 +6,6 @@ const eicCalculator = function(income, numberParents, numberChildren){
   //Initially determine the eligibility based on marital status, number of children, and income.
   //This saves us from iterating through the IRS tax table for non-eligible candidates.
   let eligibility = function(income, numberParents, numberChildren){
-    console.log(numberParents);
     if(income < 1){
       return false;
     }
