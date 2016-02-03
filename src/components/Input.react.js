@@ -70,7 +70,7 @@ export default class Input extends Component {
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
         </Col>
       </Row>
-      <Row className='pane' id='pane3' ref='pane3'>
+      <Row id='pane3' ref='pane3'>
         <Col xs={12} sm={12} md={12}>
           <IncomeSlider onChange={this._updateInput} />
           <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
