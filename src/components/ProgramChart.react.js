@@ -67,6 +67,7 @@ export default class ProgramChart extends Component {
 
     return(
         <div>
+          <div className='text-center'><h3>Marginal Effects of a Service on CEO Poverty Rate</h3></div>
           <BarChart
             ylabel='%'
             width={this.state.width}
