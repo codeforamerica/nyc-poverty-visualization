@@ -2,12 +2,13 @@
 
 import React, { Component } from 'react';
 // Bootstrap
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 //Components
 import ToggleButtons from './ToggleButtons.react.js';
 import IncomeSlider from './IncomeSlider.react.js';
 import BenefitsList from './BenefitsProgramsList.react.js';
 import TotalIncome from './TotalIncome.react.js';
+import ProgramChart from './ProgramChart.react.js';
 
 //Benefits Logic Helpers
 import ACSChildCare from '../controllers/ACSChildCare.js';
@@ -70,10 +71,10 @@ export default class Input extends Component {
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
           <Col xs={6} sm={5} md={3} lg={4} xsOffset={4} smOffset={4} mdOffset={4} lgOffset={5}>
             {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
-              return(<img src='public/assets/img/adult.png' className='familyMember' />)
+              return(<img src='public/assets/img/adult.png' className='familyMember' />);
             })}
             {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
-              return(<img src='public/assets/img/child.png' className='familyMember' />)
+              return(<img src='public/assets/img/child.png' className='familyMember' />);
             })}
 
           </Col>
@@ -83,11 +84,12 @@ export default class Input extends Component {
         <Col xs={8} sm={8} md={8}  xsOffset={2} smOffset={2} mdOffset={2} lgOffset={2}>
           <IncomeSlider onChange={this._updateInput} />
           <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
+          <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
       </Row>
       <Row className='pane elgibilityPane' id='pane4' ref='pane4'>
         <Col xs={12} sm={12} md={12}>
-          <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
+          <ProgramChart family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>

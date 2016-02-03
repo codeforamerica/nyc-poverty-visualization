@@ -25,13 +25,13 @@ const checkIncome = function(yearlyIncome, numberAdults, numberChildren){
 
   //Check if children are present in the household
   if(numberChildren < 1){
-    return false;
+    return {eligible: false};
   }
 
   if (allowedIncome[1] >= monthlyIncome) {
-    return true;
+    return {eligible: true};
   } else {
-    return false;
+    return {eligible: false};
   }
 };
 //Test

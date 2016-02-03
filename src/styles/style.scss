@@ -25,6 +25,15 @@ $breakpoints: (
         + "Please make sure it is defined in `$breakpoints` map.";
   }
 }
+//Color Variables
+
+$light-blue: rgba(148, 206, 227, 1);
+$blue: rgba(60, 154, 174, 1);
+$red: rgba(228, 79, 78, 1);
+$light-green: rgba(157, 210, 121, 1);
+$green: rgba(53, 147, 124, 1);
+$orange: rgba(252, 145, 87, 1);
+
 
 // Modifying Bootstrap
 body {
@@ -139,6 +148,57 @@ body {
 
 .familyChoice {
 		min-height: 50px;
+}
+
+.storyBoard {
+  margin-top: 10px;
+  @include background-image(url("/public/assets/img/kitten.jpg"));
+  background-size: cover;
+}
+
+//Benefits Tags
+.BenefitsList {
+  text-align: center;
+
+  .benefits-program-tag {
+    font-size: 16px;
+    padding: 10px 15px 0px 15px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 4px;
+  }
+  .eligible {
+    .benefits-program-tag {
+      color: white;
+      background-color: green;
+
+      &.light-blue {
+        background-color: $light-blue;
+      }
+      &.blue {
+        background-color: $blue;
+      }
+      &.green {
+        background-color: $green;
+      }
+      &.light-green {
+        background-color: $light-green;
+      }
+      &.red {
+        background-color: $red;
+      }
+      &.orange {
+        background-color: $orange;
+      }
+
+    }
+  }
+  .ineligible {
+    .benefits-program-tag {
+      color: white;
+      background-color: lightgray;
+    }
+  }
 }
 
 // For scroll purposes
