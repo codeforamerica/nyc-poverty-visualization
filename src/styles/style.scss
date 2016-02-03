@@ -31,10 +31,34 @@ body {
   padding-top: 50px; // because we have the fixed top
 }
 
+[class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
 	border-radius: 0px;
-	background-color: #4A4A4A;
+	background-color: rgba(239, 239, 239, 1);
 	background-image: none; // get rid of the gradient
+  text-align: center;
+}
+
+.navbar-brand {
+  text-align: center;
+  float: none;
+}
+
+.panel {
+  width: 100%;
+  border-radius: 0px;
 }
 
 .noBorder {
@@ -42,16 +66,65 @@ body {
 }
 
 // Our Sass
-.header-title {
-	padding: 20px 0px;
-	font-size: 2em;
+/*
+* The top of the page
+*/
 
+.pane {
+  padding: 15px 0px 15px 0px;
+  /* Choose the number of: */
+  font-family: HelveticaNeue;
+  font-size: 16px;
+  color: #333333;
+  line-height: 27px;
+}
+
+.titlePane {
+  background-color: rgba(0, 86, 149, 1);
+  text-align: center;
+  font-weight: bold;
+  font-size: 39px;
+  color: #F8F8F8;
+  line-height: 47px;
+  padding: 15px 0px 15px 0px;
+  display: none;
+  @include respond-to(small) {
+    display: block;
+  }
+}
+
+.imagePane {
+  @include background-image(url("/public/assets/img/background.png"));
+  background-size: cover;
+  height: 340px;
+}
+
+.storyPane {
+  background-color: rgba(0, 86, 149, 1);
+  /* The UK will contribu: */
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 27px;
+}
+
+// Building Family
+.familyPane {
+  background-color:rgba(202, 229, 249, 1);
+}
+
+// income slider
+.incomeSliderPane {
+  background-color: rgba(236, 243, 248, 1);
+}
+
+// Below that
+.subHead {
+  font-weight: bold;
 }
 
 .family {
 	border: 1px solid #979797;
 	text-align: center;
-	background-color: #D8D8D8;
 	padding: 10px 5px;
 }
 
@@ -59,16 +132,9 @@ body {
 		min-height: 50px;
 }
 
-.storyBoard {
-  margin-top: 10px;
-  @include background-image(url("/public/assets/img/kitten.jpg"));
-  background-size: cover;
-}
-
 // For scroll purposes
 .pane {
-  height:100vh;
-  margin: 25px 0px 0px 0px;
+  //min-height: 400px;
 }
 
 // Bar Chart
@@ -95,10 +161,16 @@ body {
 .toggle {
 	.value {
 		font-size: 25pt;
+    padding: 15px 0px 0px 0px;
 	}
 	.value, .choice {
 		text-align: center;
 	}
+  .disabled {
+    color: rgba(233, 233, 233, 1);
+    cursor: not-allowed;
+    display: none;
+  }
 }
 
 .eligible {

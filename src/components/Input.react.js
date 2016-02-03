@@ -63,15 +63,15 @@ export default class Input extends Component {
   // Render it all
   render() {
     return(
-    <Grid>
-      <Row className='pane' id='pane2' ref='pane2'>
+    <section>
+      <Row className='familyPane pane' id='pane2' ref='pane2'>
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
         </Col>
       </Row>
-      <Row className='pane' id='pane3' ref='pane3'>
-        <Col xs={12} sm={12} md={12}>
+      <Row className='pane incomeSliderPane' id='pane3' ref='pane3'>
+        <Col xs={8} sm={8} md={8}  xsOffset={2} smOffset={2} mdOffset={2} lgOffset={2}>
           <IncomeSlider onChange={this._updateInput} />
           <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
         </Col>
@@ -82,7 +82,7 @@ export default class Input extends Component {
         </Col>
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
-    </Grid>
+    </section>
     );
   }
 }

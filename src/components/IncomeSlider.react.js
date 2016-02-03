@@ -10,8 +10,10 @@ export default class IncomeSlider extends Component {
     return(
       <Row>
         <Col xs={12} sm={12} md={12}>
-          <p className='text-center'>Adjust the house hold yearly income:</p>
-          <div className='familyChoice'><Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this.props.onChange(value, 'income')} /></div>
+          <p>Adjust the house hold yearly income:</p>
+          <div className='familyChoice'>
+            <Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this.props.onChange(value, 'income')} />
+          </div>
         </Col>
       </Row>
     );
