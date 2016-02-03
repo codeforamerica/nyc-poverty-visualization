@@ -17,7 +17,7 @@ const eicCalculator = function(income, numberParents, numberChildren){
       }
     }
 
-    if(numberParents === 2 && numberChildren === 0){
+    if(numberParents >= 2 && numberChildren === 0){
       if(income < 20330) {
         return true;
       } else {
@@ -33,7 +33,7 @@ const eicCalculator = function(income, numberParents, numberChildren){
       }
     }
 
-    if(numberParents === 2 && numberChildren === 1){
+    if(numberParents >= 2 && numberChildren === 1){
       if(income < 44651) {
         return true;
       } else {
@@ -49,7 +49,7 @@ const eicCalculator = function(income, numberParents, numberChildren){
       }
     }
 
-    if(numberParents === 2 && numberChildren === 2){
+    if(numberParents >= 2 && numberChildren === 2){
       if(income < 49974) {
         return true;
       } else {
