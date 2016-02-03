@@ -1,7 +1,6 @@
 "use strict";
 
 import React, { Component } from 'react';
-// import Chart, { Bar } from 'react-chartjs';
 
 //Benefits Programs Components
 import BenefitsProgramTag from './BenefitsPrograms/BenefitsProgramTag.react.js';
