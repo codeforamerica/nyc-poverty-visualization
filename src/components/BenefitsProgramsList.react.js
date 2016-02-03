@@ -66,7 +66,7 @@ export default class BenefitsList extends Component {
           <ACSChildCare eligibility={this.props.eligibility.ACSChildCare} />
           <WIC eligibility={this.props.eligibility.WIC} />
           <HEAP eligibility={this.props.eligibility.HEAP} />
-          <EIC eligibility={this.props.eligibility.EIC} taxRefund={this.props.eligibility.EIC.refundAmount}/>
+          <EIC eligibility={this.props.eligibility.TaxRefund.eligible} taxRefund={this.props.eligibility.TaxRefund.refundAmount}/>
         </div>
       </div>
     );

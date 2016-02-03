@@ -13,16 +13,12 @@ import TotalIncome from './TotalIncome.react.js';
 import ACSChildCare from '../controllers/ACSChildCare.js';
 import SchoolFood from '../controllers/SchoolFood.js';
 import SNAP from '../controllers/Snap.js';
+import HEAP from '../controllers/HEAP.js';
+import WIC from '../controllers/WIC.js';
+import TaxRefund from '../controllers/EarnedIncomeCredit.js';
 
 // Waypoints
 import Waypoint from 'react-waypoint';
-
-// Scrolling
-import Scroll from 'react-scroll';
-var Link = Scroll.Link;
-var Element = Scroll.Element;
-var Events = Scroll.Events;
-
 
 require('../styles/slider.css');
 
@@ -46,6 +42,9 @@ export default class Input extends Component {
     stateEligibility.ACSChildCare = ACSChildCare(income, adults, children);
     stateEligibility.SchoolFood = SchoolFood(income, adults, children);
     stateEligibility.SNAP = SNAP(income, adults, children);
+    stateEligibility.HEAP = HEAP(income, adults, children);
+    stateEligibility.WIC = WIC(income, adults, children);
+    stateEligibility.TaxRefund = TaxRefund(income, adults, children);
 
     return stateEligibility;
   }
@@ -69,20 +68,18 @@ export default class Input extends Component {
         <Col xs={12} sm={12} md={12}>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
           <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
-          <TotalIncome family={this.state.family} />
         </Col>
       </Row>
       <Row className='pane' id='pane3' ref='pane3'>
         <Col xs={12} sm={12} md={12}>
           <IncomeSlider onChange={this._updateInput} />
-          <TotalIncome family={this.state.family} />
+          <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
         </Col>
       </Row>
       <Row className='pane' id='pane4' ref='pane4'>
         <Col xs={12} sm={12} md={12}>
           <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
         </Col>
-        <TotalIncome family={this.state.family} />
         <Waypoint onEnter={this._moveToHeader}></Waypoint>
       </Row>
     </Grid>
