@@ -15,7 +15,7 @@ export default class BenefitsList extends Component {
         if(input.hasOwnProperty(program)){
           if(input[program].eligible === true){
             let programName = program.toString();
-            output.push(<BenefitsProgramTag programName={programName} />);
+            output.push(<BenefitsProgramTag programName={programName} key={programName} />);
           }
         }
       }
@@ -27,7 +27,7 @@ export default class BenefitsList extends Component {
         if(input.hasOwnProperty(program)){
           if(input[program].eligible === false){
             let programName = program.toString();
-            output.push(<BenefitsProgramTag programName={programName} />);
+            output.push(<BenefitsProgramTag programName={programName} key={programName} />);
           }
         }
       }

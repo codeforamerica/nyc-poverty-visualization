@@ -67,14 +67,14 @@ export default class Input extends Component {
     <section>
       <Row className='familyPane pane' id='pane2' ref='pane2'>
         <Col xs={12} sm={12} md={12}>
-          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults'/>
-          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children'/>
+          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults' key='adults' />
+          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children' key='children' />
           <Col xs={6} sm={5} md={3} lg={4} xsOffset={4} smOffset={4} mdOffset={4} lgOffset={5}>
             {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
-              return(<img src='public/assets/img/adult.png' className='familyMember' />);
+              return(<img src='public/assets/img/adult.png' className='familyMember' key={i} />);
             })}
             {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
-              return(<img src='public/assets/img/child.png' className='familyMember' />);
+              return(<img src='public/assets/img/child.png' className='familyMember' key={i} />);
             })}
 
           </Col>

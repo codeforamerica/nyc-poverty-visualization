@@ -156,6 +156,8 @@ body {
   background-size: cover;
 }
 
+
+
 //Benefits Tags
 .BenefitsList {
   text-align: center;
@@ -206,9 +208,47 @@ body {
   //min-height: 400px;
 }
 
+.bar {
+  &.light-blue {
+    fill:  $light-blue;
+  }
+  &.blue {
+    fill:  $blue;
+  }
+  &.green {
+    fill:  $green;
+  }
+  &.light-green {
+    fill:  $light-green;
+  }
+  &.red {
+    fill:  $red;
+  }
+  &.orange {
+    fill:  $orange;
+  }
+}
+
 // Bar Chart
 .bar:hover {
-  fill: rgba(165, 42, 42, 1);
+  &.light-blue {
+    fill:  darken($light-blue, 20%);
+  }
+  &.blue {
+    fill:  darken($blue, 20%);
+  }
+  &.green {
+    fill:  darken($green, 20%);
+  }
+  &.light-green {
+    fill:  darken($light-green, 20%);
+  }
+  &.red {
+    fill:  darken($red, 20%);
+  }
+  &.orange {
+    fill:  darken($orange, 20%);
+  }
 }
 
 .axis {
