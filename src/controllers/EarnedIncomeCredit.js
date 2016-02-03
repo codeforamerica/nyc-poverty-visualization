@@ -65,7 +65,7 @@ const eicCalculator = function(income, numberParents, numberChildren){
       }
     }
 
-    if(numberParents === 2 && numberChildren > 2){
+    if(numberParents >= 2 && numberChildren > 2){
       if(income < 53267) {
         return true;
       } else {
