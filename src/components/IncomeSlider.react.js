@@ -8,7 +8,7 @@ import Rcslider from 'rc-slider';
 export default class IncomeSlider extends Component {
   render(){
     return(
-      <Row className='pane incomeSliderPane'>
+      <Row>
         <Col xs={9} sm={7} md={7} xsOffset={2} smOffset={2} mdOffset={2} lgOffset={2}>
           <p>Adjust the house hold yearly income:</p>
           <div className='familyChoice'>
