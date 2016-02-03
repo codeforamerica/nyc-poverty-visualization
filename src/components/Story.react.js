@@ -11,7 +11,7 @@ export default class IncomeSlider extends Component {
         Social Services and Benefits over Income
       </div>
       <div className='imagePane'>
-        
+
       </div>
       <div className='storyPane pane'>
         <div className='container'>
@@ -19,10 +19,10 @@ export default class IncomeSlider extends Component {
             <Row>
               <Col xs={11} md={10} lg={10} xsOffset={1} mdOffset={1} lgOffset={1}>
                 <p className='subHead'>
-                  A subhead that explains in more detail
+                  As the number of people in a household and the income of a family changes, so does their benefits eligibility
                 </p>
                 <p>
-                  The UK will contribute up to 275 million over the next two years to help Turkey address the consequences of the Syria conflict. In his Budget statement today the Chancellor announced that payment to the Civil List for calendar year 2011 will be unchanged at £7. New figures released this week show that the number of people in this age group who have a job rose by 50,000 during the last quarter. The emergency Budget will be held on Tuesday 22 June, the Chancellor announced today.
+                  This is an interactive data visualization based on research done by the Center of Economic Opportunity on some of the benefits available to indidviduals and families in poverty. It is not meant to be taken as a calculator, but as a tool to witness trends over time, the number of people in a family and the income of that family.
                 </p>
               </Col>
             </Row>
