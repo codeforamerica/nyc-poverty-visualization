@@ -11,7 +11,7 @@ export default class IncomeSlider extends Component {
         Social Services and Benefits over Income
       </div>
       <div className='imagePane'>
-        x
+        
       </div>
       <div className='storyPane pane'>
         <div className='container'>

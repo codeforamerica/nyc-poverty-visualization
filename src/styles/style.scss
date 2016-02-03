@@ -34,6 +34,22 @@ $light-green: rgba(157, 210, 121, 1);
 $green: rgba(53, 147, 124, 1);
 $orange: rgba(252, 145, 87, 1);
 
+$light-blue-light: lighten($light-blue, 10%);
+$blue-light: lighten($blue, 10%);
+$red-light: lighten($red, 10%);
+$light-green-light: lighten($light-green, 10%);
+$green-light: lighten($green, 10%);
+$orange-light: lighten($orange, 10%);
+
+// Modifying base styles
+h1 {
+  /* Housing Adjustment: */
+  font-weight: bold;
+  font-size: 39px;
+  color: #333333;
+  line-height: 47px;
+}
+
 
 // Modifying Bootstrap
 body {
@@ -116,6 +132,15 @@ body {
   line-height: 27px;
 }
 
+.footerPane {
+  background-color: rgba(1, 45, 64, 1);
+  /* The UK will contribu: */
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 27px;
+  min-height: 160px;
+}
+
 // Building Family
 .familyPane {
   background-color:rgba(202, 229, 249, 1);
@@ -155,6 +180,8 @@ body {
   @include background-image(url("/public/assets/img/kitten.jpg"));
   background-size: cover;
 }
+
+
 
 //Benefits Tags
 .BenefitsList {
@@ -206,9 +233,66 @@ body {
   //min-height: 400px;
 }
 
+.bar {
+  &.light-blue {
+    fill:  $light-blue;
+  }
+  &.blue {
+    fill:  $blue;
+  }
+  &.green {
+    fill:  $green;
+  }
+  &.light-green {
+    fill:  $light-green;
+  }
+  &.red {
+    fill:  $red;
+  }
+  &.orange {
+    fill:  $orange;
+  }
+
+  &.light-blue-light {
+    fill:  $light-blue-light;
+  }
+  &.blue-light {
+    fill:  $blue-light;
+  }
+  &.green-light {
+    fill:  $green-light;
+  }
+  &.light-green-light {
+    fill:  $light-green-light;
+  }
+  &.red-light {
+    fill:  $red-light;
+  }
+  &.orange-light {
+    fill:  $orange-light;
+  }
+}
+
 // Bar Chart
 .bar:hover {
-  fill: rgba(165, 42, 42, 1);
+  &.light-blue {
+    fill:  darken($light-blue, 20%);
+  }
+  &.blue {
+    fill:  darken($blue, 20%);
+  }
+  &.green {
+    fill:  darken($green, 20%);
+  }
+  &.light-green {
+    fill:  darken($light-green, 20%);
+  }
+  &.red {
+    fill:  darken($red, 20%);
+  }
+  &.orange {
+    fill:  darken($orange, 20%);
+  }
 }
 
 .axis {
