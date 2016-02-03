@@ -65,6 +65,31 @@ body {
   background-size: cover;
 }
 
+//Benefits Tags
+.BenefitsList {
+  text-align: center;
+  
+  .benefits-program-tag {
+    font-size: 16px;
+    padding: 10px 15px 0px 15px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 4px;
+  }
+  .eligible {
+    .benefits-program-tag {
+      color: white;
+      background-color: green;
+    }
+  }
+  .ineligible {
+    .benefits-program-tag {
+      color: white;
+      background-color: lightgray;
+    }
+  }
+}
+
 // For scroll purposes
 .pane {
   height:100vh;

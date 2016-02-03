@@ -1,36 +1,51 @@
 "use strict";
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 // import Chart, { Bar } from 'react-chartjs';
-import BarChart from './BarChart/BarChart.react.js';
-import _ from 'lodash';
 
 //Benefits Programs Components
-import Snap from './BenefitsPrograms/SNAP.react.js';
-import SchoolFood from './BenefitsPrograms/SchoolFood.react.js';
-import ACSChildCare from './BenefitsPrograms/ACSChildCare.react.js';
-import WIC from './BenefitsPrograms/WIC.react.js';
-import HEAP from './BenefitsPrograms/HEAP.react.js';
-import EIC from './BenefitsPrograms/TaxRefund.react.js';
-
-
+import BenefitsProgramTag from './BenefitsPrograms/BenefitsProgramTag.react.js';
 
 export default class BenefitsList extends Component {
   constructor(props) {
     super(props);
   }
-
+  eligiblePrograms(input){
+      var output = [];
+      for(var program in input){
+        if(input.hasOwnProperty(program)){
+          if(input[program].eligible === true){
+            let programName = program.toString();
+            output.push(<BenefitsProgramTag programName={programName} />);
+          }
+        }
+      }
+      return output;
+  }
+  ineligiblePrograms(input){
+      var output = [];
+      for(var program in input){
+        if(input.hasOwnProperty(program)){
+          if(input[program].eligible === false){
+            let programName = program.toString();
+            output.push(<BenefitsProgramTag programName={programName} />);
+          }
+        }
+      }
+      return output;
+  }
   render(){
-
     return(
         <div className='BenefitsList'>
-          <Snap eligibility={this.props.eligibility.SNAP} />
-          <SchoolFood eligibility={this.props.eligibility.SchoolFood} />
-          <ACSChildCare eligibility={this.props.eligibility.ACSChildCare} />
-          <WIC eligibility={this.props.eligibility.WIC} />
-          <HEAP eligibility={this.props.eligibility.HEAP} />
-          <EIC eligibility={this.props.eligibility.TaxRefund.eligible} taxRefund={this.props.eligibility.TaxRefund.refundAmount}/>
+          <h2>Here are the services they would likely qualify for:</h2>
+          <div className='eligible'>
+            {this.eligiblePrograms(this.props.eligibility)}
+          </div>
+          <hr/>
+          <p>We cannot determine eligibility for these services:</p>
+          <div className='ineligible'>
+            {this.ineligiblePrograms(this.props.eligibility)}
+          </div>
         </div>
     );
   }
