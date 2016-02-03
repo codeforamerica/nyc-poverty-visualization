@@ -320,9 +320,9 @@ body {
 		text-align: center;
 	}
   .disabled {
-    color: rgba(233, 233, 233, 1);
+    color: rgba(51, 51, 51, .8);
     cursor: not-allowed;
-    display: none;
+    //display: none;
   }
 }
 
