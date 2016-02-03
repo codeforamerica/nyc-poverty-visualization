@@ -72,28 +72,6 @@ body {
 }
 
 // Bar Chart
-
-.bar {
-  &:nth-of-type(1) {
-    fill: rgba(70, 130, 180, 1);
-  }
-  &:nth-of-type(2) {
-    fill: rgba(157, 88, 65, 1);
-  }
-  &:nth-of-type(3) {
-    fill: rgba(40, 45, 56, 1);
-  }
-  &:nth-of-type(4) {
-    fill: rgba(199, 89, 76, 1);
-  }
-  &:nth-of-type(5) {
-    fill: rgba(100, 208, 69, 1);
-  }
-  &:nth-of-type(6) {
-    fill: rgba(32, 144, 251, 1);
-  }
-}
-
 .bar:hover {
   fill: rgba(165, 42, 42, 1);
 }

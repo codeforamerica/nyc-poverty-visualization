@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 // import Chart, { Bar } from 'react-chartjs';
-import BarChart from 'react-bar-chart';
+import BarChart from './BarChart/BarChart.react.js';
 import _ from 'lodash';
 
 //Benefits Programs Components
@@ -19,7 +19,14 @@ import EIC from './BenefitsPrograms/TaxRefund.react.js';
 export default class BenefitsList extends Component {
   constructor(props) {
     super(props);
-    var defaultData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
+    var defaultData = [
+      {text: 'HEAP', value: _.random(0.2, 6.2), fill: 'rgba(31, 60, 150, 1)', style: { fill: 'purple'} },
+      {text: 'SNAP', value: _.random(0.2, 6.2), fill: 'rgba(107, 179, 192, 1)', style: { fill: 'purple'}},
+      {text: 'Tax Refunds', value: _.random(0.2, 6.2), fill: 'rgba(211, 120, 122, 1)', style: { fill: 'purple'}},
+      {text: 'WIC', value: _.random(0.2, 6.2), fill: 'rgba(199, 189, 127, 1)', style: { fill: 'purple'}},
+      {text: 'Childcare', value: _.random(0.2, 6.2), fill: 'rgba(101, 106, 117, 1)', style: { fill: 'purple'}},
+      {text: 'School Food', value: _.random(0.2, 6.2), fill: 'rgba(248, 189, 50, 1)', style: { fill: 'purple'}},
+    ];
     this.state = { dataSet: defaultData, width: 500 };
     this.generateNewNumbers = this.generateNewNumbers.bind(this);
   }
@@ -35,19 +42,13 @@ export default class BenefitsList extends Component {
     console.log(`The bin ${element.text} with id ${id} was clicked`);
   }
   generateNewNumbers() {
-    var newData = [_.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2), _.random(0.2, 6.2)];
-    this.setState({ dataSet: newData });
+    var data = this.state.dataSet;
+
+    //this.setState({ dataSet: data });
   }
   render(){
-    const data = [
-      {text: 'HEAP', value: 500, fill: 'purple' },
-      {text: 'SNAP', value: 300, fill: 'green'},
-      {text: 'Tax Refunds', value: 300, fill: 'green'},
-      {text: 'WIC', value: 300, fill: 'green'},
-      {text: 'Childcare', value: 300, fill: 'green'},
-      {text: 'School Food', value: 300, fill: 'green'},
-    ];
-    const margin = {top: 20, right: 20, bottom: 30, left: 40};
+    var data = this.state.dataSet;
+    const margin = {top: 20, right: 20, bottom: 80, left: 40};
 
     return(
       <div>
@@ -65,7 +66,7 @@ export default class BenefitsList extends Component {
           <ACSChildCare eligibility={this.props.eligibility.ACSChildCare} />
           <WIC eligibility={this.props.eligibility.WIC} />
           <HEAP eligibility={this.props.eligibility.HEAP} />
-          <EIC eligibility={this.props.eligibility.EIC} />
+          <EIC eligibility={this.props.eligibility.TaxRefund.eligible} taxRefund={this.props.eligibility.TaxRefund.refundAmount}/>
         </div>
       </div>
     );
