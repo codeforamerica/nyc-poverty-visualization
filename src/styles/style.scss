@@ -122,9 +122,9 @@ body {
 }
 
 .imagePane {
-  @include background-image(url("/public/assets/img/background.png"));
+  @include background-image(url("/public/assets/img/kids.png"));
   background-size: cover;
-  height: 340px;
+  height: 250px;
 }
 
 .storyPane {
