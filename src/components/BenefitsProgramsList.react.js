@@ -34,7 +34,6 @@ export default class BenefitsList extends Component {
       return output;
   }
   render(){
-    console.log(this.eligiblePrograms(this.props.eligibility).length);
     return(
         <div className='BenefitsList'>
           <div>
