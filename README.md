@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/codeforamerica/nyc-january-project.png?label=ready&title=Ready)](https://waffle.io/codeforamerica/nyc-january-project)
 Code for America NYC 2016 January Project
 =====================
 
