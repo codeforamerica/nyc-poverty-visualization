@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 // Bootstrap
 import { Row, Col } from 'react-bootstrap';
-// Pull data from Google Spreadsheets
-import fetchData from '../controllers/fetchData.js';
 
 //Components
 import ToggleButtons from './ToggleButtons.react.js';
