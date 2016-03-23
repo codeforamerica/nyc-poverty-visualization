@@ -44,7 +44,7 @@ export default class Input extends Component {
   componentDidMount(){
     var that = this;
     this.sheetData = function fetchDataFromSheet(){
-      var sheetData = TableTop.init({
+      TableTop.init({
         key: '1W9T8-TqoVILvFkvBvlv1BuPAyLrtb_M16KQChPppU-Y',
         callback: assignState
       });
@@ -52,6 +52,25 @@ export default class Input extends Component {
       function assignState(result){
         console.log("got here");
         console.log(result);
+
+        for(var i in result){
+          if(result.hasOwnProperty(i)){
+            var formattedArray = [];
+            var arrayLine = '';
+            var elementsArray = result[i].elements;
+            for(var j in elementsArray){
+              var object = elementsArray[j];
+              var tempArray = [];
+              for(var k in object){
+                if(object.hasOwnProperty(k)){
+                  tempArray.push(object[k]);
+                }
+              }
+              formattedArray.push(tempArray);
+            }
+            console.log(formattedArray)
+          }
+        }
         that.setState({
           spreadSheetData: result
         });
