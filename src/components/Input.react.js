@@ -3,6 +3,9 @@
 import React, { Component } from 'react';
 // Bootstrap
 import { Row, Col } from 'react-bootstrap';
+// Pull data from Google Spreadsheets
+import fetchData from '../controllers/fetchData.js';
+
 //Components
 import ToggleButtons from './ToggleButtons.react.js';
 import IncomeSlider from './IncomeSlider.react.js';
@@ -19,6 +22,8 @@ import SNAP from '../controllers/Snap.js';
 import HEAP from '../controllers/HEAP.js';
 import WIC from '../controllers/WIC.js';
 import TaxRefund from '../controllers/EarnedIncomeCredit.js';
+
+import TableTop from 'tabletop';
 
 // Waypoints
 import Waypoint from 'react-waypoint';
@@ -37,6 +42,27 @@ export default class Input extends Component {
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
   }
+
+  componentDidMount(){
+    var that = this;
+    this.sheetData = function fetchDataFromSheet(){
+      var sheetData = TableTop.init({
+        key: '1W9T8-TqoVILvFkvBvlv1BuPAyLrtb_M16KQChPppU-Y',
+        callback: assignState
+      });
+
+      function assignState(result){
+        console.log("got here");
+        console.log(result);
+        that.setState({
+          spreadSheetData: result
+        });
+        console.log(that.state);
+      }
+    };
+    this.sheetData();
+  }
+
   determineEligibility(stateEligibility) {
     let
       income = this.state.family.income,
