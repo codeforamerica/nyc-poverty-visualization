@@ -7,6 +7,7 @@
     "start": "node server.js"
   },
   "devDependencies": {
+    "chartjs": "^0.3.24",
     "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.4.2",
@@ -15,7 +16,6 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "webpack": "^1.12.11",
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.0.5",
     "babel-loader": "^6.0.1",
@@ -33,15 +33,22 @@
     "node-sass": "^3.4.2",
     "pg": "^4.4.3",
     "proxy-middleware": "^0.15.0",
+    "q": "^1.4.1",
     "rc-slider": "^3.3.1",
     "react": "^0.14.0",
     "react-bootstrap": "^0.28.2",
     "react-chartjs": "^0.7.3",
+    "react-d3": "^0.4.0",
+    "react-d3-basic": "^1.6.11",
+    "react-d3-components": "^0.6.4",
+    "react-d3-core": "^1.2.8",
     "react-dom": "^0.14.0",
     "react-scroll": "^0.35.0",
     "react-waypoint": "^1.2.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
-    "url": "^0.11.0"
+    "tabletop": "^1.4.3",
+    "url": "^0.11.0",
+    "webpack": "^1.12.11"
   }
 }

@@ -4,7 +4,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 // import Chart, { Bar } from 'react-chartjs';
 import { Row, Col } from 'react-bootstrap';
-import BarChart from './BarChart/BarChart.react.js';
+// charts on charts on charts
+import ReactD3 from 'react-d3-components';
+var BarChart = ReactD3.BarChart;
+
+
 import _ from 'lodash';
 import ProgramColors from '../controllers/ProgramColors.js';
 
@@ -18,16 +22,17 @@ export default class ProgramChart extends Component {
       {text: 'WIC', value: 0.1, programName: 'WIC', desc: "This program is run by the the New York State Department of Health that provides food and services free of charge to eligible women, infants and children. WIC offers nutrition education, breastfeeding support, referrals and a variety of nutritious foods to low-income pregnant, breastfeeding or postpartum women, infants and children up to age five to promote and support good health. WIC participants have longer, healthier pregnancies and fewer premature births. More information on the program and the application process is <a href='http://www.health.ny.gov/prevention/nutrition/wic/'>available here</a>."},
       {text: 'HEAP', value: 0.0, programName:'HEAP', desc: "HEAP is a federally funded program that assists low-income New Yorkers with the cost of heating their homes. HEAP also offers an emergency benefit for households in a heat or heat related energy emergency. More information on the program and the application process is <a href='http://otda.ny.gov/programs/heap/'>available here</a>." }
     ];
-    this.state = { dataSet: defaultData, programCurrent: {}, width: 500 };
+    var data = [{
+      label: 'somethingA',
+      values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
+    }];
+    this.state = { dataSet: defaultData, programCurrent: {}, width: 500, sampleData: data };
     this.handleBarClick = this.handleBarClick.bind(this);
     this.programInfo = this.programInfo.bind(this);
   }
   componentDidMount()  {
-    var domNode = ReactDOM.findDOMNode(this);
-    this.setState({width: domNode.offsetWidth}); // Need to set it at the start, too.
-    window.onresize = () => {
-     this.setState({width: domNode.offsetWidth});
-    };
+
+
   }
   handleBarClick(element, id){
     var program = this.state.programCurrent;
@@ -53,28 +58,17 @@ export default class ProgramChart extends Component {
     return(<div></div>);
   }
   render(){
-    var data = this.state.dataSet;
-    var programCurrent = this.state.programCurrent;
 
-    const margin = {top: 20, right: 20, bottom: 80, left: 40};
-
-    _.each(data, function(d) {
-      d.class = ProgramColors(d.programName);
-      if (programCurrent.name && programCurrent.name != d.text) {
-        d.class = ProgramColors(d.programName) + '-light';
-      }
-    });
 
     return(
         <div>
-          <div className='text-center'><h3>Marginal Effects of a Service on CEO Poverty Rate</h3></div>
+          <div key="25" id="chartjs-test"></div>
+          <div className='text-center'><h1 className='blue'>Marginal Effects of a Service on CEO Poverty Rate</h1></div>
           <BarChart
-            ylabel='%'
-            width={this.state.width}
-            height={400}
-            margin={margin}
-            data={data}
-            onBarClick={this.handleBarClick }/>
+        data={this.state.sampleData}
+        width={600}
+        height={400}
+        margin={{top: 10, bottom: 50, left: 50, right: 10}}/>
             {this.programInfo()}
         </div>
     );

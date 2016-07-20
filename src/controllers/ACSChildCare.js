@@ -1,4 +1,5 @@
 "use strict";
+
 //[#people, monthly income]
 const screeningTable = [
   [1, 973],
