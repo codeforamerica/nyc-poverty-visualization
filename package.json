@@ -7,6 +7,7 @@
     "start": "node server.js"
   },
   "devDependencies": {
+    "chartjs": "^0.3.24",
     "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.4.2",
@@ -37,6 +38,10 @@
     "react": "^0.14.0",
     "react-bootstrap": "^0.28.2",
     "react-chartjs": "^0.7.3",
+    "react-d3": "^0.4.0",
+    "react-d3-basic": "^1.6.11",
+    "react-d3-components": "^0.6.4",
+    "react-d3-core": "^1.2.8",
     "react-dom": "^0.14.0",
     "react-scroll": "^0.35.0",
     "react-waypoint": "^1.2.3",

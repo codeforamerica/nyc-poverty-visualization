@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 // Bootstrap
-import { Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
 
 //Components
 import ToggleButtons from './ToggleButtons.react.js';
@@ -22,9 +22,6 @@ import WIC from '../controllers/WIC.js';
 import TaxRefund from '../controllers/EarnedIncomeCredit.js';
 
 import TableTop from 'tabletop';
-
-// Waypoints
-import Waypoint from 'react-waypoint';
 
 require('../styles/slider.css');
 
@@ -63,7 +60,10 @@ export default class Input extends Component {
               var tempArray = [];
               for(var k in object){
                 if(object.hasOwnProperty(k)){
-                  tempArray.push(object[k]);
+                  var unformattedArrayLine = object[k];
+                  unformattedArrayLine.toString();
+                  unformattedArrayLine.replace(/[$]/, '');
+                  tempArray.push(unformattedArrayLine);
                 }
               }
               formattedArray.push(tempArray);
@@ -111,38 +111,47 @@ export default class Input extends Component {
   // Render it all
   render() {
     return(
-    <section>
-      <Row className='familyPane pane' id='pane2' ref='pane2'>
-        <Col xs={12} sm={12} md={12}>
-          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults' key='adults' />
-          <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children' key='children' />
-          <Col xs={6} sm={5} md={3} lg={4} xsOffset={4} smOffset={4} mdOffset={4} lgOffset={5}>
+    <Grid>
+      <section id="input">
+        <Row className='familyPane pane' id='pane2' ref='pane2'>
+          <Col xs={12} sm={6} md={6}>
+            <h1 className='blue'>Family Composition</h1>
+            <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults' key='adults' />
+            <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children' key='children' />
+          </Col>
+          <Col className="text-center" xs={12} sm={5} md={5}>
             {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
-              return(<img src='public/assets/img/adult.png' className='familyMember' key={i} />);
+              return(<img src='public/assets/img/parent-icon.png' className='familyMember' key={i} />);
             })}
             {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
-              return(<img src='public/assets/img/child.png' className='familyMember' key={i} />);
+              return(<img src='public/assets/img/child-icon.png' className='familyMember' key={i} />);
             })}
+            <PovertyThreshold povertyThreshold={this.state.CEOPovertyThreshold} family={this.state.family} />
+            <Button bsSize='large' href="#income">Next Section <Glyphicon glyph='chevron-right'/></Button>
           </Col>
-        </Col>
-        <Col className="text-center" xs={12} sm={12} md={12}>
-          <PovertyThreshold povertyThreshold={this.state.CEOPovertyThreshold} family={this.state.family} />
-        </Col>
-      </Row>
-      <Row className='pane incomeSliderPane' id='pane3' ref='pane3'>
-        <Col xs={8} sm={8} md={8}  xsOffset={2} smOffset={2} mdOffset={2} lgOffset={2}>
-          <IncomeSlider onChange={this._updateInput} />
-          <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
-          <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
-        </Col>
-      </Row>
-      <Row className='pane elgibilityPane' id='pane4' ref='pane4'>
-        <Col xs={12} sm={12} md={12}>
-          <ProgramChart family={this.state.family} eligibility={this.state.eligibility} />
-        </Col>
-        <Waypoint onEnter={this._moveToHeader}></Waypoint>
-      </Row>
-    </section>
+        </Row>
+        </section>
+        <section id='income'>
+          <Row className='pane incomeSliderPane' id='pane3' ref='pane3'>
+            <Col xs={12} sm={5} md={5}>
+              <h1 className='blue'>Income</h1>
+              <h4>A family's income influences which programs they will be eligible for, and these programs can determine whether or not the family is below the poverty threshold.</h4>
+              <IncomeSlider onChange={this._updateInput} />
+            </Col>
+            <Col xs={12} sm={6} md={6} mdOffset={1}>
+              <TotalIncome family={this.state.family} taxRefund={this.state.eligibility.TaxRefund.refundAmount} />
+              <BenefitsList family={this.state.family} eligibility={this.state.eligibility} />
+            </Col>
+          </Row>
+        </section>
+        <section>
+          <Row className='pane elgibilityPane' id='pane4' ref='pane4'>
+            <Col xs={12} sm={12} md={12}>
+              <ProgramChart family={this.state.family} eligibility={this.state.eligibility} />
+            </Col>
+          </Row>
+        </section>
+    </Grid>
     );
   }
 }

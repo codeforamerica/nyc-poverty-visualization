@@ -1,7 +1,7 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button, Panel } from 'react-bootstrap';
+import { Grid, Row, Col, Button, ButtonGroup, Panel } from 'react-bootstrap';
 
 export default class TotalIncome extends Component {
   disableButton(current){
@@ -24,20 +24,14 @@ export default class TotalIncome extends Component {
     return(
         <Grid fluid>
           <Row className='toggle'>
-            <Col xs={10} sm={10} md={10} lg={10} xsOffset={2} smOffset={2} mdOffset={2} lgOffset={2}>
+            <Col xs={10} sm={10} md={10} lg={10}>
               <p>Choose the number of {type} in the household:</p>
             </Col>
-            <Col xs={5} sm={3} md={3} lg={3} xsOffset={1} smOffset={3} mdOffset={3} lgOffset={3} className='choice'>
-              <div className={disabledMinus} onClick={() => disabledMinus == 'disabled' ? '' : this.props.onClick(current - 1, type)}>
-                <i className='fa fa-minus fa-4x'></i>
-              </div>
-            </Col>
-            <Col xs={1} sm={1} md={1} lg={1} className='value'>{current}</Col>
-            <Col xs={5} sm={3} md={3} lg={3} className='choice'>
-              <div className={disabledPlus} onClick={() => disabledPlus == 'disabled' ? '' : this.props.onClick(current + 1, type)}>
-                <i className='fa fa-plus fa-4x'></i>
-              </div>
-            </Col>
+            <ButtonGroup bsSize='large'>
+              <Button className={disabledMinus} onClick={() => disabledMinus == 'disabled' ? '' : this.props.onClick(current - 1, type)}><i className='fa fa-minus fa-3x'></i></Button>
+              <Button className='value'>{current}</Button>
+              <Button className={disabledPlus} onClick={() => disabledPlus == 'disabled' ? '' : this.props.onClick(current + 1, type)}><i className='fa fa-plus fa-3x'></i></Button>
+            </ButtonGroup>
           </Row>
         </Grid>
     );

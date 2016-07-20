@@ -10,7 +10,7 @@ export default class TotalIncome extends Component {
 
   render() {
     return(
-      <h2 className="text-center">This family would make ${formatDollars(this.props.family.income)} a year and would be eligible to receive ${formatDollars(this.props.taxRefund)} in tax credits.</h2>
+      <h2 className="text-center">This family would make <span className='figure'>${formatDollars(this.props.family.income)}</span> a year and would be eligible to receive <span className='figure'>${formatDollars(this.props.taxRefund)}</span> in tax credits.</h2>
     );
   }
 }
