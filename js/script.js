@@ -35,7 +35,7 @@ $(document).ready(function(){
   var chart0Constructor = new Chart(chart0, {
     type: 'doughnut',
     data: {
-      labels: ["% Below CEO Poverty Threshold", "% Above CEO Poverty Threshold"],
+      labels: ["% Below Threshold", "% Above Threshold"],
       datasets: [
         {
           label: 'Official Poverty Measure',

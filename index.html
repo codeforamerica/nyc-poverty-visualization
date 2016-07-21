@@ -21,6 +21,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <!--Fake Masthead-->
+  <img id="header" style="width: 100%" src="img/NYCgov_masthead.png">
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
@@ -52,16 +54,45 @@
         <!-- /.container -->
     </nav>
 
+    <div class="container" />
+    <div class="col-md-3">
+      <div class="list-group">
+        <span href="#" class="list-group-item">
+            Submenu
+        </span>
+        <a href="#" class="list-group-item">
+          Lorem ipsum
+        </a>
+        <a href="#" class="list-group-item">
+          Lorem ipsum
+        </a>
+        <a href="#" class="list-group-item">
+          Lorem ipsum
+        </a>
+        <a href="#" class="list-group-item">
+          Lorem ipsum
+        </a>
+        <a href="#" class="list-group-item">
+          Lorem ipsum
+        </a>
+        <a href="#" class="list-group-item">
+          Lorem ipsum
+        </a>
+    </div>
+    </div>
+
+    <div class="col-md-9">
     <!-- Intro Header -->
     <section class="intro section-blue-manhattan">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
-                    <div class="col-sm-5">
-                      <h1>Measuring Poverty in NYC</h1>
+                  <h1>Measuring Poverty in NYC</h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 col-sm-offset-1">
                       <p>How do policy makers in New York City calculate the city's poverty rate? NYC faces some unique challenges due to its size and cost of living. In the next few minutes, we'll show you how the city calculates whether or not a family is in poverty.</p>
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         <canvas id="chart0" width="400" height="200"></canvas>
                     </div>
                     <div class="col-sm-12">
@@ -70,13 +101,11 @@
                       </a>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="section-1" class="section-white">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                       <h1>What is the poverty threshold in NYC?</h1>
@@ -92,13 +121,11 @@
                         </a>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="section-equation" class="section-blue-subway">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                   <div class="col-md-12">
                     <h1>How do we know if a family is above their poverty threshold?</h1>
@@ -147,17 +174,14 @@
                     <i class="fa fa-angle-double-down animated"></i>
                   </a>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="section-3" class="section-white">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                       <h1>How does this work in practice?</h1>
-                      <p>Adjust this household's income using the slider to see how their poverty threshold, benefits, and costs change.</p>
                     </div>
                     <div class="col-md-12">
                       <div id="react-income-slider"></div>
@@ -170,13 +194,11 @@
                     </a>
                   </div>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="section-2" class="section-blue-subway">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-4">
                       <h1>Employment Ratios</h1>
@@ -194,13 +216,11 @@
                         </a>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="section-3" class="section-white">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-8">
                         <canvas id="chart3" width="400" height="200"></canvas>
@@ -218,13 +238,11 @@
                       </a>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="section-4" class="section-white">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-8">
                     </div>
@@ -241,14 +259,12 @@
                       </a>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
 
     <section id="section-4" class="section-blue-manhattan">
         <div class="intro-body">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-4">
                       <h1>Income Trends</h1>
@@ -266,7 +282,6 @@ was only at 97.2 percent of its 2008 value.</p>
                     <i class="fa fa-angle-double-down animated"></i>
                   </a>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -289,6 +304,9 @@ was only at 97.2 percent of its 2008 value.</p>
             </div>
         </div>
     </section>
+  </div>
+</div>
+<img id="footer" style="width: 100%" src="img/NYCgov_footer.png">
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
