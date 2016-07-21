@@ -19,7 +19,7 @@ export default class BenefitsTable extends Component {
           <tr>
             <td><Glyphicon glyph="check" /></td>
             <td>WIC</td>
-            <td>$16,000</td>
+            <td>${ formatDollars(this.props.eligibility.WIC.wicAmount) }</td>
           </tr>
           <tr>
             <td></td>
@@ -29,12 +29,12 @@ export default class BenefitsTable extends Component {
           <tr>
             <td><Glyphicon glyph="check" /></td>
             <td>HEAP</td>
-            <td>$16,000</td>
+            <td>$ --</td>
           </tr>
           <tr>
             <td><Glyphicon glyph="check" /></td>
             <td>School Lunches</td>
-            <td>$16,000</td>
+            <td>${ formatDollars(this.props.eligibility.SchoolFood.lunchValue) }</td>
           </tr>
         </tbody>
       </Table>
