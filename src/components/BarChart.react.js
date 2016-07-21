@@ -18,7 +18,7 @@ export default class BarChart extends Component {
 
 	render () {
 		return (
-			<section>
+			<div>
 
 				<Charts
 					data={ this.props.data }
@@ -29,7 +29,7 @@ export default class BarChart extends Component {
 				/>
 
 				<Legend labels={ this.state.labels } colors={ this.state.colors } />
-			</section>
+			</div>
 		);
 	}
 };

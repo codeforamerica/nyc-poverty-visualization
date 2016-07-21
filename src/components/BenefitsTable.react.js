@@ -10,6 +10,13 @@ export default class BenefitsTable extends Component {
     console.log(this.props.eligibility)
     return(
       <Table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Program</th>
+            <th>Value</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
             <td><Glyphicon glyph="check" /></td>

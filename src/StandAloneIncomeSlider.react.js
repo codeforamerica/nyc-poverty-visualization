@@ -34,11 +34,15 @@ export default class StandAloneThreshold extends Component {
     super();
     this.state = {
       family: { adults: 2, children: 2, income: 17500 },
-      eligibility: {}
+      eligibility: {},
+      totalBenefits: 0,
+      combineIncomeBenefits: false
     };
     this._updateInput = this._updateInput.bind(this);
+    this.combineIncomeBenefits = this.combineIncomeBenefits.bind(this);
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.totalBenefits = this.state.eligibility.SNAP.snapAmount + this.state.eligibility.WIC.wicAmount + this.state.eligibility.TaxRefund.refundAmount + this.state.eligibility.SchoolFood.lunchValue;
 
   }
 
@@ -64,6 +68,30 @@ export default class StandAloneThreshold extends Component {
     this.setState({family: family });
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.totalBenefits = this.state.eligibility.SNAP.snapAmount + this.state.eligibility.WIC.wicAmount + this.state.eligibility.TaxRefund.refundAmount + this.state.eligibility.SchoolFood.lunchValue;
+  }
+
+  combineIncomeBenefits(){
+    if(this.state.combineIncomeBenefits === false){
+      let combinedValue = this.state.family.income + this.state.totalBenefits;
+      this.setState({
+        combineIncomeBenefits: true,
+        family: {
+          income: combinedValue,
+          adults: this.state.family.adults,
+          children: this.state.family.children
+        }
+      })
+    } else {
+      this.setState({
+        combineIncomeBenefits: true,
+        family: {
+          income: this.state.family.income,
+          adults: this.state.family.adults,
+          children: this.state.family.children
+        }
+      })
+    }
   }
 
   render(){
@@ -73,8 +101,11 @@ export default class StandAloneThreshold extends Component {
           <p>Adjust this household's income and composition using the sliders to see how their poverty threshold, benefits, and costs change.</p>
         </Col>
         <Col xs={12} sm={4} md={4}>
-          <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${formatDollars(this.state.family.income)}</span> a year.</p>
+          <span>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${formatDollars(this.state.family.income)}</span> a year.</span>
+          <br/>
+          <br/>
           <span>Income (${formatDollars(this.state.family.income)})</span>
+
           <HouseholdSlider target='income' min={10000} max={50000} default={this.state.family.income} onChange={this._updateInput} />
           <span>Adults ({this.state.family.adults})</span>
           <HouseholdSlider target='adults' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />
@@ -82,12 +113,16 @@ export default class StandAloneThreshold extends Component {
           <HouseholdSlider target='children' min={0} max={6} default={this.state.family.children} onChange={this._updateInput} />
         </Col>
         <Col xs={12} sm={4} md={4}>
-          <p>The benefits a family receives can put them above or below the poverty threshold.</p>
+          <span>The benefits a family receives can put them above or below the poverty threshold.</span>
           <BenefitsTable
             taxCreditAmount={this.state.eligibility.TaxRefund.refundAmount}
             eligibility={this.state.eligibility}
           />
--        </Col>
+          <span>Total potential benefits: <span className="figure">${formatDollars(this.state.totalBenefits)}</span></span>
+          <br/>
+          <br/>
+          <Button onClick={this.combineIncomeBenefits}>Add Benefits to Income</Button>
+        </Col>
         <Col xs={12} sm={4} md={4}>
           <BarChart data={[[[this.state.family.income],[this.state.CEOPovertyThreshold]]]} />
         </Col>

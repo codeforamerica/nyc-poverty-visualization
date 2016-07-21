@@ -39,6 +39,7 @@ const checkFreeLunchEligibility = function(yearlyIncome, numberAdults, numberChi
     freeLunchallowedIncome = freeLunchTable[numberAdults + numberChildren -1][1],
     reducedLunchallowedIncome = reducedLunchTable[numberAdults + numberChildren -1][1],
     lunchValue,
+
     familySize = numberAdults + numberChildren,
     tableRow = mealValue[familySize - 1];
 
