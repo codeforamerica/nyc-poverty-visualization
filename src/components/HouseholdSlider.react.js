@@ -11,9 +11,9 @@ export default class IncomeSlider extends Component {
       <Row>
         <Col xs={12} sm={12} md={12}>
           <div className='familyChoice'>
-            <Rcslider min={0} max={50000} defaultValue={17500} onChange={(value) => this.props.onChange(value, 'income')} />
-            <label style={{float:'left'}}>$0</label>
-            <label style={{float:'right'}}>$50,000</label>
+            <Rcslider min={this.props.min} max={this.props.max} defaultValue={this.props.default} onChange={(value) => this.props.onChange(value, this.props.target)} />
+            <label style={{float:'left'}}>{this.props.min}</label>
+            <label style={{float:'right'}}>{this.props.max}</label>
           </div>
         </Col>
       </Row>

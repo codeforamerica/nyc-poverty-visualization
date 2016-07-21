@@ -6,8 +6,7 @@ import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import CEOPovertyThreshold from './controllers/CEOPovertyThreshold.js';
 import ToggleButtons from './components/ToggleButtons.react.js';
 import PovertyThreshold from './components/PovertyThreshold.react.js';
-
-
+import HouseholdSlider from './components/HouseholdSlider.react.js';
 
 
 export default class StandAloneThreshold extends Component {
@@ -35,8 +34,8 @@ export default class StandAloneThreshold extends Component {
       <div id="input">
         <Row className='familyPane pane' id='pane2' ref='pane2'>
           <Col xs={12} sm={6} md={6}>
-            <ToggleButtons onClick={this._updateInput} family={this.state.family} type='adults' key='adults' />
-            <ToggleButtons onClick={this._updateInput} family={this.state.family} type='children' key='children' />
+            <HouseholdSlider target='adults' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />
+            <HouseholdSlider target='children' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />
           </Col>
           <Col className="text-center" xs={12} sm={5} md={5}>
             {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {

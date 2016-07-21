@@ -63,10 +63,6 @@ hr {
   border-color: $light-blue;
 }
 
-[class*="col-"] {
-  padding-left: 0;
-  padding-right: 0;
-}
 .row {
   margin-left: 0;
   margin-right: 0;
@@ -356,5 +352,5 @@ hr {
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 3px;
-  background-color: rgba(0,85,149,0.89);
+  background-color: rgb(26, 179, 233);
 }
