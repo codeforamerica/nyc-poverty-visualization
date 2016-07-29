@@ -8,7 +8,7 @@ var babel = require('babelify');
 var server = require('gulp-server-livereload');
 
 function compile(watch) {
-  var bundler = watchify(browserify('./js/main.js', { debug: true }).transform(babel));
+  var bundler = watchify(browserify({ entries: ['js/main.js'], debug: true }).transform(babel, {presets: ["es2015"]}));
 
   function rebundle() {
     bundler.bundle()

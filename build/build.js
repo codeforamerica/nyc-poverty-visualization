@@ -24,10 +24,16 @@ var _CEOPovertyThreshold2 = _interopRequireDefault(_CEOPovertyThreshold);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// lets set our 'globals' - the things that you can change down the page
+var adults = 0; // Lets get the pieces
+
+var children = 0;
+var income = 0;
+
 // Have we changed the number of children or parents?
-$('#selectAdults').change(function () {
-  console.log("Changed number of parents");
-}); // Lets get the pieces
+$('#selectAdults').change(function (e) {
+  console.log(this.value);
+});
 
 },{"./calc/CEOPovertyThreshold.js":1}]},{},[2])
 
