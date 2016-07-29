@@ -39,7 +39,7 @@
               <label for="selectChildren">Children</label>
               <select class="form-control" id="selectChildren">
                 <option>0</option>
-                <option>1</option>
+                <option selected>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
@@ -50,7 +50,7 @@
               <label for="selectAdults">Adults</label>
               <select class="form-control" id="selectAdults">
                 <option>1</option>
-                <option>2</option>
+                <option selected>2</option>
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
@@ -59,8 +59,8 @@
           </div>
           <div class="col-md-6">
             <div class='lead'>
-              <p>The poverty threshold for a family with <mark>2</mark> adults and <mark>2</mark> children is <mark>$31,156</mark>.</p>
-              <p>In other words, if this family's income is below <mark>$31,156</mark>, they would be considred to be in poverty.</p>
+              <p>The poverty threshold for a family with <mark><span class='adultCount'></span></mark> adults and <mark><span class='childrenCount'></span></mark> children is <mark><span class='ceoCount'></span></mark>.</p>
+              <p>In other words, if this family's income is below <mark><span class='ceoCount'></span></mark>, they would be considred to be in poverty.</p>
             </div>
           </div>
         </section>

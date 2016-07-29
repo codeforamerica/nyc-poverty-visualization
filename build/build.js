@@ -400,13 +400,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // lets set our 'globals' - the things that you can change down the page
 // Lets get the pieces
-var adults = 0;
-var children = 0;
-var income = 0;
+var adults = 2;
+var children = 1;
+var income = 1000;
+var ceo = (0, _formatDollars2.default)((0, _CEOPovertyThreshold2.default)(income, adults, children));
+
+function inject() {
+  // We have to recalculate the CEO
+  ceo = (0, _formatDollars2.default)((0, _CEOPovertyThreshold2.default)(income, adults, children));
+
+  $('.adultCount').html(adults);
+  $('.childrenCount').html(children);
+  $('.ceoCount').html(ceo);
+}
+
+// Lets inject the starting values
+inject();
 
 // Have we changed the number of children or parents?
 $('#selectAdults').change(function (e) {
-  console.log(this.value);
+  adults = parseInt(this.value);
+  inject(); // Change all of the values
 });
 
 },{"./calc/ACSChildCare.js":1,"./calc/CEOPovertyThreshold.js":2,"./calc/EarnedIncomeCredit.js":3,"./calc/HEAP.js":4,"./calc/ProgramColors.js":5,"./calc/SchoolFood.js":6,"./calc/Snap.js":7,"./calc/WIC.js":8,"./calc/formatDollars.js":9,"./calc/taxRefundTable.js":10}]},{},[11])
