@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import CEOPovertyThreshold from './controllers/CEOPovertyThreshold.js';
-import ToggleButtons from './components/ToggleButtons.react.js';
 import PovertyThreshold from './components/PovertyThreshold.react.js';
 import HouseholdSlider from './components/HouseholdSlider.react.js';
 

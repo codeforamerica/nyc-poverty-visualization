@@ -6,7 +6,6 @@ import { Row, Col, Button, Glyphicon, Table } from 'react-bootstrap';
 import HouseholdSlider from './components/HouseholdSlider.react.js';
 
 import TotalIncome from './components/TotalIncome.react.js';
-import BenefitsList from './components/BenefitsProgramsList.react.js'
 import IncomeTable from './components/IncomeTable.react.js';
 import BenefitsTable from './components/BenefitsTable.react.js';
 import CostsTable from './components/CostsTable.react.js';

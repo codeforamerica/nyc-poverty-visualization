@@ -7,7 +7,6 @@ import { Table, Panel } from 'react-bootstrap';
 
 export default class CostsTable extends Component {
   render() {
-    console.log('got here')
     return(
     <Panel>
       <Table>

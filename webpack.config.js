@@ -35,9 +35,24 @@ module.exports = {
         loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react'],
         include: path.join(__dirname, 'src')
       },
-      { test: /\.scss$/, loader: "style!css!sass?includePaths[]=" + bourbon},
-      { test: /\.css$/,
-        loader: 'style!css' }
+
+      {
+        test: /\.scss$/,
+        loader: "style!css!sass!img?includePaths[]=" + bourbon
+      },
+
+      {
+        test: /\.css$/,
+        loader: 'style!css'
+      },
+
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+          loaders: [
+              'url?limit=8192',
+              'img'
+          ]
+      },
     ]
   }
 };
