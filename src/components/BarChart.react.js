@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import formatDollars from '../controllers/formatDollars.js';
+import commaNumber from 'comma-number';
 
 function compareNumbers(a, b) {
   return a - b;
@@ -112,7 +112,7 @@ var Charts = React.createClass({
 								//style['right'] = ((sortedSerie.indexOf(item) / (serie.length + 1)) * 100) + '%';
 								// style['left'] = (itemIndex * 10) + '%';
 							//}
-              var formattedItem = formatDollars(item)
+              var formattedItem = commaNumber(item)
 						 return (
 							 <div
 							 	className={ 'Charts--item ' + (self.props.grouping) }
