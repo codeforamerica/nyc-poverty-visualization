@@ -22,7 +22,7 @@ import HEAP from './controllers/HEAP.js';
 import WIC from './controllers/WIC.js';
 import TaxRefund from './controllers/EarnedIncomeCredit.js';
 
-import formatDollars from './controllers/formatDollars.js';
+import commaNumber from 'comma-number';
 
 import Rcslider from 'rc-slider';
 
@@ -72,8 +72,8 @@ export default class StandAloneThreshold extends Component {
           <p>Adjust this household's income and composition using the sliders to see how their poverty threshold, benefits, and costs change.</p>
         </Col>
         <Col xs={12} sm={4} md={4}>
-          <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${formatDollars(this.state.family.income)}</span> a year.</p>
-          <span>Income (${formatDollars(this.state.family.income)})</span>
+          <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year.</p>
+          <span>Income (${commaNumber(this.state.family.income)})</span>
           <HouseholdSlider target='income' min={10000} max={50000} default={this.state.family.income} onChange={this._updateInput} />
           <span>Adults ({this.state.family.adults})</span>
           <HouseholdSlider target='adults' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />

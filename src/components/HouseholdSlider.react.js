@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import Rcslider from 'rc-slider';
 
 
-export default class IncomeSlider extends Component {
+export default class HouseholdSlider extends Component {
   render(){
     return(
       <Row>
