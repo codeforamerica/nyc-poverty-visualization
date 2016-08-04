@@ -7,17 +7,32 @@ import CEOPovertyThreshold from './controllers/CEOPovertyThreshold.js';
 import PovertyThreshold from './components/PovertyThreshold.react.js';
 import HouseholdSlider from './components/HouseholdSlider.react.js';
 
+// Alt
+import ThresholdStore from '../stores/ThresholdStore.js';
+import ThresholdActions from '../actions/ThresholdActions.js';
+
 
 export default class StandAloneThreshold extends Component {
   constructor() {
     super();
     this._updateInput = this._updateInput.bind(this);
     this.state = {
-      family: { adults: 2, children: 2, income: 17500 },
       eligibility: {},
       testing: false
     };
+
+    this.state.family = TresholdStore.getState();
+
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.onChangeThreshold = this.onChangeThreshold.bind(this);
+  }
+
+  componentDidMount() {
+    ThresholdStore.listen(this.onChangeThreshold);
+  }
+
+  componentWillUnmount() {
+    ThresholdStore.unlisten(this.onChangeThreshold);
   }
 
   _updateInput(value, setting) {
