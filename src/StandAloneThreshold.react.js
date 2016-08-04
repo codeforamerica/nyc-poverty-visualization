@@ -41,7 +41,8 @@ export default class StandAloneThreshold extends Component {
   _updateInput(value, setting) {
     var family = this.state.family;
     family[setting] = value;
-    this.setState({family: family });
+    // this.setState({family: family });
+    ThresholdActions.updateFamily(family);
     //this.state.eligibility = this.determineEligibility(this.state.eligibility);
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }

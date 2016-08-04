@@ -9,9 +9,11 @@ import TotalIncome from './components/TotalIncome.react.js';
 import IncomeTable from './components/IncomeTable.react.js';
 import BenefitsTable from './components/BenefitsTable.react.js';
 import CostsTable from './components/CostsTable.react.js';
-
 import BarChart from './components/BarChart.react.js';
 
+// Alt
+import ThresholdStore from './stores/ThresholdStore.js';
+import ThresholdActions from './actions/ThresholdActions.js';
 
 //Benefits Logic Helpers
 import CEOPovertyThreshold from './controllers/CEOPovertyThreshold.js';
@@ -32,9 +34,10 @@ export default class StandAloneThreshold extends Component {
   constructor() {
     super();
     this.state = {
-      family: { adults: 2, children: 2, income: 17500 },
       eligibility: {}
     };
+    this.state.family = ThresholdStore.getState().family; // Getting this from alt.js
+
     this._updateInput = this._updateInput.bind(this);
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
@@ -60,7 +63,8 @@ export default class StandAloneThreshold extends Component {
   _updateInput(value, setting) {
     var family = this.state.family;
     family[setting] = value;
-    this.setState({family: family });
+    // this.setState({family: family });
+    ThresholdActions.updateFamily(family);
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
