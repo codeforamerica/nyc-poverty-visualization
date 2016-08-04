@@ -33,15 +33,12 @@ import Rcslider from 'rc-slider';
 export default class StandAloneThreshold extends Component {
   constructor() {
     super();
-    this.state = {
-      eligibility: {}
-    };
-    this.state.family = ThresholdStore.getState().family; // Getting this from alt.js
+    this.state = ThresholdStore.getState(); // Getting this from alt.js
 
     this._updateInput = this._updateInput.bind(this);
     this.onChangeThreshold = this.onChangeThreshold.bind(this); // Don't really need both of these but SHRUG
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   componentDidMount() {
@@ -53,7 +50,7 @@ export default class StandAloneThreshold extends Component {
   }
 
   onChangeThreshold(family ) { // Changing the family via alt
-    this.setState({ family: family });
+    this.setState(family);
   }
 
   determineEligibility(stateEligibility) {
@@ -78,7 +75,7 @@ export default class StandAloneThreshold extends Component {
     // // this.setState({family: family });
     ThresholdActions.updateFamily(family);
     // this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   render(){

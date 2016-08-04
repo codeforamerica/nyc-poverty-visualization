@@ -15,14 +15,10 @@ export default class StandAloneThreshold extends Component {
   constructor() {
     super();
     this._updateInput = this._updateInput.bind(this);
-    this.state = {
-      eligibility: {},
-      testing: false
-    };
 
-    this.state.family = ThresholdStore.getState().family; // Getting this from alt.js
+    this.state = ThresholdStore.getState(); // Getting this from alt.js
 
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
     this.onChangeThreshold = this.onChangeThreshold.bind(this);
   }
 
@@ -35,7 +31,7 @@ export default class StandAloneThreshold extends Component {
   }
 
   onChangeThreshold(family ) { // Changing the family via alt
-    this.setState({ family: family });
+    this.setState(family);
   }
 
   _updateInput(value, setting) {
@@ -44,7 +40,7 @@ export default class StandAloneThreshold extends Component {
     // this.setState({family: family });
     ThresholdActions.updateFamily(family);
     //this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   render(){
