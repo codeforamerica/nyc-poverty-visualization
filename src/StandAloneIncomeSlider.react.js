@@ -39,9 +39,21 @@ export default class StandAloneThreshold extends Component {
     this.state.family = ThresholdStore.getState().family; // Getting this from alt.js
 
     this._updateInput = this._updateInput.bind(this);
+    this.onChangeThreshold = this.onChangeThreshold.bind(this); // Don't really need both of these but SHRUG
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+  }
 
+  componentDidMount() {
+    ThresholdStore.listen(this.onChangeThreshold);
+  }
+
+  componentWillUnmount() {
+    ThresholdStore.unlisten(this.onChangeThreshold);
+  }
+
+  onChangeThreshold(family ) { // Changing the family via alt
+    this.setState({ family: family });
   }
 
   determineEligibility(stateEligibility) {
@@ -63,10 +75,10 @@ export default class StandAloneThreshold extends Component {
   _updateInput(value, setting) {
     var family = this.state.family;
     family[setting] = value;
-    // this.setState({family: family });
+    // // this.setState({family: family });
     ThresholdActions.updateFamily(family);
-    this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    // this.state.eligibility = this.determineEligibility(this.state.eligibility);
+    // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   render(){
@@ -78,11 +90,11 @@ export default class StandAloneThreshold extends Component {
         <Col xs={12} sm={4} md={4}>
           <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year.</p>
           <span>Income (${commaNumber(this.state.family.income)})</span>
-          <HouseholdSlider target='income' min={10000} max={50000} default={this.state.family.income} onChange={this._updateInput} />
+          <HouseholdSlider target='income' min={10000} max={50000} value={this.state.family.income} onChange={this._updateInput} />
           <span>Adults ({this.state.family.adults})</span>
-          <HouseholdSlider target='adults' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />
+          <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
           <span>Children ({this.state.family.children})</span>
-          <HouseholdSlider target='children' min={0} max={6} default={this.state.family.children} onChange={this._updateInput} />
+          <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
         </Col>
         <Col xs={12} sm={4} md={4}>
           <p>The benefits a family receives can put them above or below the poverty threshold.</p>

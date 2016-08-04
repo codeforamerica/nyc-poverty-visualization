@@ -53,9 +53,9 @@ export default class StandAloneThreshold extends Component {
         <Row className='familyPane pane' id='pane2' ref='pane2'>
           <Col xs={12} sm={6} md={6}>
             <p>Adults</p>
-            <HouseholdSlider target='adults' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />
+            <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
             <p>Children</p>
-            <HouseholdSlider target='children' min={0} max={6} default={this.state.family.adults} onChange={this._updateInput} />
+            <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
           </Col>
           <Col className="text-center" xs={12} sm={5} md={5}>
             {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
