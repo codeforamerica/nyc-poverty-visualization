@@ -3,7 +3,7 @@ import ThresholdActions from '../actions/ThresholdActions.js';
 
 class ThresholdStore {
   constructor() {
-    this.family = { adults: 2, children: 2, income: 17500 };
+    this.family = { adults: 2, children: 2, income: 15500 };
 
     this.bindListeners({
       handleUpdateFamily: ThresholdActions.UPDATE_FAMILY
@@ -15,4 +15,4 @@ class ThresholdStore {
   }
 }
 
-module.export = alt.createStore(ThresholdStore, 'ThresholdStore');
+module.exports = alt.createStore(ThresholdStore, 'ThresholdStore');

@@ -8,9 +8,8 @@ import PovertyThreshold from './components/PovertyThreshold.react.js';
 import HouseholdSlider from './components/HouseholdSlider.react.js';
 
 // Alt
-import ThresholdStore from '../stores/ThresholdStore.js';
-import ThresholdActions from '../actions/ThresholdActions.js';
-
+import ThresholdStore from './stores/ThresholdStore.js';
+import ThresholdActions from './actions/ThresholdActions.js';
 
 export default class StandAloneThreshold extends Component {
   constructor() {
@@ -21,7 +20,7 @@ export default class StandAloneThreshold extends Component {
       testing: false
     };
 
-    this.state.family = TresholdStore.getState();
+    this.state.family = ThresholdStore.getState().family; // Getting this from alt.js
 
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
     this.onChangeThreshold = this.onChangeThreshold.bind(this);
@@ -33,6 +32,10 @@ export default class StandAloneThreshold extends Component {
 
   componentWillUnmount() {
     ThresholdStore.unlisten(this.onChangeThreshold);
+  }
+
+  onChangeThreshold(family ) { // Changing the family via alt
+    this.setState({ family: family });
   }
 
   _updateInput(value, setting) {
