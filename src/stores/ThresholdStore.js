@@ -6,7 +6,7 @@ import CEOPovertyThreshold from '../controllers/CEOPovertyThreshold.js';
 class ThresholdStore {
   constructor() {
     this.family = { adults: 2, children: 2, income: 15500 };
-    this.CEOPovertyThreshold = 0;
+    this.CEOPovertyThreshold = 31156;
     this.eligibility = {};
 
     this.bindListeners({

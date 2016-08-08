@@ -12,7 +12,11 @@ $(document).ready(function(){
       console.log('Direction: ' + direction)
     },
     offset: 100
-  })
+  });
+
+  $('#section-1').waypoint(function (direction) {
+    $('#bar').fadeIn();
+  }, { offset: 'bottom-in-view' });
 
   $(".equation-block").hover(function(){
     $(".equation-block").removeClass('active');
