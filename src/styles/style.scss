@@ -120,6 +120,10 @@ h1 {
   text-align: center;
 }
 
+#section-intro div {
+  padding: 0px 0px 10px 0px;
+}
+
 section {
   height: 80vh;
   display: table;
@@ -136,10 +140,6 @@ section {
   &.section-white {
       color: $light-blue;
       background-color: $white;
-  }
-
-  div {
-    padding: 10px 0px 10px 0px;
   }
 
   &.section-blue {
