@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Glyphicon, Table } from 'react-bootstrap';
 import HouseholdSlider from './components/HouseholdSlider.react.js';
+import HouseholdDropdown from './components/HouseholdDropdown.react.js';
 
 import TotalIncome from './components/TotalIncome.react.js';
 import IncomeTable from './components/IncomeTable.react.js';
@@ -70,7 +71,7 @@ export default class BottomBar extends Component {
 
   _updateInput(value, setting) {
     var family = this.state.family;
-    family[setting] = value;
+    family[setting] = parseInt(value);
     // // this.setState({family: family });
     ThresholdActions.updateFamily(family);
     // this.state.eligibility = this.determineEligibility(this.state.eligibility);
@@ -88,11 +89,11 @@ export default class BottomBar extends Component {
             </Col>
             <Col sm={3}>
               <span>Adults ({this.state.family.adults})</span>
-              <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
+              <HouseholdDropdown target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
             </Col>
             <Col sm={3}>
               <span>Children ({this.state.family.children})</span>
-              <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
+              <HouseholdDropdown target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
             </Col>
             <Col sm={3}>
               This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year. CEO Poverty threshold is <strong>${commaNumber(this.state.CEOPovertyThreshold)}</strong>.
