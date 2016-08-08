@@ -690,3 +690,13 @@ hr {
             transform: scaleY(1);
   }
 }
+#threshold-bar-chart {
+  #poverty-threshold {
+    border-radius: 0;
+    border-top: dashed 2px black;
+    b {
+      color: black;
+      left: 110%;
+    }
+  }  
+}
