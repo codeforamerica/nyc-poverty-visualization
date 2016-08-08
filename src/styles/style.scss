@@ -29,9 +29,10 @@ h1 {
   display: none;
   position:fixed;
   bottom: 0;
+  z-index: 1000000;
   height: 8rem;
   width: 100%;
-  background-color: white;
+  background: white;
   border-top: 1px solid $light-blue;
   padding-top: 10px;
 }
