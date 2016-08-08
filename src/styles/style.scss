@@ -355,7 +355,7 @@ hr {
 
 .rc-slider {
   position: relative;
-  height: 20px;
+  height: 15px;
   width: 100%;
   border-radius: 5px;
   background-color: rgba(151, 151, 151, 1);
@@ -369,20 +369,22 @@ hr {
 .rc-slider-track {
   position: absolute;
   left: 0;
-  height: 20px;
+  height: 15px;
   border-radius: 5px;
-  background-color: rgba(253, 183, 33, 1);
+  background-color: $purple;
   z-index: 1;
 }
 .rc-slider-handle {
   position: absolute;
   margin-left: -15px;
-  margin-top: -5px;
-  width: 30px;
-  height: 31px;
+  margin-top: -6px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   border-radius: 50px;
-  background-color: rgba(252, 145, 87, 1);
+  background: #EFEFEF;
+  border: 1px solid #666666;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
   z-index: 2;
 }
 .rc-slider-handle:hover {
