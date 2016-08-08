@@ -1,12 +1,19 @@
 $white: #ffffff;
 $light-blue: rgb(26, 179, 233);
+$grey: #F2F2F2;
+$purple: #333399;
 
 body,html {
   height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
+  color: $purple;
 }
 
 p {
@@ -109,20 +116,30 @@ h1 {
   }
 }
 
+.center {
+  text-align: center;
+}
+
 section {
   height: 80vh;
   display: table;
   width: 100%;
   padding: 100px 0;
-  text-align: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
 
+  &.section-grey {
+    background-color: $grey;
+  }
   &.section-white {
       color: $light-blue;
       background-color: $white;
+  }
+
+  div {
+    padding: 10px 0px 10px 0px;
   }
 
   &.section-blue {

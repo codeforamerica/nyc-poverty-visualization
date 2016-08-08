@@ -15,7 +15,7 @@
     <![endif]-->
   </head>
   <!-- NYC Template Masthead-->
-  <img id="header" style="width: 100%" src="img/NYC_header.png">
+  <img id="header" style="width: 100%; zoom: 0.3" src="img/NYC_header.png">
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
@@ -47,27 +47,32 @@
         <!-- /.container -->
     </nav>
 
-      <div class="container" />
+      <div class="container-fluid" />
 
       <!-- Start Main Content -->
       <div class="col-md-12">
         <!-- Intro Header -->
-        <section id="section-intro" class="section-blue manhattan">
+        <section id="section-intro" class="section-grey">
             <div class="intro-body">
                 <div class="row">
-                  <h1>Measuring Poverty in NYC</h1>
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <h1>Visualizing Poverty in New York City</h1>
+                  </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1">
-                      <p>How do policy makers in New York City calculate the city's poverty rate? NYC faces some unique challenges due to its size and cost of living. In the next few minutes, we'll show you how the city calculates whether or not a family is in poverty.</p>
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <img src='img/header_graph.png' />
                     </div>
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                         <canvas id="chart0" width="400" height="200"></canvas>
-                    </div>
-                    <div class="col-sm-12">
-                      <a href="#section-1" class="btn btn-circle page-scroll">
+                    </div> -->
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <p>New York City uses an alternative poverty measure determined by the Center of Economic Opportunity. This poverty threshold reflects the higher cost of housing in New York City and the importance of non-cash benefits. This visualization can be used to understand what factors determine whether or not a family is in poverty. It is important to remember that this visualization is not a calculator and that all figures are estimates.</p>
+                      <div class='center'>
+                        <a href="#section-1" class="btn btn-circle page-scroll">
                           <i class="fa fa-angle-double-down animated"></i>
-                      </a>
+                        </a>
+                      </div>
                     </div>
                 </div>
             </div>
