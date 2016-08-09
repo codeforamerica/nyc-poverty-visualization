@@ -3,6 +3,7 @@ $light-blue: rgb(26, 179, 233);
 $grey: #F2F2F2;
 $text-grey: #666666;
 $purple: #333399;
+$dark-blue: #1078BE;
 
 body,html {
   height: 100%;
@@ -14,7 +15,7 @@ body,html {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
-  color: $purple;
+  color: $dark-blue;
 }
 
 p {
@@ -122,7 +123,7 @@ h1 {
 }
 
 #section-intro div {
-  padding: 0px 0px 10px 0px;
+
 }
 
 section {
@@ -213,10 +214,10 @@ section {
   height: 70px;
   margin-top: 15px;
   padding: 7px 16px;
-  border: 2px solid #fff;
+  border: 2px solid $dark-blue;
   border-radius: 100%!important;
   font-size: 40px;
-  color: #fff;
+  color: $dark-blue;
   background: 0 0;
   -webkit-transition: background .3s ease-in-out;
   -moz-transition: background .3s ease-in-out;
@@ -372,7 +373,7 @@ hr {
   left: 0;
   height: 15px;
   border-radius: 5px;
-  background-color: $purple;
+  background-color: $dark-blue;
   z-index: 1;
 }
 .rc-slider-handle {
@@ -718,5 +719,5 @@ hr {
       color: black;
       left: 110%;
     }
-  }  
+  }
 }
