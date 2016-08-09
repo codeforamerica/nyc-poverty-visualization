@@ -101,8 +101,8 @@ export default class StandAloneThreshold extends Component {
             taxCreditAmount={this.state.eligibility.TaxRefund.refundAmount}
             eligibility={this.state.eligibility}
           />
--        </Col>
-        <Col xs={12} sm={6} md={6}>
+        </Col>
+        <Col id="threshold-bar-chart" xs={12} sm={4} md={4}>
           <BarChart data={[[[this.state.family.income],[this.state.CEOPovertyThreshold]]]} />
         </Col>
       </div>
