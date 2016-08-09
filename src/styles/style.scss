@@ -1,6 +1,7 @@
 $white: #ffffff;
 $light-blue: rgb(26, 179, 233);
 $grey: #F2F2F2;
+$text-grey: #666666;
 $purple: #333399;
 
 body,html {
@@ -138,7 +139,7 @@ section {
     background-color: $grey;
   }
   &.section-white {
-      color: $light-blue;
+      color: $text-grey;
       background-color: $white;
   }
 
@@ -292,7 +293,7 @@ hr {
 
 .familyMember {
   padding: 0px 2px 4px 0px;
-  max-width: 50px;
+  font-size: 25pt;
 }
 
 .family {
