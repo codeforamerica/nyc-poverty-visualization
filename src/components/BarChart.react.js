@@ -12,24 +12,26 @@ export default class BarChart extends Component {
     this.state = {
 			series: ['CEO Income vs Poverty Threshold'],
 			labels: ['CEO Income', 'Poverty Threshold'],
-			colors: ['#1ab3e9', '#9c27b0']
+			colors: ['#1ab3e9', 'none'],
+      ids: ['ceo-income', 'poverty-threshold']
     }
   }
 
 	render () {
 		return (
-			<section>
+			<div>
 
 				<Charts
 					data={ this.props.data }
 					labels={ this.state.series }
 					colors={ this.state.colors }
+          ids={ this.state.ids }
 					height={ 250 }
 					grouping={ 'layered' }
 				/>
 
 				<Legend labels={ this.state.labels } colors={ this.state.colors } />
-			</section>
+			</div>
 		);
 	}
 };
@@ -38,7 +40,8 @@ export default class BarChart extends Component {
 
 var Legend = React.createClass({
 	render: function () {
-		var labels = this.props.labels,
+		var
+      labels = this.props.labels,
 			colors = this.props.colors;
 
 		return (
@@ -92,8 +95,10 @@ var Charts = React.createClass({
 						>
 						<label>{ self.props.labels[serieIndex] }</label>
 						{ serie.map(function (item, itemIndex) {
-							var color = self.props.colors[itemIndex], style,
-								size = item / (stacked ? sum : max) * 100;
+							var
+                color = self.props.colors[itemIndex], style,
+								size = item / (stacked ? sum : max) * 100,
+                id = self.props.ids[itemIndex];
 
 							style = {
 								backgroundColor: color,
@@ -112,9 +117,10 @@ var Charts = React.createClass({
 								//style['right'] = ((sortedSerie.indexOf(item) / (serie.length + 1)) * 100) + '%';
 								// style['left'] = (itemIndex * 10) + '%';
 							//}
-              var formattedItem = commaNumber(item)
-						 return (
-							 <div
+            var formattedItem = commaNumber(item)
+						return (
+							<div
+                id={id}
 							 	className={ 'Charts--item ' + (self.props.grouping) }
 							 	style={ style }
 								key={ itemIndex }
