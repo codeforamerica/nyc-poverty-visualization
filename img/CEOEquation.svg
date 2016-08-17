@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="236px" height="251px" viewBox="0 0 236 251" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>CEO Equation</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-321.000000, -2223.000000)">
+            <g id="CEO-Equation" transform="translate(320.000000, 2215.000000)">
+                <text id="+" font-family="Helvetica-Bold, Helvetica" font-size="34" font-weight="bold" fill="#666666">
+                    <tspan x="0" y="67">+</tspan>
+                </text>
+                <text id="Benefits" font-family="Helvetica-Bold, Helvetica" font-size="34" font-weight="bold" fill="#95CB5B">
+                    <tspan x="34" y="111">Benefits</tspan>
+                </text>
+                <text id="Wages" font-family="Helvetica-Bold, Helvetica" font-size="34" font-weight="bold" fill="#2C9745">
+                    <tspan x="36" y="33">Wages</tspan>
+                </text>
+                <text id="Costs" font-family="Helvetica-Bold, Helvetica" font-size="34" font-weight="bold" fill="#794B9E">
+                    <tspan x="35" y="183">Costs</tspan>
+                </text>
+                <text id="minus---FontAwesome" font-family="FontAwesome" font-size="20" font-weight="normal" fill="#666666">
+                    <tspan x="1" y="142"></tspan>
+                </text>
+                <text id="CEO-Income" font-family="Helvetica-Bold, Helvetica" font-size="34" font-weight="bold" fill="#1AB3E9">
+                    <tspan x="36" y="258">CEO Income</tspan>
+                </text>
+                <path d="M3.5,208.5 L220.520737,208.5" id="Line" stroke="#979797" stroke-width="3" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

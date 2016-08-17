@@ -18,54 +18,21 @@ $(document).ready(function(){
     $('#bar').fadeIn();
   }, { offset: 'bottom-in-view' });
 
-  $(".equation-block").hover(function(){
-    $(".equation-block").removeClass('active');
-    $(this).addClass('active');
-    $(".equation-panel").hide();
-    var target = $(this).data('target');
-    var targetPanel = $("#section-equation").find("[data-panel=" + target + "]");
-    targetPanel.show();
-  })
-
   /*$('#section-equation').waypoint(function(){
 }, { offset: '100%' });*/
 
-var chart2 = document.getElementById("chart3");
-
-var chart0Constructor = new Chart(chart0, {
-  type: 'doughnut',
-  data: {
-    labels: ["% Below Threshold", "% Above Threshold"],
-    datasets: [
-      {
-        label: 'Official Poverty Measure',
-        borderColor: '#fff',
-        backgroundColor: ['#FBC700', '#89D6F4'],
-        data: [20.7, 79.3],
-        fill: true
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    title: {
-      display: true,
-      text: "Official and CEO Poverty Rates, 2005-2014",
-      fontColor: '#fff'
-    }
-  }
-});
+var chart2 = document.getElementById("chart2");
 
 var chart2Constructor = new Chart(chart2, {
   type: 'bar',
   data: {
-    labels: ["Health Care", "Child Care", "Housing", "Transportation", "HEAP", "WIC", "SNAP", "School Lunches", "EIC"],
+    labels: ["Housing Adjustment", "Income Tax Credits", "SNAP", "School Meals", "WIC", "HEAP", "Childcare", "Commuting", "Payroll Taxes", "Medical Expenses"],
     datasets: [
       {
-        label: '% 18 - 64 Year-Olds Employed',
-        borderColor: '#fff',
-        backgroundColor: "rgba(251, 199, 0, .89)",
-        data: [-3.0, -2.7, -1.3, -.3, 0.1, 1.2, 2.3, 2.5, 3],
+        label: 'Marginal Effects of Selected Sources of Income on the CEO Poverty Rate, 2014',
+        borderColor: '#1AB3E9',
+        backgroundColor: "#1AB3E9",
+        data: [-6.6, -3.9, -3.6, -0.5, -0.3, 0.0, 0.3, 2.1, 2.3, 2.6],
         fill: true
       }
     ]
@@ -73,26 +40,26 @@ var chart2Constructor = new Chart(chart2, {
   options: {
     responsive: true,
     title: {
-      display: true,
-      text: "Employment/Population Ratios, 2005-2014",
-      fontColor: '#fff'
+      display: false,
+      text: "Marginal Effect on Poverty, 2005-2014",
+      fontColor: '#1078BE'
     },
     scales: {
       yAxes: [{
         gridLines: {
-          color: '#fff'
+          color: '#eee'
         },
         ticks: {
           beginAtZero:false,
-          fontColor: '#fff'
+          fontColor: '#1078BE'
         }
       }],
       xAxes: [{
         ticks: {
-          fontColor: '#fff'
+          fontColor: '#1078BE'
         },
         gridLines: {
-          fontColor: '#fff',
+          fontColor: '#eee',
           color: 'rgba(255, 255, 255, 0.1)'
         }
       }]

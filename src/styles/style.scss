@@ -1,5 +1,10 @@
 $white: #ffffff;
-$light-blue: rgb(26, 179, 233);
+$blue: #1078BE;
+
+$dark-green: #2C9745;
+$light-green: #95CB5B;
+$purple: #794B9E;
+$light-blue: #1AB3E9;
 
 body,html {
   height: 100%;
@@ -7,6 +12,7 @@ body,html {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
+  color: #1078BE;
 }
 
 p {
@@ -21,8 +27,12 @@ h1 {
   line-height: 47px;
 
   &.blue {
-    color: $light-blue;
+    color: $blue;
   }
+}
+
+.col-centered {
+  text-align: center;
 }
 
 #bar {
@@ -33,7 +43,7 @@ h1 {
   height: 8rem;
   width: 100%;
   background: white;
-  border-top: 1px solid $light-blue;
+  border-top: 1px solid $blue;
   padding-top: 10px;
 }
 
@@ -114,16 +124,11 @@ section {
   display: table;
   width: 100%;
   padding: 100px 0;
-  text-align: center;
+  //text-align: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-
-  &.section-white {
-      color: $light-blue;
-      background-color: $white;
-  }
 
   &.section-blue {
     color: $white;
@@ -223,8 +228,8 @@ section {
   }
 
   &.blue {
-    color: $light-blue;
-    border-color: $light-blue;
+    color: #1078BE;
+    border-color: #1078BE;
 
     &:hover,
     &:focus {
@@ -243,7 +248,7 @@ section {
 }
 
 hr {
-  border-color: $light-blue;
+  border-color: $blue;
 }
 
 .row {
@@ -258,7 +263,23 @@ hr {
 
 .panel {
   width: 100%;
-  border-radius: 0px;
+
+  .panel-heading {
+    &.dark-green, &.dark-green * {
+      color: $white !important;
+      background-color: $dark-green;
+    }
+
+    &.light-green, &.light-green * {
+      color: $white !important;
+      background-color: $light-green;
+    }
+
+    &.purple, &.purple * {
+      color: $white !important;
+      background-color: $purple;
+    }
+  }
 }
 
 .intro {
@@ -286,6 +307,14 @@ hr {
 
 .equation {
   display: none;
+}
+
+.figure {
+  color: $white;
+  background-color: $blue;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 2px;
 }
 
 .equation-block {
@@ -318,7 +347,6 @@ hr {
 }
 
 .equation-panel {
-  display: none;
   margin-top: 50px;
   text-align: left;
   border: 1px solid white;
@@ -354,18 +382,18 @@ hr {
   left: 0;
   height: 20px;
   border-radius: 5px;
-  background-color: rgba(253, 183, 33, 1);
+  background-color: $light-blue;
   z-index: 1;
 }
 .rc-slider-handle {
   position: absolute;
   margin-left: -15px;
   margin-top: -5px;
-  width: 30px;
+  width: 15px;
   height: 31px;
   cursor: pointer;
   border-radius: 50px;
-  background-color: rgba(252, 145, 87, 1);
+  background-color: $blue;
   z-index: 2;
 }
 .rc-slider-handle:hover {
@@ -696,7 +724,6 @@ hr {
     border-top: dashed 2px black;
     b {
       color: black;
-      left: 110%;
     }
-  }  
+  }
 }
