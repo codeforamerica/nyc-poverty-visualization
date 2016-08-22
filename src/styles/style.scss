@@ -261,6 +261,46 @@ section {
   }
 }
 
+.formula {
+  font-size: 34pt;
+  .wages {
+      color: #2C9745;
+  }
+  .benefits {
+    color: #95CB5B;
+  }
+  .costs {
+    color: #794B9E;
+  }
+  .income {
+    color: #1AB3E9;
+  }
+}
+
+.card {
+  width: 100%;
+  &.wages {
+    background: #2C9745;
+  }
+  &.benefits {
+    background: #95CB5B;
+  }
+  &.costs {
+    background: #794B9E;
+  }
+  .card-header {
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+    font-size: 18px;
+    color: #FAFAFA;
+    padding: 5px;
+  }
+  .card-body {
+    color: #666666;
+    padding: 5px;
+    background: rgba(255,255,255,0.50);
+  }
+}
+
 hr {
   border-color: $light-blue;
 }
