@@ -60,10 +60,10 @@ export default class StandAloneThreshold extends Component {
           <Col className="text-center" xs={12} sm={5} md={5}>
             <Panel header="CEO Poverty Threshold">
               {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
-                return(<img src='public/assets/img/parent-icon.png' className='familyMember' key={i} />);
+                return(<i className='fa fa-male familyMember' key={i}></i>);
               })}
               {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
-                return(<img src='public/assets/img/child-icon.png' className='familyMember' key={i} />);
+                return(<i className='fa fa-child familyMember' key={i}></i>);
               })}
               <PovertyThreshold povertyThreshold={this.state.CEOPovertyThreshold} family={this.state.family} />
             </Panel>
