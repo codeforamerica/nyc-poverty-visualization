@@ -12,7 +12,9 @@ export default class BarChart extends Component {
     this.state = {
 			series: ['CEO Income vs Poverty Threshold'],
 			labels: ['CEO Income', 'Poverty Threshold'],
-			colors: ['#1ab3e9', 'none'],
+      labelClasses: ['pull-left', 'pull-right'],
+			colors: ['#1078BE', 'none'],
+      backgroundColors: ['#1ab3e9', 'none'],
       ids: ['ceo-income', 'poverty-threshold']
     }
   }
@@ -20,17 +22,17 @@ export default class BarChart extends Component {
 	render () {
 		return (
 			<div>
-
 				<Charts
 					data={ this.props.data }
-					labels={ this.state.series }
+					labels={ this.state.labels }
+          labelClasses={this.state.labelClasses}
+          serie={this.state.series}
 					colors={ this.state.colors }
+          backgroundColors={this.state.backgroundColors}
           ids={ this.state.ids }
 					height={ 250 }
 					grouping={ 'layered' }
 				/>
-
-				<Legend labels={ this.state.labels } colors={ this.state.colors } />
 			</div>
 		);
 	}
@@ -93,15 +95,19 @@ var Charts = React.createClass({
 				 			key={ serieIndex }
 							style={{ height: self.props.height ? self.props.height: 'auto' }}
 						>
-						<label>{ self.props.labels[serieIndex] }</label>
+						<label>{ self.props.serie[serieIndex] }</label>
 						{ serie.map(function (item, itemIndex) {
 							var
-                color = self.props.colors[itemIndex], style,
+                style,
+                color = self.props.colors[itemIndex],
+                backgroundColor = self.props.backgroundColors[itemIndex],
 								size = item / (stacked ? sum : max) * 100,
+                label = self.props.labels[itemIndex],
+                labelClasses = self.props.labelClasses[itemIndex],
                 id = self.props.ids[itemIndex];
 
 							style = {
-								backgroundColor: color,
+								backgroundColor: backgroundColor,
 								opacity: opaque ? 1 : (.35),
 								zIndex: item
 							};
@@ -125,7 +131,7 @@ var Charts = React.createClass({
 							 	style={ style }
 								key={ itemIndex }
 							>
-							 	<b style={{ color: color }}>${ formattedItem }</b>
+							 	<b className={labelClasses} style={{ color: color }}>{label}:  ${ formattedItem }</b>
 							 </div>
 						);
 						}) }

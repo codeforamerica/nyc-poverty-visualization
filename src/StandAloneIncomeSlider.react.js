@@ -2,7 +2,7 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { Row, Col, Button, Glyphicon, Table } from 'react-bootstrap';
+import { Row, Col, Button, Glyphicon, Table, Panel } from 'react-bootstrap';
 import HouseholdSlider from './components/HouseholdSlider.react.js';
 
 import TotalIncome from './components/TotalIncome.react.js';
@@ -74,8 +74,8 @@ export default class StandAloneThreshold extends Component {
     family[setting] = value;
     // // this.setState({family: family });
     ThresholdActions.updateFamily(family);
-    // this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
+    this.state.eligibility = this.determineEligibility(this.state.eligibility);
+    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   // This was down there earlier
@@ -93,26 +93,33 @@ export default class StandAloneThreshold extends Component {
     return(
       <div>
         <Col xs={12} sm={12} md={12}>
+          <h1>How how can benefits programs help?</h1>
           <p>Adjust this household's income and composition using the sliders to see how their poverty threshold, benefits, and costs change.</p>
         </Col>
-        <Col xs={12} sm={4} md={4}>
-          <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year.</p>
-          <span>Income (${commaNumber(this.state.family.income)})</span>
-          <HouseholdSlider target='income' min={10000} max={50000} value={this.state.family.income} onChange={this._updateInput} />
-          <span>Adults ({this.state.family.adults})</span>
-          <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
-          <span>Children ({this.state.family.children})</span>
-          <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
+        <Col xs={12} sm={6} md={6}>
+          <Panel>
+            <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year.</p>
+            <span>Income (${commaNumber(this.state.family.income)})</span>
+            <HouseholdSlider target='income' min={10000} max={50000} value={this.state.family.income} onChange={this._updateInput} />
+            <span>Adults ({this.state.family.adults})</span>
+            <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
+            <span>Children ({this.state.family.children})</span>
+            <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
+          </Panel>
         </Col>
-        <Col xs={12} sm={4} md={4}>
-          <p>The benefits a family receives can put them above or below the poverty threshold.</p>
-          <BenefitsTable
-            taxCreditAmount={this.state.eligibility.TaxRefund.refundAmount}
-            eligibility={this.state.eligibility}
-          />
+        <Col xs={12} sm={6} md={6}>
+          <Panel>
+            <p>The benefits a family receives can put them above or below the poverty threshold.</p>
+            <BenefitsTable
+              taxCreditAmount={this.state.eligibility.TaxRefund.refundAmount}
+              eligibility={this.state.eligibility}
+            />
+          </Panel>
         </Col>
-        <Col id="threshold-bar-chart" xs={12} sm={4} md={4}>
-          <BarChart data={[[[this.state.family.income],[this.state.CEOPovertyThreshold]]]} />
+        <Col id="threshold-bar-chart" xs={12} sm={12} md={12}>
+          <Panel>
+            <BarChart data={[[[this.state.family.income],[this.state.CEOPovertyThreshold]]]} />
+          </Panel>
         </Col>
       </div>
     );
