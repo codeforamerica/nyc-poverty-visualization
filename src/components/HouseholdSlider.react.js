@@ -11,7 +11,7 @@ export default class HouseholdSlider extends Component {
       <Row>
         <Col xs={12} sm={12} md={12}>
           <div className='familyChoice'>
-            <Rcslider min={this.props.min} max={this.props.max} value={this.props.value} onChange={(value) => this.props.onChange(value, this.props.target)} />
+            <Rcslider min={this.props.min} step={this.props.step} max={this.props.max} value={this.props.value} onChange={(value) => this.props.onChange(value, this.props.target)} />
             <label style={{float:'left'}}>{this.props.min}</label>
             <label style={{float:'right'}}>{this.props.max}</label>
           </div>

@@ -1,4 +1,5 @@
 $white: #ffffff;
+$black: #000;
 $blue: #1078BE;
 
 $ceo-blue: #E1F4FC;
@@ -215,8 +216,14 @@ section {
   font-weight: bold;
 }
 
+.panel-body {
+  font-size: 6pt;
+}
+
 .well, #bar {
   background-color: $ceo-blue;
+  border: 0px;
+  padding: 30px;
 }
 
 
@@ -362,6 +369,7 @@ hr {
 .familyMember {
   padding: 0px 2px 4px 0px;
   font-size: 25pt;
+  color: $blue;
 }
 
 .family {
@@ -375,8 +383,8 @@ hr {
 }
 
 .figure {
-  color: $white;
-  background-color: $blue;
+  color: $black;
+  background-color: $white;
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 2px;
@@ -434,7 +442,7 @@ hr {
   height: 15px;
   width: 100%;
   border-radius: 5px;
-  background-color: rgba(151, 151, 151, 1);
+  background-color: $white;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -454,11 +462,14 @@ hr {
   position: absolute;
   margin-left: -15px;
   margin-top: -5px;
-  width: 15px;
+  width: 25px;
   height: 25px;
   cursor: pointer;
   border-radius: 50px;
-  background-color: $blue;
+  background-color: $white;
+  -webkit-box-shadow: 0px 3px 44px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 44px -4px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 44px -4px rgba(0,0,0,0.75);
   z-index: 2;
 }
 .rc-slider-handle:hover {

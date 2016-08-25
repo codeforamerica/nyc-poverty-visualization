@@ -85,15 +85,15 @@ export default class BottomBar extends Component {
           <Row>
             <Col sm={3} xs={3}>
               <span>Income (${commaNumber(this.state.family.income)})</span>
-              <HouseholdSlider target='income' min={10000} max={50000} value={this.state.family.income} onChange={this._updateInput} />
+              <HouseholdSlider target='income' min={10000} max={50000} step={100} value={this.state.family.income} onChange={this._updateInput} />
             </Col>
             <Col sm={3} xs={3}>
               <span>Adults ({this.state.family.adults})</span>
-              <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
+              <HouseholdSlider target='adults' min={0} max={6} step={1} value={this.state.family.adults} onChange={this._updateInput} />
             </Col>
             <Col sm={3} xs={3}>
               <span>Children ({this.state.family.children})</span>
-              <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
+              <HouseholdSlider target='children' min={0} max={6} step={1} value={this.state.family.children} onChange={this._updateInput} />
             </Col>
             <Col sm={3} xs={3}>
               <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, income <span className='figure'>${commaNumber(this.state.family.income)}</span> a year. CEO Poverty threshold is <strong>${commaNumber(this.state.CEOPovertyThreshold)}</strong>.
