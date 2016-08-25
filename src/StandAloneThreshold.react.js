@@ -49,24 +49,28 @@ export default class StandAloneThreshold extends Component {
       <div id="input">
         <Row className='familyPane pane' id='pane2' ref='pane2'>
           <Col xs={12} sm={6} md={6}>
-            <Panel header="Adjust Household">
+            <div className='well'>
               <p>Adults</p>
               <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
+              <div>
+                {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
+                  return(<i className='fa fa-male familyMember' key={i}></i>);
+                })}
+              </div>
               <br />
               <p>Children</p>
               <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
-            </Panel>
+              <div>
+                {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
+                  return(<i className='fa fa-child familyMember' key={i}></i>);
+                })}
+              </div>
+            </div>
           </Col>
           <Col className="text-center" xs={12} sm={5} md={5}>
-            <Panel header="CEO Poverty Threshold">
-              {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
-                return(<i className='fa fa-male familyMember' key={i}></i>);
-              })}
-              {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
-                return(<i className='fa fa-child familyMember' key={i}></i>);
-              })}
+            <div className='well'>
               <PovertyThreshold povertyThreshold={this.state.CEOPovertyThreshold} family={this.state.family} />
-            </Panel>
+            </div>
           </Col>
         </Row>
       </div>

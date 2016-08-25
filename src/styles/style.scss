@@ -1,6 +1,8 @@
 $white: #ffffff;
 $blue: #1078BE;
 
+$ceo-blue: #E1F4FC;
+
 $dark-green: #2C9745;
 $light-green: #95CB5B;
 $purple: #794B9E;
@@ -207,6 +209,16 @@ section {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
 }
+
+
+.panel-heading {
+  font-weight: bold;
+}
+
+.well, #bar {
+  background-color: $ceo-blue;
+}
+
 
 .btn-circle {
   width: 70px;

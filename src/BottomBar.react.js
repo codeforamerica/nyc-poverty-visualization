@@ -89,14 +89,14 @@ export default class BottomBar extends Component {
             </Col>
             <Col sm={3} xs={3}>
               <span>Adults ({this.state.family.adults})</span>
-              <HouseholdDropdown target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
+              <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
             </Col>
             <Col sm={3} xs={3}>
               <span>Children ({this.state.family.children})</span>
-              <HouseholdDropdown target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
+              <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
             </Col>
             <Col sm={3} xs={3}>
-              This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year. CEO Poverty threshold is <strong>${commaNumber(this.state.CEOPovertyThreshold)}</strong>.
+              <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, income <span className='figure'>${commaNumber(this.state.family.income)}</span> a year. CEO Poverty threshold is <strong>${commaNumber(this.state.CEOPovertyThreshold)}</strong>.
             </Col>
           </Row>
         </Col>
