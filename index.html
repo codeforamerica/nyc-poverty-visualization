@@ -7,13 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>CEO Poverty Measure 2005-2014</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <!-- Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
-    <link href="css/grayscale.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -21,91 +14,62 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <!--Fake Masthead-->
+  <!-- NYC Template Masthead-->
   <img id="header" style="width: 100%" src="img/NYCgov_masthead.png">
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    CEO Poverty Measure 2005-2014
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#download">Download Report</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+      <div class="container" />
+      <!-- Start NYC Template -->
+        <div class="col-md-2">
+          <div class="list-group">
+            <span href="#" class="list-group-item">
+              Submenu
+            </span>
+            <a href="#" class="list-group-item">
+              Link 1
+            </a>
+            <a href="#" class="list-group-item">
+              Link 2
+            </a>
+            <a href="#" class="list-group-item">
+              Link 3
+            </a>
+            <a href="#" class="list-group-item">
+              Link 4
+            </a>
+          </div>
         </div>
-        <!-- /.container -->
-    </nav>
+      <!-- End NYC Template -->
 
-    <div class="container" />
-    <div class="col-md-3">
-      <div class="list-group">
-        <span href="#" class="list-group-item">
-            Submenu
-        </span>
-        <a href="#" class="list-group-item">
-          Lorem ipsum
-        </a>
-        <a href="#" class="list-group-item">
-          Lorem ipsum
-        </a>
-        <a href="#" class="list-group-item">
-          Lorem ipsum
-        </a>
-        <a href="#" class="list-group-item">
-          Lorem ipsum
-        </a>
-        <a href="#" class="list-group-item">
-          Lorem ipsum
-        </a>
-        <a href="#" class="list-group-item">
-          Lorem ipsum
-        </a>
-    </div>
-    </div>
-
-    <div class="col-md-9">
-    <!-- Intro Header -->
-    <section class="intro section-blue-manhattan">
-        <div class="intro-body">
+      <!-- Start Main Content -->
+      <div class="col-md-10">
+        <!-- Intro Header -->
+        <section>
+            <div class="intro-body">
                 <div class="row">
-                  <h1>Measuring Poverty in NYC</h1>
+                  <div class="col-sm-12">
+                    <h1>Measuring Poverty in New York City</h1>
+                  </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1">
-                      <p>How do policy makers in New York City calculate the city's poverty rate? NYC faces some unique challenges due to its size and cost of living. In the next few minutes, we'll show you how the city calculates whether or not a family is in poverty.</p>
+                    <div class="col-sm-6">
+                      <p>New York City uses an alternative poverty measure determined by the Center of Economic Opportunity. This poverty threshold reflects the higher cost of housing in New York City and the importance of non-cash benefits.</p>
+                      <p>This visualization can be used to understand what factors determine whether or not a family is in poverty. It is important to remember that this visualization is not a calculator and that all figures are estimates.</p>
                     </div>
                     <div class="col-sm-6">
-                        <canvas id="chart0" width="400" height="200"></canvas>
+                      <img class="img-responsive" src="img/introchart.svg" />
                     </div>
-                    <div class="col-sm-12">
-                      <a href="#section-1" class="btn btn-circle page-scroll">
+                    <div class="col-sm-12 col-centered">
+                      <a href="#section-1" class="btn btn-circle blue page-scroll">
                           <i class="fa fa-angle-double-down animated"></i>
                       </a>
                     </div>
                 </div>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <section id="section-1" class="section-white">
-        <div class="intro-body">
+        <section id="section-1">
+            <div class="intro-body">
                 <div class="row">
                     <div class="col-md-12">
                       <h1>What is the poverty threshold in NYC?</h1>
@@ -115,133 +79,142 @@
                     </div>
                     <div id="poverty-threshold" class="col-md-12">
                     </div>
-                    <div class="col-md-12">
-                        <a href="#section-2" class="btn btn-circle btn-circle-blue page-scroll">
+                    <div class="col-md-12 col-centered">
+                        <a href="#section-2" class="btn btn-circle blue page-scroll">
                           <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
                 </div>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <section id="section-equation" style="min-height: 800px; padding-left: 20px;" class="section-blue-subway">
-        <div class="intro-body">
+        <section id="section-equation">
+            <div class="intro-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h1>How do we know if a family is above their poverty threshold?</h1>
+                        <p>The Center for Economic Opportunity calculates whether a household is above or below the poverty threshold using a simple formula. Hover over each part of the formula for more details.</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div style="text-align:center" class="col-md-12">
+                        <img src="img/CEOEquation.svg" />
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading dark-green">
+                            <h3>Income</h3>
+                          </div>
+                          <div class="panel-body">
+                            <p>The wages the household makes from employment. The household's income also effects the benefits programs that the family may be eligible for. For example, a household with a high income would not be eligible for food stamps.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading light-green">
+                            <h3>Benefits</h3>
+                          </div>
+                          <div class="panel-body">
+                            <p>The income the household receives from benefits programs. These include SNAP (food stamps), WIC (nutrition for women and children), HEAP (heading assistance), and earned income credits (tax refunds).</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading purple">
+                            <h3>Costs</h3>
+                          </div>
+                          <div class="panel-body">
+                            <p>Costs that the household incurs. These include transportation, healthcare, child care, and housing.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-centered">
+                      <a href="#section-2" class="btn btn-circle blue page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                      </a>
+                    </div>
+            </div>
+        </section>
+
+        <section id="section-3" class="section-white">
+            <div class="intro-body">
                 <div class="row">
                   <div class="col-md-12">
-                    <h1>How do we know if a family is above their poverty threshold?</h1>
-                    <p>The Center for Economic Opportunity calculates whether a household is above or below the poverty threshold using a simple formula. Hover over each part of the formula for more details.</p>
+                    <div id="react-income-slider"></div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-2 equation equation-block" data-target="1">
-                    <i class="fa fa-usd fa-lg" aria-hidden="true"></i>
-                    <h4>Income from Wages</h4>
-                  </div>
-                  <div class="col-md-1 equation">
-                    <h1>+</h1>
-                  </div>
-                  <div class="col-md-2 equation equation-block" data-target="2">
-                    <i class="fa fa-ticket fa-lg" aria-hidden="true"></i>
-                    <h4>Income from Benefits</h1>
-                  </div>
-                  <div class="col-md-1 equation">
-                    <h1>–</h1>
-                  </div>
-                  <div class="col-md-2 equation equation-block" data-target="3">
-                    <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-                    <h4>Household Costs</h1>
-                  </div>
-                  <div class="col-md-1 equation">
-                    <h1>=</h1>
-                  </div>
-                  <div class="col-md-2 equation equation-block">
-                    <h4>CEO Income</h1>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8 equation-panel" data-panel="1">
-                    <p>The wages the household makes from employment. The household's income also effects the benefits programs that the family may be eligible for. For example, a household with a high income would not be eligible for food stamps.</p>
-                  </div>
-                  <div class="col-md-8 equation-panel" data-panel="2">
-                    <p>The income the household receives from benefits programs. These include SNAP (food stamps), WIC (nutrition for women and children), HEAP (heading assistance), and earned income credits (tax refunds).</p>
-                  </div>
-                  <div class="col-md-8 equation-panel" data-panel="3">
-                    <p>Costs that the household incurs. These include transportation, healthcare, child care, and housing.</p>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <a href="#section-2" class="btn btn-circle btn-circle-white page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                  </a>
-                </div>
-        </div>
-    </section>
-
-    <section id="section-3" class="section-white">
-        <div class="intro-body">
-                <div class="row">
-                    <div class="col-md-12">
-                      <h1>How does this work in practice?</h1>
-                    </div>
-                    <div class="col-md-12">
-                      <div id="react-income-slider"></div>
-                    </div>
                 </div>
                 <div>
-                  <div class="col-md-12">
-                    <a href="#section-4" class="btn btn-circle btn-circle-blue page-scroll">
+                  <div class="col-md-12 col-centered">
+                    <a href="#section-4" class="btn btn-circle blue page-scroll">
                       <i class="fa fa-angle-double-down animated"></i>
                     </a>
                   </div>
                 </div>
-        </div>
-    </section>
-
-    <section id="section-2" class="section-blue-subway">
-        <div class="intro-body">
-                <div class="row">
-                    <div class="col-md-12">
-                      <h1>Which programs have the most impact on poverty?</h1>
-                      <p>This figure illustrates that official
-  (pre-tax cash) income fell to 91.9 percent of its 2008 value by 2010. Although it
-  increased over the post-recession years, by 2014 income under the official measure
-  was only at 97.2 percent of its 2008 value.</p>
-                    </div>
-                    <div class="col-md-12">
-                        <canvas id="chart3" width="400" height="200"></canvas>
-                    </div>
-                    <div class="col-md-12">
-                        <a href="#section-3" class="btn btn-circle page-scroll">
-                          <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="download" class="download content-section text-center">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>Download the Report</h2>
-                <p>Call to action asking the user to download the report here.</p>
-                <p><a href="mailto:contact@ceo.nyc.gov">contact@ceo.nyc.gov</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="http://www.nyc.gov/html/ceo/downloads/pdf/CEOPovertyMeasure2016-ExecSummary.pdf" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-download fa-fw"></i> <span class="network-name">Download the Executive Summary</span></a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-download fa-fw"></i> <span class="network-name">Download the Full Report</span></a>
-                    </li>
-                </ul>
             </div>
-        </div>
-    </section>
-  </div>
-</div>
-<img id="footer" style="width: 100%" src="img/NYCgov_footer.png">
+        </section>
 
+        <section id="section-2">
+            <div class="intro-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                          <h1>Which programs have the most impact on poverty?</h1>
+                          <p>This figure illustrates that official
+      (pre-tax cash) income fell to 91.9 percent of its 2008 value by 2010. Although it
+      increased over the post-recession years, by 2014 income under the official measure
+      was only at 97.2 percent of its 2008 value.</p>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="pull-left"><h3><i class="fa fa-arrow-left"></i> <span>Reduces Poverty</span></h3></div>
+                            <div class="pull-right"><h3><span>Increases Poverty</span> <i class="fa fa-arrow-right"></i></h3></div>
+                            <canvas id="chart2" width="400" height="200"></canvas>
+                        </div>
+                        <div class="col-md-12 col-centered">
+                            <a href="#section-3" class="btn btn-circle page-scroll">
+                              <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="download" class="download text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Download the Report</h2>
+                    <p>Call to action asking the user to download the report here.</p>
+                    <p><a href="mailto:contact@ceo.nyc.gov">contact@ceo.nyc.gov</a>
+                    </p>
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="http://www.nyc.gov/html/ceo/downloads/pdf/CEOPovertyMeasure2016-ExecSummary.pdf" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-download fa-fw"></i> <span class="network-name">Download the Executive Summary</span></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-download fa-fw"></i> <span class="network-name">Download the Full Report</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+      </div>
+    <!-- End Main Content -->
+    </div>
+    <div id="bar" class="bottom-bar">
+
+    </div>
+
+    <!-- NYC Template Footer -->
+    <img id="footer" style="width: 100%" src="img/NYCgov_footer.png">
+
+    <script type="text/javascript" src="public/bundle.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/waypoints.js"></script>
@@ -254,14 +227,6 @@
     <script src="js/chart.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- Temporary pointer to the webpack-dev-server proxy on port 8081. Remove before production -->
-    <script type="text/javascript" src="public/bundle.js"></script>
   </body>
 </html>

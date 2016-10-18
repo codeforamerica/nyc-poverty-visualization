@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import formatDollars from '../controllers/formatDollars.js';
+import commaNumber from 'comma-number';
 
 function compareNumbers(a, b) {
   return a - b;
@@ -12,23 +12,27 @@ export default class BarChart extends Component {
     this.state = {
 			series: ['CEO Income vs Poverty Threshold'],
 			labels: ['CEO Income', 'Poverty Threshold'],
-			colors: ['#1ab3e9', '#9c27b0']
+      labelClasses: ['pull-left', 'pull-right'],
+			colors: ['#1078BE', 'none'],
+      backgroundColors: ['#1ab3e9', 'none'],
+      ids: ['ceo-income', 'poverty-threshold']
     }
   }
 
 	render () {
 		return (
 			<div>
-
 				<Charts
 					data={ this.props.data }
-					labels={ this.state.series }
+					labels={ this.state.labels }
+          labelClasses={this.state.labelClasses}
+          serie={this.state.series}
 					colors={ this.state.colors }
+          backgroundColors={this.state.backgroundColors}
+          ids={ this.state.ids }
 					height={ 250 }
 					grouping={ 'layered' }
 				/>
-
-				<Legend labels={ this.state.labels } colors={ this.state.colors } />
 			</div>
 		);
 	}
@@ -38,7 +42,8 @@ export default class BarChart extends Component {
 
 var Legend = React.createClass({
 	render: function () {
-		var labels = this.props.labels,
+		var
+      labels = this.props.labels,
 			colors = this.props.colors;
 
 		return (
@@ -90,13 +95,19 @@ var Charts = React.createClass({
 				 			key={ serieIndex }
 							style={{ height: self.props.height ? self.props.height: 'auto' }}
 						>
-						<label>{ self.props.labels[serieIndex] }</label>
+						<label>{ self.props.serie[serieIndex] }</label>
 						{ serie.map(function (item, itemIndex) {
-							var color = self.props.colors[itemIndex], style,
-								size = item / (stacked ? sum : max) * 100;
+							var
+                style,
+                color = self.props.colors[itemIndex],
+                backgroundColor = self.props.backgroundColors[itemIndex],
+								size = item / (stacked ? sum : max) * 100,
+                label = self.props.labels[itemIndex],
+                labelClasses = self.props.labelClasses[itemIndex],
+                id = self.props.ids[itemIndex];
 
 							style = {
-								backgroundColor: color,
+								backgroundColor: backgroundColor,
 								opacity: opaque ? 1 : (.35),
 								zIndex: item
 							};
@@ -112,14 +123,15 @@ var Charts = React.createClass({
 								//style['right'] = ((sortedSerie.indexOf(item) / (serie.length + 1)) * 100) + '%';
 								// style['left'] = (itemIndex * 10) + '%';
 							//}
-              var formattedItem = formatDollars(item)
-						 return (
-							 <div
+            var formattedItem = commaNumber(item)
+						return (
+							<div
+                id={id}
 							 	className={ 'Charts--item ' + (self.props.grouping) }
 							 	style={ style }
 								key={ itemIndex }
 							>
-							 	<b style={{ color: color }}>${ formattedItem }</b>
+							 	<b className={labelClasses} style={{ color: color }}>{label}:  ${ formattedItem }</b>
 							 </div>
 						);
 						}) }

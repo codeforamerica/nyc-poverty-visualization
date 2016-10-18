@@ -7,6 +7,7 @@
     "start": "node server.js"
   },
   "devDependencies": {
+    "alt": "^0.18.5",
     "chartjs": "^0.3.24",
     "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -23,12 +24,18 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.0.15",
     "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.7",
     "bourbon": "^4.2.6",
-    "chart.js": "^1.0.2",
+    "chart.js": "^1.1.1",
+    "comma-number": "^1.1.0",
     "connect": "^3.4.0",
     "css-loader": "^0.23.1",
     "d3": "^3.5.14",
     "express": "^4.13.3",
+    "file-loader": "^0.8.5",
+    "font-awesome": "^4.6.3",
+    "img-loader": "^1.2.2",
+    "jquery": "^3.1.0",
     "lodash": "^4.0.0",
     "node-sass": "^3.4.2",
     "pg": "^4.4.3",
@@ -49,6 +56,7 @@
     "style-loader": "^0.13.0",
     "tabletop": "^1.4.3",
     "url": "^0.11.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.11"
   }
 }
