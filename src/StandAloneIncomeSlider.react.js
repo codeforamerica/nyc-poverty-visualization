@@ -33,19 +33,6 @@ import Rcslider from 'rc-slider';
 export default class StandAloneThreshold extends Component {
   constructor() {
     super();
-<<<<<<< HEAD
-    this.state = {
-      family: { adults: 2, children: 2, income: 17500 },
-      eligibility: {},
-      totalBenefits: 0,
-      combineIncomeBenefits: false
-    };
-    this._updateInput = this._updateInput.bind(this);
-    this.combineIncomeBenefits = this.combineIncomeBenefits.bind(this);
-    this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
-    this.state.totalBenefits = this.state.eligibility.SNAP.snapAmount + this.state.eligibility.WIC.wicAmount + this.state.eligibility.TaxRefund.refundAmount + this.state.eligibility.SchoolFood.lunchValue;
-=======
     this.state = ThresholdStore.getState(); // Getting this from alt.js
 
     this._updateInput = this._updateInput.bind(this);
@@ -53,7 +40,6 @@ export default class StandAloneThreshold extends Component {
     this.state.eligibility = this.determineEligibility(this.state.eligibility);
     // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
->>>>>>> master
 
   componentDidMount() {
     ThresholdStore.listen(this.onChangeThreshold);
