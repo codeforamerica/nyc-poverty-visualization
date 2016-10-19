@@ -1,6 +1,6 @@
 "use strict";
 import React, { Component } from 'react';
-import { Row, Col, ButtonToolbar, ButtonGroup, Button, Glyphicon, Table, Panel, FormGroup, Radio } from 'react-bootstrap';
+import { Row, Col, Collapse, Well, ButtonToolbar, ButtonGroup, Button, Glyphicon, Table, Panel, FormGroup, Radio } from 'react-bootstrap';
 // Alt
 import ThresholdStore from './stores/ThresholdStore.js';
 import ThresholdActions from './actions/ThresholdActions.js';
@@ -10,21 +10,27 @@ export default class AdditionalQuestions extends Component {
     super();
 
     this.state = ThresholdStore.getState(); // Getting this from alt.js
+    this.state.showSnap = false;
 
     //Default to no children eligible for WIC
-    this.state.childrenUnderOne = false;
     this.onChangeThreshold = this.onChangeThreshold.bind(this);
+    this.updateChildUnderOne = this.updateChildUnderOne.bind(this);
+
   }
 
   componentDidMount() {
     ThresholdStore.listen(this.onChangeThreshold);
   }
 
+  updateChildUnderOne() {
+    this.setState({childrenUnderOne: !this.state.childrenUnderOne})
+  }
+
   componentWillUnmount() {
     ThresholdStore.unlisten(this.onChangeThreshold);
   }
 
-  onChangeThreshold(family ) { // Changing the family via alt
+  onChangeThreshold(family) { // Changing the family via alt
     this.setState(family);
   }
 
@@ -34,9 +40,16 @@ export default class AdditionalQuestions extends Component {
         <Col md={4}>
           <Panel header="New Parent Benefits">
             <p>Are any of your <span className="figure">{this.state.family.children}</span> children under the age of 1?</p>
-              <Button bsSize="large" block active>No</Button>
-              <Button bsSize="large" block>Yes</Button>
+              <Button bsSize="large" block onClick={this.updateChildUnderOne} active={!this.state.childrenUnderOne}>No</Button>
+              <Button bsSize="large" block onClick={this.updateChildUnderOne} active={this.state.childrenUnderOne}>Yes</Button>
           </Panel>
+          <Collapse in={this.state.childrenUnderOne}>
+            <div>
+              <Well>
+                On average, this family would receive about <span className="figure">{this.state.eligibility.WIC.wicAmount}</span> from being enrolled in WIC (supplemental nutrition for newborns and mothers).
+              </Well>
+            </div>
+          </Collapse>
         </Col>
         <Col md={4}>
           <Panel header="Housing">
