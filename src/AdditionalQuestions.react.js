@@ -1,14 +1,18 @@
-
 "use strict";
-
 import React, { Component } from 'react';
-import { Row, Col, Button, Glyphicon, Table, Panel } from 'react-bootstrap';
+import { Row, Col, Button, Glyphicon, Table, Panel, FormGroup, Radio } from 'react-bootstrap';
+// Alt
+import ThresholdStore from './stores/ThresholdStore.js';
+import ThresholdActions from './actions/ThresholdActions.js';
 
 
 
 export default class AdditionalQuestions extends Component {
   constructor() {
     super();
+
+    this.state = ThresholdStore.getState(); // Getting this from alt.js
+    this.onChangeThreshold = this.onChangeThreshold.bind(this);
   }
 
   componentDidMount() {
@@ -50,37 +54,44 @@ export default class AdditionalQuestions extends Component {
 
   render(){
     return(
-      <div>
-        <Col xs={12} sm={12} md={12}>
-          <h1>How how can benefits programs help?</h1>
-          <p>Adjust this household's income and composition using the sliders to see how their poverty threshold, benefits, and costs change.</p>
-        </Col>
-        <Col xs={12} sm={6} md={6}>
-          <Panel>
-            <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year.</p>
-            <span>Income (${commaNumber(this.state.family.income)})</span>
-            <HouseholdSlider target='income' min={10000} max={50000} value={this.state.family.income} onChange={this._updateInput} />
-            <span>Adults ({this.state.family.adults})</span>
-            <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
-            <span>Children ({this.state.family.children})</span>
-            <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
+      <Row>
+        <Col md={4}>
+          <Panel header="New Parent Benefits">
+            <p>Are any of your <span className="figure">{this.state.family.children}</span> children under the age of 1?</p>
           </Panel>
         </Col>
-        <Col xs={12} sm={6} md={6}>
-          <Panel>
-            <p>The benefits a family receives can put them above or below the poverty threshold.</p>
-            <BenefitsTable
-              taxCreditAmount={this.state.eligibility.TaxRefund.refundAmount}
-              eligibility={this.state.eligibility}
-            />
+        <Col md={4}>
+          <Panel header="Housing">
+            <p>Choose the option that best describes your housing situation:</p>
+            <FormGroup id="housing-options">
+
+              <Radio name="housing-option">
+                Live in public housing
+              </Radio>
+              <Radio name="housing-option">
+                Live in rent subsidized or rent regulated housing of any kind
+              </Radio>
+              <Radio name="housing-option">
+                Live rent free
+              </Radio>
+              <Radio name="housing-option">
+                Own home with a mortgage
+              </Radio>
+              <Radio name="housing-option">
+                Own your home with no mortgage
+              </Radio>
+              <Radio name="housing-option">
+                None of the above
+              </Radio>
+            </FormGroup>
           </Panel>
         </Col>
-        <Col id="threshold-bar-chart" xs={12} sm={12} md={12}>
-          <Panel>
-            <BarChart data={[[[this.state.family.income],[this.state.CEOPovertyThreshold]]]} />
+        <Col md={4}>
+          <Panel header="Transportation">
+            <p>How many of the <span className="figure">{this.state.family.adults}</span> adults in your household commute to work?</p>
           </Panel>
         </Col>
-      </div>
+      </Row>
     );
   }
 }

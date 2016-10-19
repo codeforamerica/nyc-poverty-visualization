@@ -2,9 +2,10 @@
 //import * as $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StandAloneThreshold from './StandAloneThreshold.react.js';
-import StandAloneIncomeSlider from './StandAloneIncomeSlider.react.js';
+import PovertyThreshold from './PovertyThreshold.react.js';
+import IncomeSlider from './IncomeSlider.react.js';
 import BottomBar from './BottomBar.react.js';
+import AdditionalQuestions from './AdditionalQuestions.react.js';
 
 //Fonts and Styles
 require('font-awesome/css/font-awesome.min.css');
