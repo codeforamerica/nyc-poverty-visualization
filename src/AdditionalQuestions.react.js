@@ -23,15 +23,16 @@ export default class AdditionalQuestions extends Component {
   }
 
   updateChildUnderOne() {
-    this.setState({childrenUnderOne: !this.state.childrenUnderOne})
+    // this.setState({childrenUnderOne: !this.state.childrenUnderOne})
+    ThresholdActions.updateChildrenUnderOne(!this.state.childrenUnderOne);
   }
 
   componentWillUnmount() {
     ThresholdStore.unlisten(this.onChangeThreshold);
   }
 
-  onChangeThreshold(family) { // Changing the family via alt
-    this.setState(family);
+  onChangeThreshold(data) { // Updating the store
+    this.setState(data);
   }
 
   render(){

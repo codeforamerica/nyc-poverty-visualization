@@ -39,15 +39,12 @@ class ThresholdStore {
       children = this.family.children,
       eligibility = {};
 
-    console.log(this.family);
-
     eligibility.ACSChildCare = ACSChildCare(income, adults, children);
     eligibility.SchoolFood = SchoolFood(income, adults, children);
     eligibility.SNAP = SNAP(income, adults, children);
     eligibility.HEAP = HEAP(income, adults, children);
     eligibility.WIC = WIC(income, adults, children);
     eligibility.TaxRefund = TaxRefund(income, adults, children);
-    console.log("Update eligibility", eligibility);
 
     this.eligibility = eligibility;
 

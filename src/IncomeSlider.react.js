@@ -50,7 +50,6 @@ export default class StandAloneThreshold extends Component {
   }
 
   onChangeThreshold(family ) { // Changing the family via alt
-    console.log(family);
     this.setState(family);
   }
 
@@ -83,7 +82,6 @@ export default class StandAloneThreshold extends Component {
   }
 
   render(){
-    console.log("INcome Slider", this.state);
     return(
       <div>
         <Col xs={12} sm={12} md={12}>
