@@ -1,8 +1,30 @@
-  "use strict";
+"use strict";
+
+const CEOPovertyTable = [
+[24632],
+[31706, 32634],
+[37036, 38110, 38146],
+[48836, 49634, 48016, 48182],
+[58894, 59750, 59720, 56504, 55640],
+[67738, 68008, 66606, 65262, 63266, 62082],
+[77942, 78452, 76750, 75582, 73402, 70862, 68072],
+[87172, 87940, 86358, 84970, 83002, 80504, 77906, 77244]];
+
+const povertyThreshold = function(income, numberParents, numberChildren){
+  let
+    familySize = numberParents + numberChildren,
+    tableRow = CEOPovertyTable[familySize - 1];
+    if(numberChildren > 0){
+      return tableRow[numberChildren];
+    }
+    else {
+      return tableRow[0];
+    }
+
+};
 
 
-
-
+/*
 const
   snapIncomeTable = [
     [1, 1276],
@@ -59,5 +81,7 @@ const snapEligibility = function(yearlyIncome, numberAdults, numberChildren){
     return {eligible: false, snapAmount: 0};
   }
 };
+*/
+
 
 module.exports = snapEligibility;
