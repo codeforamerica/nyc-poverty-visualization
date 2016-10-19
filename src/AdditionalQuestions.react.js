@@ -1,17 +1,18 @@
 "use strict";
 import React, { Component } from 'react';
-import { Row, Col, Button, Glyphicon, Table, Panel, FormGroup, Radio } from 'react-bootstrap';
+import { Row, Col, ButtonToolbar, ButtonGroup, Button, Glyphicon, Table, Panel, FormGroup, Radio } from 'react-bootstrap';
 // Alt
 import ThresholdStore from './stores/ThresholdStore.js';
 import ThresholdActions from './actions/ThresholdActions.js';
-
-
 
 export default class AdditionalQuestions extends Component {
   constructor() {
     super();
 
     this.state = ThresholdStore.getState(); // Getting this from alt.js
+
+    //Default to no children eligible for WIC
+    this.state.childrenUnderOne = false;
     this.onChangeThreshold = this.onChangeThreshold.bind(this);
   }
 
@@ -27,37 +28,14 @@ export default class AdditionalQuestions extends Component {
     this.setState(family);
   }
 
-  determineEligibility(stateEligibility) {
-    let
-      income = this.state.family.income,
-      adults = this.state.family.adults,
-      children = this.state.family.children;
-
-    stateEligibility.ACSChildCare = ACSChildCare(income, adults, children);
-    stateEligibility.SchoolFood = SchoolFood(income, adults, children);
-    stateEligibility.SNAP = SNAP(income, adults, children);
-    stateEligibility.HEAP = HEAP(income, adults, children);
-    stateEligibility.WIC = WIC(income, adults, children);
-    stateEligibility.TaxRefund = TaxRefund(income, adults, children);
-
-    return stateEligibility;
-  }
-
-  _updateInput(value, setting) {
-    var family = this.state.family;
-    family[setting] = value;
-    // // this.setState({family: family });
-    ThresholdActions.updateFamily(family);
-    this.state.eligibility = this.determineEligibility(this.state.eligibility);
-    this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
-  }
-
   render(){
     return(
       <Row>
         <Col md={4}>
           <Panel header="New Parent Benefits">
             <p>Are any of your <span className="figure">{this.state.family.children}</span> children under the age of 1?</p>
+              <Button bsSize="large" block active>No</Button>
+              <Button bsSize="large" block>Yes</Button>
           </Panel>
         </Col>
         <Col md={4}>

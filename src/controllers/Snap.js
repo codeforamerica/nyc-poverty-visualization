@@ -22,19 +22,39 @@ const snapThreshold = function(numberAdults, numberChildren){
     }
 };
 
+const snapAllotment = [
+[2207],
+[3214, 2815],
+[4457, 4174, 4264],
+[5282, 5290, 5360, 6002],
+[6176, 7000, 6367, 6323, 5571],
+[7071, 8252, 6548, 8116, 7412, 5737],
+['ST', 6695, 9232, 8213, 9901, 8180, 'NA'],
+['ST', 'ST', 3381, 11359, 9215, 2123, 5473, 'ST']];
+
+const calcSnapAllotment = function(numberAdults, numberChildren){
+  let
+    familySize = numberAdults + numberChildren,
+    tableRow = snapAllotment[familySize - 1];
+  if(numberChildren > 0){
+    return tableRow[numberChildren];
+  } else {
+    return tableRow[0];
+  }
+};
+
 const snapEligibility = function(yearlyIncome, numberAdults, numberChildren){
   let
     totalFamily = numberChildren + numberAdults,
     allowedIncome = snapThreshold(numberAdults, numberChildren);
 
   if (yearlyIncome <= allowedIncome){
-    let snapAmount = calcSnapAllotment(totalFamily);
+    let snapAmount = calcSnapAllotment(numberAdults, numberChildren);
     return {eligible: true, snapAmount: snapAmount};
   } else {
     return {eligible: false, snapAmount: 0};
   }
 };
-
 
 /*
 const
