@@ -14,6 +14,7 @@ require('./styles/style.scss');
 //Javascript
 require('./scripts/grayscale.js');
 
-ReactDOM.render(<StandAloneThreshold />, document.getElementById('poverty-threshold'));
-ReactDOM.render(<StandAloneIncomeSlider />, document.getElementById('react-income-slider'));
+ReactDOM.render(<PovertyThreshold />, document.getElementById('poverty-threshold'));
+ReactDOM.render(<AdditionalQuestions />, document.getElementById('additional-questions'));
+ReactDOM.render(<IncomeSlider />, document.getElementById('react-income-slider'));
 ReactDOM.render(<BottomBar />, document.getElementById('bar'));
