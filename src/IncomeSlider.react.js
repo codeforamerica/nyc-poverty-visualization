@@ -37,7 +37,7 @@ export default class StandAloneThreshold extends Component {
 
     this._updateInput = this._updateInput.bind(this);
     this.onChangeThreshold = this.onChangeThreshold.bind(this); // Don't really need both of these but SHRUG
-    this.state.eligibility = this.determineEligibility(this.state.eligibility);
+    // this.state.eligibility = this.determineEligibility(this.state.eligibility);
     // this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
@@ -50,23 +50,24 @@ export default class StandAloneThreshold extends Component {
   }
 
   onChangeThreshold(family ) { // Changing the family via alt
+    console.log(family);
     this.setState(family);
   }
 
   determineEligibility(stateEligibility) {
-    let
-      income = this.state.family.income,
-      adults = this.state.family.adults,
-      children = this.state.family.children;
-
-    stateEligibility.ACSChildCare = ACSChildCare(income, adults, children);
-    stateEligibility.SchoolFood = SchoolFood(income, adults, children);
-    stateEligibility.SNAP = SNAP(income, adults, children);
-    stateEligibility.HEAP = HEAP(income, adults, children);
-    stateEligibility.WIC = WIC(income, adults, children);
-    stateEligibility.TaxRefund = TaxRefund(income, adults, children);
-
-    return stateEligibility;
+    // let
+    //   income = this.state.family.income,
+    //   adults = this.state.family.adults,
+    //   children = this.state.family.children;
+    //
+    // stateEligibility.ACSChildCare = ACSChildCare(income, adults, children);
+    // stateEligibility.SchoolFood = SchoolFood(income, adults, children);
+    // stateEligibility.SNAP = SNAP(income, adults, children);
+    // stateEligibility.HEAP = HEAP(income, adults, children);
+    // stateEligibility.WIC = WIC(income, adults, children);
+    // stateEligibility.TaxRefund = TaxRefund(income, adults, children);
+    //
+    // return stateEligibility;
   }
 
   _updateInput(value, setting) {
@@ -74,11 +75,15 @@ export default class StandAloneThreshold extends Component {
     family[setting] = value;
     // // this.setState({family: family });
     ThresholdActions.updateFamily(family);
-    this.state.eligibility = this.determineEligibility(this.state.eligibility);
+
+    // this.state.eligibility = this.determineEligibility(this.state.eligibility);
+    // ThresholdActions.updateEligibility(this.state.eligibility);
+
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
   }
 
   render(){
+    console.log("INcome Slider", this.state);
     return(
       <div>
         <Col xs={12} sm={12} md={12}>

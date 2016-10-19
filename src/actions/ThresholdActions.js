@@ -8,6 +8,10 @@ class ThresholdActions {
   updateChildrenUnderOne(value) {
     return value;
   }
+
+  updateEligibility(data) {
+    return data;
+  }
 }
 
 module.exports = alt.createActions(ThresholdActions);
