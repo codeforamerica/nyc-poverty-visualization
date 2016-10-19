@@ -1,6 +1,6 @@
 "use strict";
 
-const CEOPovertyTable = [
+const snapElegibilityTable = [
 [24632],
 [31706, 32634],
 [37036, 38110, 38146],
@@ -10,17 +10,29 @@ const CEOPovertyTable = [
 [77942, 78452, 76750, 75582, 73402, 70862, 68072],
 [87172, 87940, 86358, 84970, 83002, 80504, 77906, 77244]];
 
-const povertyThreshold = function(income, numberParents, numberChildren){
+const snapThreshold = function(numberAdults, numberChildren){
   let
-    familySize = numberParents + numberChildren,
-    tableRow = CEOPovertyTable[familySize - 1];
+    familySize = numberAdults + numberChildren,
+    tableRow = snapElegibilityTable[familySize - 1];
     if(numberChildren > 0){
       return tableRow[numberChildren];
     }
     else {
       return tableRow[0];
     }
+};
 
+const snapEligibility = function(yearlyIncome, numberAdults, numberChildren){
+  let
+    totalFamily = numberChildren + numberAdults,
+    allowedIncome = snapThreshold(numberAdults, numberChildren);
+
+  if (yearlyIncome <= allowedIncome){
+    let snapAmount = calcSnapAllotment(totalFamily);
+    return {eligible: true, snapAmount: snapAmount};
+  } else {
+    return {eligible: false, snapAmount: 0};
+  }
 };
 
 
