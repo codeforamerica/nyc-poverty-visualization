@@ -15,12 +15,18 @@ class ThresholdStore {
     this.family = { adults: 2, children: 2, income: 15500 };
 
     this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
-    this.updateEligibility();
+
+    this.updateEligibility(); // Make sure we have what is the eligibility
+
     this.childrenUnderOne = false;
+    this.housing = '';
+    this.transportation = '';
 
     this.bindListeners({
       handleUpdateFamily: ThresholdActions.UPDATE_FAMILY,
-      handleUpdateChildrenUnderOne: ThresholdActions.UPDATE_CHILDREN_UNDER_ONE
+      handleUpdateChildrenUnderOne: ThresholdActions.UPDATE_CHILDREN_UNDER_ONE,
+      handleUpdateHousing: ThresholdActions.UPDATE_HOUSING,
+      handleUpdateTransportation: ThresholdActions.UPDATE_TRANSPORTATION
     });
 
     this.updateEligibility = this.updateEligibility.bind(this);
@@ -53,6 +59,18 @@ class ThresholdStore {
 
   handleUpdateChildrenUnderOne(value) {
     this.childrenUnderOne = value;
+    this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
+    this.eligibility = this.updateEligibility();
+  }
+
+  handleUpdateTransportation(value) {
+    this.transportation = value;
+    this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
+    this.eligibility = this.updateEligibility();
+  }
+
+  handleUpdateHousing(value) {
+    this.transportation = value;
     this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
     this.eligibility = this.updateEligibility();
   }

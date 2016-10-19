@@ -12,6 +12,14 @@ class ThresholdActions {
   updateEligibility(data) {
     return data;
   }
+
+  updateHousing(value) {
+    return value;
+  }
+
+  updateTransportation(value) {
+    return value;
+  }
 }
 
 module.exports = alt.createActions(ThresholdActions);
