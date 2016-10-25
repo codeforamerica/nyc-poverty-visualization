@@ -15,7 +15,7 @@ export default class AdditionalQuestions extends Component {
     //Default to no children eligible for WIC
     this.onChangeThreshold = this.onChangeThreshold.bind(this);
     this.updateChildUnderOne = this.updateChildUnderOne.bind(this);
-
+    this.updateHousing = this.updateHousing.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +32,13 @@ export default class AdditionalQuestions extends Component {
   }
 
   onChangeThreshold(data) { // Updating the store
+    console.log('changed state', data);
     this.setState(data);
+  }
+
+  updateHousing(event) {
+    ThresholdActions.updateHousing(event.target.value);
+    console.log(this.state);
   }
 
   render(){
@@ -56,23 +62,22 @@ export default class AdditionalQuestions extends Component {
           <Panel header="Housing">
             <p>Choose the option that best describes your housing situation:</p>
             <FormGroup id="housing-options">
-
-              <Radio name="housing-option">
+              <Radio name="housing-option" value={0} onChange={this.updateHousing}>
                 Live in public housing
               </Radio>
-              <Radio name="housing-option">
+              <Radio name="housing-option" value={1} onChange={this.updateHousing}>
                 Live in rent subsidized or rent regulated housing of any kind
               </Radio>
-              <Radio name="housing-option">
+              <Radio name="housing-option" value={2} onChange={this.updateHousing}>
                 Live rent free
               </Radio>
-              <Radio name="housing-option">
+              <Radio name="housing-option" value={3} onChange={this.updateHousing}>
                 Own home with a mortgage
               </Radio>
-              <Radio name="housing-option">
+              <Radio name="housing-option" value={4} onChange={this.updateHousing}>
                 Own your home with no mortgage
               </Radio>
-              <Radio name="housing-option">
+              <Radio name="housing-option" value={5} onChange={this.updateHousing}>
                 None of the above
               </Radio>
             </FormGroup>

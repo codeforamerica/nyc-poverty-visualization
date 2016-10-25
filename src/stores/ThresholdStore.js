@@ -70,7 +70,7 @@ class ThresholdStore {
   }
 
   handleUpdateHousing(value) {
-    this.transportation = value;
+    this.housing = parseInt(value);
     this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
     this.eligibility = this.updateEligibility();
   }
