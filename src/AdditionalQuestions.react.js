@@ -4,6 +4,8 @@ import { Row, Col, Collapse, Well, ButtonToolbar, ButtonGroup, Button, Glyphicon
 // Alt
 import ThresholdStore from './stores/ThresholdStore.js';
 import ThresholdActions from './actions/ThresholdActions.js';
+import commaNumber from 'comma-number';
+
 
 export default class AdditionalQuestions extends Component {
   constructor() {
@@ -11,6 +13,7 @@ export default class AdditionalQuestions extends Component {
 
     this.state = ThresholdStore.getState(); // Getting this from alt.js
     this.state.showSnap = false;
+    this.state.showHousingDetails = false;
 
     //Default to no children eligible for WIC
     this.onChangeThreshold = this.onChangeThreshold.bind(this);
@@ -37,6 +40,7 @@ export default class AdditionalQuestions extends Component {
 
   updateHousing(event) {
     ThresholdActions.updateHousing(event.target.value);
+    this.setState({ showHousingDetails: true });
   }
 
   updateTransportation(event) {
@@ -57,7 +61,7 @@ export default class AdditionalQuestions extends Component {
           <Collapse in={this.state.childrenUnderOne}>
             <div>
               <Well>
-                On average, this family would receive about <span className="figure">{this.state.eligibility.WIC.wicAmount}</span> from being enrolled in WIC (supplemental nutrition for newborns and mothers).
+                On average, this family would receive about <span className="figure">${commaNumber(this.state.eligibility.WIC.wicAmount)}</span> from being enrolled in WIC (supplemental nutrition for newborns and mothers).
               </Well>
             </div>
           </Collapse>
@@ -86,6 +90,11 @@ export default class AdditionalQuestions extends Component {
               </Radio>
             </FormGroup>
           </Panel>
+          <Collapse in={this.state.showHousingDetails}>
+            <Well>
+              On average, the value of this family's housing situation would contribute <span className="figure">${commaNumber(this.state.eligibility.Housing)}</span> to reducing their poverty threshold.
+            </Well>
+          </Collapse>
         </Col>
         <Col md={4}>
           <Panel header="Transportation">
@@ -101,7 +110,7 @@ export default class AdditionalQuestions extends Component {
           </Panel>
           <Collapse in={showTransportation}>
             <Well>
-              On average, this family would spend <span className='figure'>{this.state.transportationCost}</span> a year on transportation.
+              On average, this family would spend <span className='figure'>${commaNumber(this.state.transportationCost)}</span> a year on transportation.
             </Well>
           </Collapse>
         </Col>

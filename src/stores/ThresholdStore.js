@@ -9,6 +9,7 @@ import SNAP from '../controllers/Snap.js';
 import HEAP from '../controllers/HEAP.js';
 import WIC from '../controllers/WIC.js';
 import TaxRefund from '../controllers/EarnedIncomeCredit.js';
+import Housing from '../controllers/Housing.js';
 import calculateTransportationCost from '../controllers/Transportation.js';
 
 class ThresholdStore {
@@ -55,9 +56,11 @@ class ThresholdStore {
     eligibility.HEAP = HEAP(income, adults, children);
     eligibility.WIC = WIC(income, adults, children);
     eligibility.TaxRefund = TaxRefund(income, adults, children);
+    eligibility.Housing = Housing(this.housing, adults, children);
 
     this.eligibility = eligibility;
 
+    console.log(eligibility.Housing);
     return eligibility;
   }
 
