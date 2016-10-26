@@ -7,7 +7,12 @@ import { Table, Panel, Glyphicon } from 'react-bootstrap';
 import commaNumber from 'comma-number';
 export default class BenefitsTable extends Component {
   render() {
-    console.log(this.props.eligibility)
+    let schoolFoodName = '';
+    if (this.props.eligibility.SchoolFood.lunchRate == 'free') {
+      schoolFoodName = "School Lunches";
+    } else if (this.props.eligibility.SchoolFood.lunchRate == 'breakfast') {
+      schoolFoodName = "School Breakfast";
+    }
     return(
       <Table>
         <thead>
@@ -34,9 +39,9 @@ export default class BenefitsTable extends Component {
             <td>${ commaNumber(this.props.eligibility.TaxRefund.refundAmount) }</td>
           </tr>
           <tr>
-            <td><Glyphicon glyph={this.props.eligibility.SchoolFood.eligible ? "ok" : "remove"} /></td>
-            <td>School Lunches</td>
-            <td>${ commaNumber(this.props.eligibility.SchoolFood.lunchValue) }</td>
+            <td><Glyphicon glyph="ok" /></td>
+            <td>{schoolFoodName}</td>
+            <td>${ commaNumber(this.props.eligibility.SchoolFood.foodValue) }</td>
           </tr>
         </tbody>
       </Table>

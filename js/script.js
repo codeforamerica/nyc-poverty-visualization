@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var waypoint = new Waypoint({
-    element: document.getElementById('section-equation'),
+    element: document.getElementById('section-2'),
     handler: function(direction) {
       if(direction === 'down'){
         $(".equation").each(function(index) {

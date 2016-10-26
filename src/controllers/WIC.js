@@ -1,33 +1,42 @@
 "use strict";
 
-const WICIncomeThreshold = 1772;
+const wicIncomeThreshold = [
+  [22784.6,0,0,0,0,0,0,0],
+  [29328.05,30186.45,0,0,0,0,0,0],
+  [34258.3,35251.75,35285.05,0,0,0,0,0],
+  [45173.3,45911.45,44414.8,44568.35,0,0,0,0],
+  [54476.95,55268.75,53576,52266.2,51467,0,0,0],
+  [62657.65,62907.4,61610.55,60367.35,58521.05,57425.85,0,0],
+  [72096.35,72545.9,70993.75,69913.35,67896.85,65547.35,62966.6,0],
+  [80634.1,81344.5,79881.15,78597.25,76776.85,74466.2,72063.05,71450.7]
 
-const wicTable = [
+];
+
+
+
+
+const wicAmountTable = [
   [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 735, 0, 0, 0, 0, 0, 0],
-  [0, 886, 848, 0, 0, 0, 0, 0],
-  [0, 712, 1016, 969, 0, 0, 0, 0],
-  [0, 819, 940, 1072, 1105, 0, 0, 0],
-  [0, 776, 923, 1024, 1129, 1939, 0, 0],
-  [0, 664, 1135, 1033, 881, 1461, 0, 0],
-  [0, 664, 895, 1523, 908, 1283, 1511, 1991]
+  [0, 1327, 0, 0, 0, 0, 0, 0],
+  [0, 1327, 1991, 0, 0, 0, 0, 0],
+  [0, 1327, 1991, 2654, 0, 0, 0, 0],
+  [0, 1327, 1991, 2654, 2654, 0, 0, 0],
+  [0, 1327, 1991, 1991, 3318, 2654, 0, 0],
+  [0, 664, 1991, 1991, 1991, 3318, 0, 0],
+  [0, 664, 1327, 2654, 1991, 1991, 2654, 1991],
 ]
 
 const CalculateWICEligibility = function(yearlyIncome, numberAdults, numberChildren){
-  let monthlyIncome = yearlyIncome/12;
-  if(monthlyIncome < WICIncomeThreshold){
+  let
+    familyIncomeRow = wicIncomeThreshold[numberAdults + numberChildren - 1],
+    familyIncomeThreshold = familyIncomeRow[numberChildren - 1];
 
-    let
-      familySize = numberAdults + numberChildren,
-      tableRow = wicTable[familySize - 1];
-      let wicAmount;
-      if(numberChildren > 0){
-        wicAmount = tableRow[numberChildren];
-      }
-      else {
-        wicAmount = 0;
-      }
 
+
+  if(yearlyIncome < familyIncomeThreshold){
+      let
+        wicAmountRow = wicAmountTable[numberAdults + numberChildren - 1],
+        wicAmount = wicAmountRow[numberChildren];
 
     return {eligible: true, wicAmount: wicAmount};
   }
