@@ -32,13 +32,15 @@ export default class AdditionalQuestions extends Component {
   }
 
   onChangeThreshold(data) { // Updating the store
-    console.log('changed state', data);
     this.setState(data);
   }
 
   updateHousing(event) {
     ThresholdActions.updateHousing(event.target.value);
-    console.log(this.state);
+  }
+
+  updateTransportation(event) {
+    ThresholdActions.updateTransportation(event.target.value);
   }
 
   render(){
@@ -86,6 +88,14 @@ export default class AdditionalQuestions extends Component {
         <Col md={4}>
           <Panel header="Transportation">
             <p>How many of the <span className="figure">{this.state.family.adults}</span> adults in your household commute to work?</p>
+            {[...Array(this.state.family.adults+1)].map((x, i) =>
+              <div key={i} style={{ float: 'left', margin: '5px', textAlign: 'center', padding: '3px', width: '50px' }}>
+                <img src='public/assets/img/parent-icon.png' className='familyMember' /> <br />
+                <input type='radio' name='transportation' value={i} onChange={this.updateTransportation} />
+                <br />
+                {i}
+              </div>
+            )}
           </Panel>
         </Col>
       </Row>

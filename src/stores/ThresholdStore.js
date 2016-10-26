@@ -19,8 +19,8 @@ class ThresholdStore {
     this.updateEligibility(); // Make sure we have what is the eligibility
 
     this.childrenUnderOne = false;
-    this.housing = '';
-    this.transportation = '';
+    this.housing = 0;
+    this.transportation = 0;
 
     this.bindListeners({
       handleUpdateFamily: ThresholdActions.UPDATE_FAMILY,
@@ -64,9 +64,10 @@ class ThresholdStore {
   }
 
   handleUpdateTransportation(value) {
-    this.transportation = value;
+    this.transportation = parseInt(value);
     this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
     this.eligibility = this.updateEligibility();
+
   }
 
   handleUpdateHousing(value) {

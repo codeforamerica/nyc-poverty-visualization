@@ -7,7 +7,6 @@ import { Table, Panel, Glyphicon } from 'react-bootstrap';
 import commaNumber from 'comma-number';
 export default class BenefitsTable extends Component {
   render() {
-    console.log(this.props.eligibility)
     return(
       <Table>
         <tbody>
