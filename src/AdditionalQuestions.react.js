@@ -44,6 +44,8 @@ export default class AdditionalQuestions extends Component {
   }
 
   render(){
+    let showTransportation = this.state.transportation > 0 ? true : false;
+
     return(
       <Row>
         <Col md={4}>
@@ -97,6 +99,11 @@ export default class AdditionalQuestions extends Component {
               </div>
             )}
           </Panel>
+          <Collapse in={showTransportation}>
+            <Well>
+              On average, this family would spend <span className='figure'>{this.state.transportationCost}</span> a year on transportation.
+            </Well>
+          </Collapse>
         </Col>
       </Row>
     );

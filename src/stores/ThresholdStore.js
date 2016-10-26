@@ -9,6 +9,7 @@ import SNAP from '../controllers/Snap.js';
 import HEAP from '../controllers/HEAP.js';
 import WIC from '../controllers/WIC.js';
 import TaxRefund from '../controllers/EarnedIncomeCredit.js';
+import calculateTransportationCost from '../controllers/Transportation.js';
 
 class ThresholdStore {
   constructor() {
@@ -20,7 +21,10 @@ class ThresholdStore {
 
     this.childrenUnderOne = false;
     this.housing = 0;
+
+    // Storing both transportation & the cost, so that we know how many people they've selected
     this.transportation = 0;
+    this.transportationCost = 0;
 
     this.bindListeners({
       handleUpdateFamily: ThresholdActions.UPDATE_FAMILY,
@@ -65,9 +69,9 @@ class ThresholdStore {
 
   handleUpdateTransportation(value) {
     this.transportation = parseInt(value);
+    this.transportationCost = calculateTransportationCost(parseInt(value));
     this.CEOPovertyThreshold = CEOPovertyThreshold(this.family.income, this.family.adults, this.family.children);
     this.eligibility = this.updateEligibility();
-
   }
 
   handleUpdateHousing(value) {
