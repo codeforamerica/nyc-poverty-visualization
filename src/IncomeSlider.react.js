@@ -79,30 +79,6 @@ export default class StandAloneThreshold extends Component {
     // ThresholdActions.updateEligibility(this.state.eligibility);
 
     this.state.CEOPovertyThreshold = CEOPovertyThreshold(this.state.family.income, this.state.family.adults, this.state.family.children);
-    this.state.totalBenefits = this.state.eligibility.SNAP.snapAmount + this.state.eligibility.WIC.wicAmount + this.state.eligibility.TaxRefund.refundAmount + this.state.eligibility.SchoolFood.lunchValue;
-  }
-
-  combineIncomeBenefits(){
-    if(this.state.combineIncomeBenefits === false){
-      let combinedValue = this.state.family.income + this.state.totalBenefits;
-      this.setState({
-        combineIncomeBenefits: true,
-        family: {
-          income: combinedValue,
-          adults: this.state.family.adults,
-          children: this.state.family.children
-        }
-      })
-    } else {
-      this.setState({
-        combineIncomeBenefits: true,
-        family: {
-          income: this.state.family.income,
-          adults: this.state.family.adults,
-          children: this.state.family.children
-        }
-      })
-    }
   }
 
   render(){
