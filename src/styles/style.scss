@@ -23,12 +23,16 @@ p {
 
 h1 {
   font-weight: bold;
-  font-size: 39px;
+  font-size: 50px;
   line-height: 47px;
 
   &.blue {
     color: $blue;
   }
+}
+
+h2 {
+  font-size: 39px;
 }
 
 .col-centered {
@@ -123,7 +127,7 @@ section {
   height: 80vh;
   display: table;
   width: 100%;
-  padding: 100px 0;
+  padding: 40px 0;
   //text-align: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -198,7 +202,7 @@ section {
 .btn-circle {
   width: 70px;
   height: 70px;
-  margin-top: 15px;
+  margin-top: 30px;
   padding: 7px 16px;
   border: 2px solid #fff;
   border-radius: 100%!important;
@@ -387,7 +391,6 @@ hr {
 }
 .rc-slider-handle {
   position: absolute;
-  margin-left: -15px;
   margin-top: -5px;
   width: 15px;
   height: 31px;
