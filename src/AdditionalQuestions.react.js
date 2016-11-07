@@ -101,7 +101,6 @@ export default class AdditionalQuestions extends Component {
             <p>How many of the <span className="figure">{this.state.family.adults}</span> adults in your household commute to work?</p>
             {[...Array(this.state.family.adults+1)].map((x, i) =>
               <div key={i} style={{ float: 'left', margin: '5px', textAlign: 'center', padding: '3px', width: '50px' }}>
-                <img src='public/assets/img/parent-icon.png' className='familyMember' /> <br />
                 <input type='radio' name='transportation' value={i} onChange={this.updateTransportation} />
                 <br />
                 {i}

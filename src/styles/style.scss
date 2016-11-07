@@ -8,6 +8,7 @@ $light-blue: #1AB3E9;
 
 body,html {
   height: 100%;
+  color: #0C0C0C;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -23,12 +24,16 @@ p {
 
 h1 {
   font-weight: bold;
-  font-size: 39px;
+  font-size: 50px;
   line-height: 47px;
 
   &.blue {
     color: $blue;
   }
+}
+
+h2 {
+  font-size: 39px;
 }
 
 .col-centered {
@@ -123,7 +128,7 @@ section {
   height: 80vh;
   display: table;
   width: 100%;
-  padding: 100px 0;
+  padding: 20px 0;
   //text-align: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -198,7 +203,7 @@ section {
 .btn-circle {
   width: 70px;
   height: 70px;
-  margin-top: 15px;
+  margin-top: 30px;
   padding: 7px 16px;
   border: 2px solid #fff;
   border-radius: 100%!important;
@@ -282,6 +287,29 @@ hr {
   }
 }
 
+.text-dark-green {
+  color: $dark-green;
+}
+
+.text-light-green {
+  color: $light-green;
+}
+
+.text-purple {
+  color: $purple;
+}
+
+.ceo-equation {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1078BE;
+}
+
+.panel-heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .intro {
     height: 100%;
 }
@@ -346,6 +374,15 @@ hr {
   }
 }
 
+.text-large {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.text-light-blue {
+  color: $light-blue;
+}
+
 .equation-panel {
   margin-top: 50px;
   text-align: left;
@@ -387,7 +424,6 @@ hr {
 }
 .rc-slider-handle {
   position: absolute;
-  margin-left: -15px;
   margin-top: -5px;
   width: 15px;
   height: 31px;
@@ -727,3 +763,15 @@ hr {
     }
   }
 }
+
+.row.vdivide [class*='col-']:not(:last-child):after {
+      background: #e0e0e0;
+      width: 1px;
+      content: "";
+      display:block;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      right: 0;
+      min-height: 70px;
+    }
