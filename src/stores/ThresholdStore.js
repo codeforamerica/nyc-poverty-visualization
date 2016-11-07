@@ -23,6 +23,9 @@ class ThresholdStore {
     this.childrenUnderOne = false;
     this.housing = 0;
 
+    // Lets build out the costs now as well
+    this.costs = 0;
+
     // Storing both transportation & the cost, so that we know how many people they've selected
     this.transportation = 0;
     this.transportationCost = 0;
