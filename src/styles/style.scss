@@ -8,6 +8,7 @@ $light-blue: #1AB3E9;
 
 body,html {
   height: 100%;
+  color: #0C0C0C;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -127,7 +128,7 @@ section {
   height: 80vh;
   display: table;
   width: 100%;
-  padding: 40px 0;
+  padding: 20px 0;
   //text-align: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -301,6 +302,7 @@ hr {
 .ceo-equation {
   font-size: 32px;
   font-weight: bold;
+  color: #1078BE;
 }
 
 .panel-heading {
@@ -370,6 +372,15 @@ hr {
       transition: all .2s ease-in-out;
     }
   }
+}
+
+.text-large {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.text-light-blue {
+  color: $light-blue;
 }
 
 .equation-panel {
@@ -752,3 +763,15 @@ hr {
     }
   }
 }
+
+.row.vdivide [class*='col-']:not(:last-child):after {
+      background: #e0e0e0;
+      width: 1px;
+      content: "";
+      display:block;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      right: 0;
+      min-height: 70px;
+    }
