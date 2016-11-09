@@ -47,21 +47,21 @@ export default class StandAloneThreshold extends Component {
       <div id="input">
         <Row className='familyPane vdivide pane' id='pane2' ref='pane2'>
           <Col xs={12} sm={12} md={12}>
-            <Panel header="Adjust Household">
+            <Panel bsStyle="primary" header="Adjust Household Composition">
               <Row>
                 <Col xs={12} sm={6} md={6}>
-                  <p>Adults</p>
+                  <p>Adults in household</p>
                   <HouseholdSlider target='adults' min={0} max={6} value={this.state.family.adults} onChange={this._updateInput} />
                   <br />
-                  <p>Children</p>
+                  <p>Children in household</p>
                   <HouseholdSlider target='children' min={0} max={6} value={this.state.family.children} onChange={this._updateInput} />
                 </Col>
                 <Col xs={12} sm={6} md={6}>
                   {Array.apply(0, Array(this.state.family.adults)).map(function (x, i) {
-                    return(<img src='public/assets/img/parent-icon.png' className='familyMember' key={i} />);
+                    return(<div className='familyMemberAdult' key={i}></div>);
                   })}
                   {Array.apply(0, Array(this.state.family.children)).map(function (x, i) {
-                    return(<img src='public/assets/img/child-icon.png' className='familyMember' key={i} />);
+                    return(<div className='familyMemberChild' key={i}></div>);
                   })}
                   <PovertyThreshold povertyThreshold={this.state.CEOPovertyThreshold} family={this.state.family} />
                 </Col>

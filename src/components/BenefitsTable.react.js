@@ -15,6 +15,13 @@ export default class BenefitsTable extends Component {
     }
     return(
       <Table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Program</th>
+            <th>Value</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
             <td><Glyphicon glyph={this.props.eligibility.SNAP.eligible ? "ok" : "remove"} /></td>
