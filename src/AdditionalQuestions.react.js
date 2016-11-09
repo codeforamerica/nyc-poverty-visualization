@@ -53,7 +53,7 @@ export default class AdditionalQuestions extends Component {
     return(
       <Row>
         <Col md={4}>
-          <Panel header="New Parent Benefits">
+          <Panel bsStyle="primary" header="New Parent Benefits">
             <p>Are any of your <span className="figure">{this.state.family.children}</span> children under the age of 1?</p>
               <Button bsSize="large" block onClick={this.updateChildUnderOne} active={!this.state.childrenUnderOne}>No</Button>
               <Button bsSize="large" block onClick={this.updateChildUnderOne} active={this.state.childrenUnderOne}>Yes</Button>
@@ -67,7 +67,7 @@ export default class AdditionalQuestions extends Component {
           </Collapse>
         </Col>
         <Col md={4}>
-          <Panel header="Housing">
+          <Panel bsStyle="primary" header="Housing">
             <p>Choose the option that best describes your housing situation:</p>
             <FormGroup id="housing-options">
               <Radio name="housing-option" value={0} onChange={this.updateHousing}>
@@ -97,7 +97,7 @@ export default class AdditionalQuestions extends Component {
           </Collapse>
         </Col>
         <Col md={4}>
-          <Panel header="Transportation">
+          <Panel bsStyle="primary" header="Transportation">
             <p>How many of the <span className="figure">{this.state.family.adults}</span> adults in your household commute to work?</p>
             {[...Array(this.state.family.adults+1)].map((x, i) =>
               <div key={i} style={{ float: 'left', margin: '5px', textAlign: 'center', padding: '3px', width: '50px' }}>
