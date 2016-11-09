@@ -322,9 +322,25 @@ hr {
     font-size: 26px;
 }
 
-.familyMember {
-  padding: 0px 2px 4px 0px;
-  max-width: 50px;
+.familyMemberAdult {
+  margin: 1px;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  fill: black;
+  background-image: url('/public/assets/img/gender-neutral-human-blue.svg');
+}
+
+.familyMemberChild {
+  margin: 1px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-image: url('/public/assets/img/child.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .family {
