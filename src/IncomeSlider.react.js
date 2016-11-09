@@ -89,7 +89,7 @@ export default class StandAloneThreshold extends Component {
           <p>Adjust this household's income and composition using the sliders to see how their poverty threshold, benefits, and costs change.</p>
         </Col>
         <Col md={12}>
-          <Panel header="Family Benefits">
+          <Panel bsStyle="primary" header="Family Benefits">
             <Row className='vdivide'>
               <Col xs={12} sm={6} md={6}>
                 <p>This household has <span className='figure'>{this.state.family.adults}</span> adults, <span className='figure'>{this.state.family.children}</span> children, and makes <span className='figure'>${commaNumber(this.state.family.income)}</span> a year.</p>
