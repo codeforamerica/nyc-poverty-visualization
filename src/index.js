@@ -6,6 +6,7 @@ import PovertyThreshold from './PovertyThreshold.react.js';
 import IncomeSlider from './IncomeSlider.react.js';
 import BottomBar from './BottomBar.react.js';
 import AdditionalQuestions from './AdditionalQuestions.react.js';
+import PovertyGraph from './PovertyGraph.react.js';
 
 //Fonts and Styles
 require('font-awesome/css/font-awesome.min.css');
@@ -19,3 +20,4 @@ ReactDOM.render(<PovertyThreshold />, document.getElementById('poverty-threshold
 ReactDOM.render(<AdditionalQuestions />, document.getElementById('additional-questions'));
 ReactDOM.render(<IncomeSlider />, document.getElementById('react-income-slider'));
 ReactDOM.render(<BottomBar />, document.getElementById('bar'));
+ReactDOM.render(<PovertyGraph />, document.getElementById('poverty-graph'));

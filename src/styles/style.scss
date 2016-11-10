@@ -5,6 +5,7 @@ $dark-green: #2C9745;
 $light-green: #95CB5B;
 $purple: #794B9E;
 $light-blue: #1AB3E9;
+$light-gray: rgba(151, 151, 151, 1);
 
 body,html {
   height: 100%;
@@ -780,6 +781,17 @@ hr {
   }
 }
 
+#footer {
+  margin-bottom: 85px;
+  background-color: $white;
+  color: black;
+}
+
+.accessLogo {
+  width: 478px;
+  height: 112px;
+}
+
 .row.vdivide [class*='col-']:not(:last-child):after {
       background: #e0e0e0;
       width: 1px;
@@ -791,3 +803,10 @@ hr {
       right: 0;
       min-height: 70px;
     }
+
+
+// Poverty Graph
+.povertyGraph i {
+  transition: all 0.4s ease 0s;
+  margin: 5px;
+}
