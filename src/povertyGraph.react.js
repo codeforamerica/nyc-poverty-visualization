@@ -8,7 +8,9 @@ export default class povertyGraph extends Component {
     super();
 
     this.toggle = this.toggle.bind(this);
-    this.state = { toggle: { ceo: false, federal: false } };
+    this.changeIconTotal= this.changeIconTotal.bind(this);
+
+    this.state = { toggle: { ceo: false, federal: false }, iconTotal: 250 };
   }
 
   componentDidMount() {
@@ -31,6 +33,15 @@ export default class povertyGraph extends Component {
     this.setState({ toggle: state });
   }
 
+  changeIconTotal(event) {
+    var total = event.target.value;
+
+    if (total > 1)
+      this.setState({iconTotal: total});
+    else
+      this.setState({iconTotal: 1});
+  }
+
   render(){
     var totalNewYorkers = 8405837;
     var totalNewYorkersPretty = totalNewYorkers.toLocaleString();
@@ -40,7 +51,7 @@ export default class povertyGraph extends Component {
     var federalPovertyCount = Math.ceil(federalPovertyPercent / 100 * totalNewYorkers).toLocaleString();
     var ceoPovertyCount = Math.ceil(ceoPovertyPercent / 100 * totalNewYorkers).toLocaleString();
 
-    var iconTotal = 250; // Split up the population into 100 icons
+    var iconTotal = parseInt(this.state.iconTotal); // Split up the population into 100 icons
     var iconCount = Math.ceil(totalNewYorkers / iconTotal).toLocaleString();
 
     // Colors
@@ -52,7 +63,8 @@ export default class povertyGraph extends Component {
     var toggleCEO = this.state.toggle.ceo;
     var toggleFederal = this.state.toggle.federal;
 
-    let icons = [...Array(iconTotal+1)].map((x, i) => {
+    console.log(iconTotal);
+    let icons = [...Array(iconTotal)].map((x, i) => {
       // How many of these should be blue
       var fontColor = colorDefault;
       var totalFederal = Math.ceil(federalPovertyPercent / 100 * iconTotal);
@@ -79,6 +91,7 @@ export default class povertyGraph extends Component {
           <br />
           <button onClick={() => this.toggle('ceo')} className='btn btn-primary'>Under CEO Poverty Line</button> <button onClick={() => this.toggle('federal')} className='btn btn-primary'>Under Federal Poverty Line</button>
           <br />
+          For debugging and testing, change the number of icons: <input type='text' onChange={this.changeIconTotal} defaultValue={this.state.iconTotal} />
           <br />
         </div>
         <br />
