@@ -89,7 +89,7 @@ export default class povertyGraph extends Component {
         </div>
         <div className='controls'>
           <br />
-          <button onClick={() => this.toggle('ceo')} className='btn btn-primary'>Under CEO Poverty Line</button> <button onClick={() => this.toggle('federal')} className='btn btn-primary'>Under Federal Poverty Line</button>
+          <button onClick={() => this.toggle('federal')} className='btn btn-primary'>Under Federal Poverty Line</button> <button onClick={() => this.toggle('ceo')} className='btn btn-primary'>Under CEO Poverty Line</button>
           <br />
           For debugging and testing, change the number of icons: <input type='text' onChange={this.changeIconTotal} defaultValue={this.state.iconTotal} />
           <br />
