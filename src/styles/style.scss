@@ -5,6 +5,7 @@ $dark-green: #2C9745;
 $light-green: #95CB5B;
 $purple: #794B9E;
 $light-blue: #1AB3E9;
+$light-gray: rgba(151, 151, 151, 1);
 
 body,html {
   height: 100%;
@@ -323,18 +324,15 @@ hr {
 }
 
 .familyMemberAdult {
-  margin: 1px;
-  width: 50px;
+  width: 40px;
   height: 50px;
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
-  fill: black;
   background-image: url('/public/assets/img/gender-neutral-human-blue.svg');
 }
 
 .familyMemberChild {
-  margin: 2px;
   width: 40px;
   height: 40px;
   display: inline-block;
@@ -780,6 +778,17 @@ hr {
   }
 }
 
+#footer {
+  margin-bottom: 85px;
+  background-color: black;
+  color: $white;
+}
+
+.accessLogo {
+  width: 478px;
+  height: 112px;
+}
+
 .row.vdivide [class*='col-']:not(:last-child):after {
       background: #e0e0e0;
       width: 1px;
@@ -791,3 +800,10 @@ hr {
       right: 0;
       min-height: 70px;
     }
+
+
+// Poverty Graph
+.povertyGraph i {
+  transition: all 0.4s ease 0s;
+  margin: 5px;
+}
