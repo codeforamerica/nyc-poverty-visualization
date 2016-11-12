@@ -109,7 +109,7 @@ export default class StandAloneThreshold extends Component {
               </Col>
             </Row>
             <hr />
-            <div className='alert alert-info'><strong>Reminder</strong> If you are looking to apply for benefits for your family, this is just a visualization. Go to <strong><a href='https://a069-access.nyc.gov/ACCESSNYC/application.do'>AccessNYC</a></strong> to apply for benefits.</div>
+            <div className='alert alert-info'><strong>Reminder</strong> If you are looking to apply for benefits for your family, this is just a visualization. Go to <strong><a href='https://a069-access.nyc.gov/ACCESSNYC/application.do'>AccessNYC</a></strong> learn which programs your family may be eligible for and apply.</div>
           </Panel>
         </Col>
         <Col id="threshold-bar-chart" xs={12} sm={12} md={12}>

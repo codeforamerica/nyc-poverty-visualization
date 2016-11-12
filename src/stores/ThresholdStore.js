@@ -11,6 +11,7 @@ import WIC from '../controllers/WIC.js';
 import TaxRefund from '../controllers/EarnedIncomeCredit.js';
 import Housing from '../controllers/Housing.js';
 import calculateTransportationCost from '../controllers/Transportation.js';
+import ChildCare from '../controllers/ChildCare.js';
 
 class ThresholdStore {
   constructor() {
@@ -60,10 +61,12 @@ class ThresholdStore {
     eligibility.WIC = WIC(income, adults, children);
     eligibility.TaxRefund = TaxRefund(income, adults, children);
     eligibility.Housing = Housing(this.housing, adults, children);
+    eligibility.ChildCare = ChildCare(income, adults, children);
+
+    // Now lets calculate the costs
+    this.costs = this.transportationCost + eligibility.ChildCare;
 
     this.eligibility = eligibility;
-
-    console.log(eligibility.Housing);
     return eligibility;
   }
 
